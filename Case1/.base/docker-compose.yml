@@ -1,0 +1,19 @@
+
+version: "3"
+services:
+  emily-waldo-jc0wk4:
+    image: emily-waldo-jc0wk4
+    container_name: emily-waldo-jc0wk4
+    build:
+      context: ../
+
+    volumes:
+      - ../:/workspace:cached
+
+    networks:
+      - emily-waldo-jc0wk4-network
+
+networks:
+  emily-waldo-jc0wk4-network:
+    name: emily-waldo-jc0wk4-network
+    driver: bridge
