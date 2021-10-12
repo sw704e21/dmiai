@@ -1,8 +1,6 @@
 import uvicorn
 import os
-from PIL import Image
-import io
-from fastapi import FastAPI, UploadFile, File
+from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from dotenv import load_dotenv
 from argparse import ArgumentParser
@@ -13,14 +11,11 @@ from utilities.logging.config import initialize_logging, initialize_logging_midd
 from static.render import render
 from starlette.responses import HTMLResponse
 
-from ml.emily import Emily
+import cases.iq_test.router
+import cases.movie_reviews.router
+import cases.race_game.router
+import cases.wheres_waldo.router
 
-import routes.iq_test
-import routes.movie_reviews
-import routes.race_game
-import routes.wheres_waldo
-
-emily = Emily()
 
 # --- Welcome to your Emily API! --- #
 # See the README for guides on how to test it.
@@ -39,10 +34,10 @@ load_dotenv(dotenv_file)
 
 
 app = FastAPI()
-app.include_router(routes.iq_test.router)
-app.include_router(routes.movie_reviews.router)
-app.include_router(routes.race_game.router)
-app.include_router(routes.wheres_waldo.router)
+app.include_router(cases.iq_test.router.path)
+app.include_router(cases.movie_reviews.router.path)
+app.include_router(cases.race_game.router.path)
+app.include_router(cases.wheres_waldo.router.path)
 
 
 initialize_logging()
@@ -75,18 +70,6 @@ def index():
             port=os.environ.get('CONTAINER_PORT')
         )
     )
-
-
-class PredictItem():
-    def __init__(self, image):
-        self.image: Image = image
-
-
-@app.post('/api/predict')
-def predict_image(image: UploadFile = File(...)):
-    img = Image.open(io.BytesIO(image.file.read())).convert("RGB")
-    request = PredictItem(img)
-    return emily.predict(request)
 
 
 if __name__ == '__main__':
