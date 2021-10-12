@@ -53,11 +53,10 @@ app.add_middleware(
 
 
 @app.get('/api')
-def health_check():
+def hello():
     return {
-        'uptime': get_uptime(),
-        'status': 'UP',
-        'port': os.environ.get("HOST_PORT"),
+        "service": os.environ.get('COMPOSE_PROJECT_NAME'),
+        "uptime": get_uptime()
     }
 
 
