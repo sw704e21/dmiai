@@ -20,7 +20,7 @@ Once the repository is cloned, navigate to the folder called Case1 using a termi
 ```
 emily open .
 ```
-then select an editor of your choice to open the Emily template for use case 1. A Docker container with a Python environment will be opened. Some content needs to be downloaded the first time a project is opened, this might take a bit. 
+then select an editor of your choice to open the Emily template for use case 1. A Docker container with a Python environment will be opened. Some content needs to be downloaded the first time a project is opened, this might take a bit of time. 
 
 Your code should go in ml/predictor.py. For further details about the recommended structure, see <a href="https://dmiai.dk/guide/">this guide</a>.
 Add new packages to the Python environment by adding the names to requirements.txt and restarting the project.
