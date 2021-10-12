@@ -1,4 +1,4 @@
-from ml.predictor import Predictor
+from cases.wheres_waldo.ml.predictor import Predictor
 
 
 class Emily:
@@ -12,11 +12,8 @@ class Emily:
         self.predictor = Predictor()    # Creates instance of the Predictor class
 
     def predict(self, request):
-
         """
         This function calls the __call__ function from the Predictor class in ml.predictor.py.
         Make sure the __call__ method is implemented correctly
         """
         return self.predictor(request)
-
-

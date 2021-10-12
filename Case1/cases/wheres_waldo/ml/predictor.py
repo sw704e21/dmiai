@@ -1,4 +1,7 @@
 
+from PIL.Image import Image
+
+
 class Predictor:
     """
     The Predictor class is used for making predictions using a trained model instance based on the Model class
@@ -9,9 +12,7 @@ class Predictor:
         self.model_path = ""
         self.model = None
 
-    def predict(self, request):
-        sample = request.image
-
+    def predict(self, image: Image):
         """
         Insert your prediction code here
         """
@@ -24,5 +25,5 @@ class Predictor:
 
         return prediction
 
-    def __call__(self, request):
-        return self.predict(request)
+    def __call__(self, image: Image):
+        return self.predict(image)
