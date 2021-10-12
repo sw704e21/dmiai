@@ -5,7 +5,7 @@ import io
 from fastapi import FastAPI, UploadFile, File
 from fastapi.middleware.cors import CORSMiddleware
 from dotenv import load_dotenv
-from argparse import ArgumentParser, _get_action_name
+from argparse import ArgumentParser
 
 from utilities.utilities import get_uptime
 from utilities.logging.config import initialize_logging, initialize_logging_middleware
