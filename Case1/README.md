@@ -6,7 +6,11 @@ During evaluation, you are given a image of size 1500x1500px, then your model ha
 The images used for evaluating your final model, consists of images from "Where's Waldo?" books that have been split into 300x300px tiles and put together again randomly. Your model should be robust to changes in scale and image quality! Below you can see how the coordinate system used to determine Waldo's position are oriented. <br>
 No training data will be supplied for this use case.
 <br><br>
-<img src="images/coordinates.jpg" width=500>
+
+<p align="center">
+  <img src="images/coordinates.jpg" width=500>
+</p>
+
 
 ## Evaluation
 You will be granted point based on how many images you correctly find Waldo within, the scores are binary meaning that 1 point is given if the prediction is correct and 0 if not. No measure of the exactness of the prediction is used during evaluation. To verify if the prediction is correct, the point should be inside the bounding box, which enclose Waldo.
