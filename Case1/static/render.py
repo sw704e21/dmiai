@@ -7,6 +7,6 @@ def render(file: str, **kwargs) -> str:
         contents = fp.read()
 
         for key, value in kwargs.items():
-            contents = contents.replace(f'{{{{{key}}}}}', value)
+            contents = contents.replace(f'{{{{{key}}}}}', str(value))
 
         return contents
