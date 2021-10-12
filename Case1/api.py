@@ -5,7 +5,7 @@ import io
 from fastapi import FastAPI, UploadFile, File
 from fastapi.middleware.cors import CORSMiddleware
 from dotenv import load_dotenv
-from argparse import ArgumentParser
+from argparse import ArgumentParser, _get_action_name
 
 from utilities.utilities import get_uptime
 from utilities.logging.config import initialize_logging, initialize_logging_middleware
@@ -14,6 +14,11 @@ from static.render import render
 from starlette.responses import HTMLResponse
 
 from ml.emily import Emily
+
+import routes.iq_test
+import routes.movie_reviews
+import routes.race_game
+import routes.wheres_waldo
 
 emily = Emily()
 
@@ -32,7 +37,13 @@ args = parser.parse_args()
 dotenv_file = args.env
 load_dotenv(dotenv_file)
 
+
 app = FastAPI()
+app.include_router(routes.iq_test.router)
+app.include_router(routes.movie_reviews.router)
+app.include_router(routes.race_game.router)
+app.include_router(routes.wheres_waldo.router)
+
 
 initialize_logging()
 initialize_logging_middleware(app)
