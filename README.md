@@ -20,3 +20,5 @@ The <a href="https://ambolt.io/emily-ai/">Emily CLI</a> is built and maintained 
 <h2>Slack Channel</h2>
 Come meet and talk to other competitors of the event on our Slack channel. Discuss the use cases with eachother or get in touch with any of the Ambolt staff, to solve eventual issues or questions that may arise during the competition.
 
+
+<h2>Submission</h2>
