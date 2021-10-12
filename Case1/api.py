@@ -16,6 +16,9 @@ from settings import Settings, load_env
 from static.render import render
 from utilities.utilities import get_uptime
 
+load_env()
+
+
 # --- Welcome to your Emily API! --- #
 # See the README for guides on how to test it.
 
@@ -25,8 +28,6 @@ from utilities.utilities import get_uptime
 # trust before deploying your API to production.
 
 app = FastAPI()
-
-load_env()
 settings = Settings()
 
 # Middleware
