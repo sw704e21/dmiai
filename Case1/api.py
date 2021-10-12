@@ -39,10 +39,10 @@ routing.setup(
     app,
     prefix='/api',
     routers=[
-        cases.iq_test.router.path,
-        cases.movie_reviews.router.path,
-        cases.race_game.router.path,
-        cases.wheres_waldo.router.path,
+        cases.iq_test.router.path,        # /api/iq-test/ ...
+        cases.movie_reviews.router.path,  # /api/movie-reviews/ ...
+        cases.race_game.router.path,      # /api/race-game/ ...
+        cases.wheres_waldo.router.path,   # /api/wheres-waldo/ ...
     ]
 )
 
