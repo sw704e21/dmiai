@@ -1,8 +1,6 @@
 # DM i AI
 Welcome to the event <a href="https://dmiai.dk/">DM i AI</a> hosted by <a href="https://ambolt.io/">Ambolt</a> ApS.
-In this GitHub repository you will find all necessary information needed for the event.
-
-
+In this GitHub repository you will find all necessary information needed for the event. Please read the entire information before proceeding to the use case, and please make sure to read the full description of all the use cases. You are granted points for each use case based on how well you score in the respective use case.
 
 
 <h2>Use cases</h2>
@@ -17,6 +15,7 @@ The API endpoint will be used for submission and are required. Emily can help wi
 <h2>Emily CLI</h2>
 The <a href="https://ambolt.io/emily-ai/">Emily CLI</a> is built and maintained by <a href="https://ambolt.io/">Ambolt</a> to help developers and teams implement and run production ready machine learning powered micro services fast and easy. <br>
 <a href="https://github.com/amboltio/DM-i-AI/tree/main/Case1">Click here</a> for getting started with Emily. Emily can assist you with developing the required API endpoints for the use cases. Together with every use case a predefined and documented template is provided to ensure correct API endpoints for the specific use case.
+The use cases have been build on top of the <a href="https://fastapi.tiangolo.com/">FastAPI</a> framework, and should be used to specify endpoints in every use case.
 
 
 <h2>Slack Channel</h2>
