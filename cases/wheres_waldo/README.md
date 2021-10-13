@@ -23,13 +23,13 @@ After evaluation, your final score will be provided. This score can be seen on t
 Upon completion of the contest, the top 5 highest ranking teams will be asked to submit their training code and the trained models for validation. The final ranking is announced on 30/11. <br> <br>
 
 ## Getting started using Emily
-Once the repository is cloned, navigate to the folder called Case1 using a terminal and type:
+Once the repository is cloned, navigate to the folder using a terminal and type:
 ```
 emily open .
 ```
-then select an editor of your choice to open the Emily template for use case number 1. A Docker container with a Python environment will be opened. Some content needs to be downloaded the first time a project is opened, this might take a bit of time. 
+then select an editor of your choice to open the Emily template for use cases. A Docker container with a Python environment will be opened. Some content needs to be downloaded the first time a project is opened, this might take a bit of time. Inside the container, you can find a folder named `cases` wherein you can find the use case folder `wheres_waldo`.
 
-To take full advantage of Emily and the template, your code for prediction should go in cases/wheres_waldo/ml/predictor.py:
+To take full advantage of Emily and the template, your code for prediction should go in `cases/wheres_waldo/ml/predictor.py`:
 ```
 def predict(self, request):
         sample = request.image
