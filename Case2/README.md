@@ -1,1 +1,1 @@
-# Rotten Tomatoes Movie Review Prediction
+# Movie Review Prediction
