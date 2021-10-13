@@ -1,20 +1,22 @@
 import uvicorn
-import os
 from fastapi import FastAPI
-from fastapi.middleware.cors import CORSMiddleware
-from dotenv import load_dotenv
-from argparse import ArgumentParser
-
-from utilities.utilities import get_uptime
-from utilities.logging.config import initialize_logging, initialize_logging_middleware
-
-from static.render import render
 from starlette.responses import HTMLResponse
 
 import cases.iq_test.router
 import cases.movie_reviews.router
 import cases.race_game.router
 import cases.wheres_waldo.router
+
+import middleware.cors
+import middleware.logging
+
+import routing
+
+from settings import Settings, load_env
+from static.render import render
+from utilities.utilities import get_uptime
+
+load_env()
 
 
 # --- Welcome to your Emily API! --- #
@@ -25,37 +27,30 @@ import cases.wheres_waldo.router
 # Make sure to restrict access below to origins you
 # trust before deploying your API to production.
 
-parser = ArgumentParser()
-parser.add_argument('-e', '--env', default='.env',
-                    help='sets the environment file')
-args = parser.parse_args()
-dotenv_file = args.env
-load_dotenv(dotenv_file)
-
-
 app = FastAPI()
-app.include_router(cases.iq_test.router.path)
-app.include_router(cases.movie_reviews.router.path)
-app.include_router(cases.race_game.router.path)
-app.include_router(cases.wheres_waldo.router.path)
+settings = Settings()
 
+# Middleware
+middleware.logging.setup(app)
+middleware.cors.setup(app)
 
-initialize_logging()
-initialize_logging_middleware(app)
-
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
+# Routing
+routing.setup(
+    app,
+    prefix='/api',
+    routers=[
+        cases.iq_test.router.path,        # /api/iq-test/ ...
+        cases.movie_reviews.router.path,  # /api/movie-reviews/ ...
+        cases.race_game.router.path,      # /api/race-game/ ...
+        cases.wheres_waldo.router.path,   # /api/wheres-waldo/ ...
+    ]
 )
 
 
 @app.get('/api')
 def hello():
     return {
-        "service": os.environ.get('COMPOSE_PROJECT_NAME'),
+        "service": settings.COMPOSE_PROJECT_NAME,
         "uptime": get_uptime()
     }
 
@@ -65,8 +60,8 @@ def index():
     return HTMLResponse(
         render(
             'static/index.html',
-            host=os.environ.get('HOST_IP'),
-            port=os.environ.get('CONTAINER_PORT')
+            host=settings.HOST_IP,
+            port=settings.CONTAINER_PORT
         )
     )
 
@@ -75,6 +70,6 @@ if __name__ == '__main__':
 
     uvicorn.run(
         'api:app',
-        host=os.environ.get('HOST_IP'),
-        port=int(os.environ.get('CONTAINER_PORT'))
+        host=settings.HOST_IP,
+        port=settings.CONTAINER_PORT
     )

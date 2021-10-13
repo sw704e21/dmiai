@@ -127,7 +127,9 @@
 
   .hidden {
     color: transparent !important;
+    border-color: transparent !important;
     background-color: transparent !important;
+    cursor: default !important;
   }
 
   .fade-slow {
@@ -148,7 +150,8 @@
     transition: .3s all;
   }
 
-  #curl:hover {
+  #curl:hover,
+  #stop-requests-button:hover {
     cursor: pointer;
     color: white;
     border-color: white;
@@ -164,6 +167,17 @@
 
   #request-output:hover {
     color: white;
+  }
+
+  #stop-requests-button {
+    color: inherit;
+    border-radius: 3px;
+    border-style: solid;
+    border-color: inherit;
+    border-width: 1px;
+    background-color: transparent;
+    text-transform: uppercase;
+    transition: .3s all;
   }
 </style>
 
@@ -183,11 +197,12 @@
             ↪️ Run <code id="curl">curl http://{{host}}:{{port}}/api</code> to test your API endpoint
           </li>
           <li>
-            📄 Visit <a href="/docs">http://{{host}}:{{port}}/docs</a> to review and test the
+            📄 Visit <a target="_blank" href="/docs">http://{{host}}:{{port}}/docs</a> to review and test the
             OpenAPI specification
           </li>
           <li>
-            💡 Get started with an <a href="https://github.com/amboltio/emily-cli/wiki/Tutorials">Emily tutorial</a>
+            💡 Get started with an <a target="_blank" href="https://github.com/amboltio/emily-cli/wiki/Tutorials">Emily
+              tutorial</a>
             project
           </li>
           <br>
@@ -198,10 +213,11 @@
                 <div id="request-output-marker">></div>
               </div>
               <div class="request-output-section">
-                <pre><code id="request-output" class="hidden">asdasdasd</code></pre>
+                <pre><code id="request-output" class="hidden"></code></pre>
               </div>
             </div>
           </li>
+          <li><button id="stop-requests-button" class="hidden">stop requests</button></li>
         </ul>
 
       </section>
@@ -220,6 +236,7 @@
   const close = document.getElementById('close')
   const minimize = document.getElementById('minimize')
   const maximize = document.getElementById('maximize')
+  const stopRequests = document.getElementById('stop-requests-button')
 
   const delay = (ms) => new Promise((resolve) => setTimeout(() => { resolve() }, ms))
 
@@ -227,6 +244,12 @@
     const response = await fetch('/api')
     const data = await response.json()
     output.innerHTML = JSON.stringify(data, null, 2)
+  }
+
+  const updateMode = (mode) => {
+    shell.classList.remove(fontMode)
+    shell.classList.add(mode)
+    fontMode = mode
   }
 
   curl.addEventListener('click', async () => {
@@ -244,19 +267,23 @@
     output.classList.remove('hidden')
     output.classList.add('fade-slow')
 
+    stopRequests.classList.remove('hidden')
+
     await delay(500)
     output.classList.remove('highlighted')
   })
 
-  const updateMode = (mode) => {
-    shell.classList.remove(fontMode)
-    shell.classList.add(mode)
-    fontMode = mode
-  }
-
   close.addEventListener('click', () => { updateMode('red-mode') })
   minimize.addEventListener('click', () => { updateMode('yellow-mode') })
   maximize.addEventListener('click', () => { updateMode('green-mode') })
+  stopRequests.addEventListener('click', () => {
+    if (updater) clearInterval(updater)
+
+    marker.classList.remove('move-left')
+    stopRequests.classList.add('hidden')
+
+    output.innerHTML = ''
+  })
 
 </script>
 
