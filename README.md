@@ -13,6 +13,10 @@ The API endpoint will be used for submission and are required. Emily can help wi
 <a href="https://github.com/amboltio/DM-i-AI/tree/main/cases/iq_test">Case 4: IQ Test Solver</a> <br>
 
 Clone this GitHub repository to download Emily templates for all four use cases.
+```
+git clone https://github.com/amboltio/DM-i-AI.git
+emily open DM-i-AI
+```
 
 <h2>Emily CLI</h2>
 The <a href="https://ambolt.io/emily-ai/">Emily CLI</a> is built and maintained by <a href="https://ambolt.io/">Ambolt</a> to help developers and teams implement and run production ready machine learning powered micro services fast and easy. <br>
