@@ -9,7 +9,7 @@ The stars given are in the interval 0.5, 1, ..., 4.5, 5. Your model needs to rou
 
 
 ## Evaluation
-TBD
+You will be measured upon how close to the accual rating your predictions are, to be exact, your score would be measured by the distance between your prediction and the actual rating. An average for all the 1000 test reviews are calculated and are used for your score, the lowest score will grant the most points.
 
 
 ## Getting started using Emily
