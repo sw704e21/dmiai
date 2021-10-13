@@ -1,6 +1,6 @@
 # Where's Waldo?
 Find Waldo in a series of images, each image contains only one Waldo. Below you can see an example image, together with a bounding box enclosing Waldo. Your task is to predict a point within this bounding box to gain a point. Below you can see an example of what kind of image you can expect together with an image showing the prediction area. <br> <br>
-<img src="images/waldo.jpg" width=450> <img src="images/waldo_bbox.jpg" width=450>
+<img src="images/waldo.jpg" width=450> <img src="images/waldo_bbox_arrow.jpg" width=450>
 
 During evaluation, you are given a image of size 1500x1500px, then your model has 10 seconds to return the (x, y) coordinates representing a point where Waldo is visible. All methods for predicting the location of Waldo is allowed in this use case. <br>
 The images used for evaluating your final model, consists of images from "Where's Waldo?" books that have been split into 300x300px tiles and put together again randomly. Your model should be robust to changes in scale and image quality! Below you can see how the coordinate system used to determine Waldo's position are oriented. <br>
