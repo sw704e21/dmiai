@@ -13,11 +13,11 @@ You will be measured upon how close to the accual rating your predictions are, t
 
 
 ## Getting started using Emily
-Once the repository is cloned, navigate to the folder called Case2 using a terminal and type:
+Once the repository is cloned, navigate to the folder using a terminal and type:
 ```
 emily open .
 ```
-then select an editor of your choice to open the Emily template for use case number 1. A Docker container with a Python environment will be opened. Some content needs to be downloaded the first time a project is opened, this might take a bit of time. 
+then select an editor of your choice to open the Emily template for use cases. A Docker container with a Python environment will be opened. Some content needs to be downloaded the first time a project is opened, this might take a bit of time. Inside the container, you can find a folder named `cases` wherein you can find the use case folder `movie_reviews`.
 
 To take full advantage of Emily and the template, your code for prediction should go in cases/movie_reviews/ml/predictor.py:
 ```
