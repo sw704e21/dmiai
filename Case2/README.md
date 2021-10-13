@@ -5,7 +5,7 @@ In this use case you will be presented with unique 1000 reviews of various movie
   <img src="images/example.png" width=550>
 </p>
 
-
+The stars given are in the interval 0.5, 1, ..., 4.5, 5. Your model needs to round to the nearest half.
 
 
 ## Evaluation
