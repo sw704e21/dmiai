@@ -19,7 +19,7 @@ emily open .
 ```
 then select an editor of your choice to open the Emily template for use case number 1. A Docker container with a Python environment will be opened. Some content needs to be downloaded the first time a project is opened, this might take a bit of time. 
 
-To take full advantage of Emily and the template, your code for prediction should go in ml/predictor.py:
+To take full advantage of Emily and the template, your code for prediction should go in cases/movie_reviews/ml/predictor.py:
 ```
   def predict(self, request):
       # Unpack request
