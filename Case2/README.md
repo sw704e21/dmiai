@@ -1,5 +1,5 @@
 # Movie Review Prediction
-In this use case you will be presented with unique 1000 reviews of various movies found on <a href="https://www.rottentomatoes.com/">Rotten Tomatoes</a>. Your task is to predict the amount of stars this review ended up given the respective movie.
+In this use case you will be presented with unique 1000 reviews of various movies found on <a href="https://www.rottentomatoes.com/">Rotten Tomatoes</a>. Your task is to predict the amount of stars this review ended up given the respective movie. See image below for illustration of the concept.
 
 <p align="center">
   <img src="images/example.png" width=550>
@@ -9,11 +9,11 @@ In this use case you will be presented with unique 1000 reviews of various movie
 
 
 ## Evaluation
-You will be granted point based on how many images you correctly find Waldo within, the scores are binary meaning that 1 point is given if the prediction is correct and 0 if not. No measure of the exactness of the prediction is used during evaluation. To verify if the prediction is correct, the point should be inside the bounding box, which enclose Waldo.
+TBD
 
 
 ## Getting started using Emily
-Once the repository is cloned, navigate to the folder called Case1 using a terminal and type:
+Once the repository is cloned, navigate to the folder called Case2 using a terminal and type:
 ```
 emily open .
 ```
@@ -21,31 +21,23 @@ then select an editor of your choice to open the Emily template for use case num
 
 To take full advantage of Emily and the template, your code for prediction should go in ml/predictor.py:
 ```
-def predict(self, request):
-        sample = request.image
+  def predict(self, request):
+      # Unpack request
+      sentence = request.sentence
+      
+      """
+      Insert your prediction code here
+      """
 
-        """
-        Insert your prediction code here
-        """
-
-        x = 176  # Should be replaced with the prediction
-        y = 165  # Should be replaced with the prediction
-
-        # Leave this to ensure standardized submission format
-        prediction = {'x': x, 'y': y}
-
-        return prediction
+      prediction = 3.5  # Should be replaced with the prediction
+      return prediction
 ```
 For further details about the recommended structure, see <a href="https://dmiai.dk/guide/">this guide</a>.
 You can add new packages to the Python environment by adding the names of the package to requirements.txt and restarting the project.
 
 
 ## Getting started without using Emily
-To submit results you need to set up your own API. Somehow idk.
-Your API should be set up to return the coordinates with format like:
-```
-{'x': x, 'y': y}
-```
+TBD
 
 ## Testing the connection to the API
 See <a href="https://dmiai.dk/guide/">this guide</a> for details on how to test your setup before final submission.
