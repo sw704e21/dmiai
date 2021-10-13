@@ -1,1 +1,1 @@
-# Case 2
+# Rotten Tomatoes Movie Review Prediction
