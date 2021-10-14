@@ -1,0 +1,472 @@
+2021-10-14 12:35:09.266 | INFO     | uvicorn.server:serve:63 - Started server process [34746]
+2021-10-14 12:35:09.269 | INFO     | uvicorn.lifespan.on:startup:26 - Waiting for application startup.
+2021-10-14 12:35:09.273 | INFO     | uvicorn.lifespan.on:startup:38 - Application startup complete.
+2021-10-14 12:35:09.281 | INFO     | uvicorn.server:startup:166 - Uvicorn running on http://0.0.0.0:4242 (Press CTRL+C to quit)
+2021-10-14 12:35:13.087 | INFO     | middleware.logging:_http_request_logging_middleware:13 - HTTP GET for http://localhost:4242/
+2021-10-14 12:35:13.097 | INFO     | middleware.logging:_http_request_logging_middleware:15 - HTTP 200 for http://localhost:4242/
+2021-10-14 12:35:15.032 | INFO     | middleware.logging:_http_request_logging_middleware:13 - HTTP GET for http://localhost:4242/api
+2021-10-14 12:35:15.037 | INFO     | middleware.logging:_http_request_logging_middleware:15 - HTTP 200 for http://localhost:4242/api
+2021-10-14 12:35:16.059 | INFO     | middleware.logging:_http_request_logging_middleware:13 - HTTP GET for http://localhost:4242/api
+2021-10-14 12:35:16.062 | INFO     | middleware.logging:_http_request_logging_middleware:15 - HTTP 200 for http://localhost:4242/api
+2021-10-14 12:35:17.058 | INFO     | middleware.logging:_http_request_logging_middleware:13 - HTTP GET for http://localhost:4242/api
+2021-10-14 12:35:17.063 | INFO     | middleware.logging:_http_request_logging_middleware:15 - HTTP 200 for http://localhost:4242/api
+2021-10-14 12:35:18.065 | INFO     | middleware.logging:_http_request_logging_middleware:13 - HTTP GET for http://localhost:4242/api
+2021-10-14 12:35:18.072 | INFO     | middleware.logging:_http_request_logging_middleware:15 - HTTP 200 for http://localhost:4242/api
+2021-10-14 12:35:19.063 | INFO     | middleware.logging:_http_request_logging_middleware:13 - HTTP GET for http://localhost:4242/api
+2021-10-14 12:35:19.067 | INFO     | middleware.logging:_http_request_logging_middleware:15 - HTTP 200 for http://localhost:4242/api
+2021-10-14 12:35:20.065 | INFO     | middleware.logging:_http_request_logging_middleware:13 - HTTP GET for http://localhost:4242/api
+2021-10-14 12:35:20.071 | INFO     | middleware.logging:_http_request_logging_middleware:15 - HTTP 200 for http://localhost:4242/api
+2021-10-14 12:35:21.070 | INFO     | middleware.logging:_http_request_logging_middleware:13 - HTTP GET for http://localhost:4242/api
+2021-10-14 12:35:21.075 | INFO     | middleware.logging:_http_request_logging_middleware:15 - HTTP 200 for http://localhost:4242/api
+2021-10-14 12:35:22.064 | INFO     | middleware.logging:_http_request_logging_middleware:13 - HTTP GET for http://localhost:4242/api
+2021-10-14 12:35:22.067 | INFO     | middleware.logging:_http_request_logging_middleware:15 - HTTP 200 for http://localhost:4242/api
+2021-10-14 12:35:23.071 | INFO     | middleware.logging:_http_request_logging_middleware:13 - HTTP GET for http://localhost:4242/api
+2021-10-14 12:35:23.077 | INFO     | middleware.logging:_http_request_logging_middleware:15 - HTTP 200 for http://localhost:4242/api
+2021-10-14 12:35:24.071 | INFO     | middleware.logging:_http_request_logging_middleware:13 - HTTP GET for http://localhost:4242/api
+2021-10-14 12:35:24.076 | INFO     | middleware.logging:_http_request_logging_middleware:15 - HTTP 200 for http://localhost:4242/api
+2021-10-14 12:35:25.072 | INFO     | middleware.logging:_http_request_logging_middleware:13 - HTTP GET for http://localhost:4242/api
+2021-10-14 12:35:25.077 | INFO     | middleware.logging:_http_request_logging_middleware:15 - HTTP 200 for http://localhost:4242/api
+2021-10-14 12:35:36.761 | INFO     | uvicorn.server:shutdown:209 - Shutting down
+2021-10-14 12:35:36.868 | INFO     | uvicorn.lifespan.on:shutdown:43 - Waiting for application shutdown.
+2021-10-14 12:35:36.874 | INFO     | uvicorn.lifespan.on:shutdown:46 - Application shutdown complete.
+2021-10-14 12:35:36.878 | INFO     | uvicorn.server:serve:73 - Finished server process [34746]
+2021-10-14 12:35:37.500 | INFO     | uvicorn.server:serve:63 - Started server process [34949]
+2021-10-14 12:35:37.501 | INFO     | uvicorn.lifespan.on:startup:26 - Waiting for application startup.
+2021-10-14 12:35:37.510 | INFO     | uvicorn.lifespan.on:startup:38 - Application startup complete.
+2021-10-14 12:35:37.524 | INFO     | uvicorn.server:startup:166 - Uvicorn running on http://0.0.0.0:4242 (Press CTRL+C to quit)
+2021-10-14 12:35:39.663 | INFO     | middleware.logging:_http_request_logging_middleware:13 - HTTP GET for http://localhost:4242/api
+2021-10-14 12:35:39.666 | INFO     | middleware.logging:_http_request_logging_middleware:15 - HTTP 200 for http://localhost:4242/api
+2021-10-14 12:35:40.682 | INFO     | middleware.logging:_http_request_logging_middleware:13 - HTTP GET for http://localhost:4242/api
+2021-10-14 12:35:40.689 | INFO     | middleware.logging:_http_request_logging_middleware:15 - HTTP 200 for http://localhost:4242/api
+2021-10-14 12:35:41.687 | INFO     | middleware.logging:_http_request_logging_middleware:13 - HTTP GET for http://localhost:4242/api
+2021-10-14 12:35:41.695 | INFO     | middleware.logging:_http_request_logging_middleware:15 - HTTP 200 for http://localhost:4242/api
+2021-10-14 12:35:42.689 | INFO     | middleware.logging:_http_request_logging_middleware:13 - HTTP GET for http://localhost:4242/api
+2021-10-14 12:35:42.695 | INFO     | middleware.logging:_http_request_logging_middleware:15 - HTTP 200 for http://localhost:4242/api
+2021-10-14 12:35:43.693 | INFO     | middleware.logging:_http_request_logging_middleware:13 - HTTP GET for http://localhost:4242/api
+2021-10-14 12:35:43.700 | INFO     | middleware.logging:_http_request_logging_middleware:15 - HTTP 200 for http://localhost:4242/api
+2021-10-14 12:35:44.691 | INFO     | middleware.logging:_http_request_logging_middleware:13 - HTTP GET for http://localhost:4242/api
+2021-10-14 12:35:44.696 | INFO     | middleware.logging:_http_request_logging_middleware:15 - HTTP 200 for http://localhost:4242/api
+2021-10-14 12:35:45.693 | INFO     | middleware.logging:_http_request_logging_middleware:13 - HTTP GET for http://localhost:4242/api
+2021-10-14 12:35:45.702 | INFO     | middleware.logging:_http_request_logging_middleware:15 - HTTP 200 for http://localhost:4242/api
+2021-10-14 12:35:46.696 | INFO     | middleware.logging:_http_request_logging_middleware:13 - HTTP GET for http://localhost:4242/api
+2021-10-14 12:35:46.702 | INFO     | middleware.logging:_http_request_logging_middleware:15 - HTTP 200 for http://localhost:4242/api
+2021-10-14 12:35:47.690 | INFO     | middleware.logging:_http_request_logging_middleware:13 - HTTP GET for http://localhost:4242/api
+2021-10-14 12:35:47.693 | INFO     | middleware.logging:_http_request_logging_middleware:15 - HTTP 200 for http://localhost:4242/api
+2021-10-14 12:35:48.694 | INFO     | middleware.logging:_http_request_logging_middleware:13 - HTTP GET for http://localhost:4242/api
+2021-10-14 12:35:48.699 | INFO     | middleware.logging:_http_request_logging_middleware:15 - HTTP 200 for http://localhost:4242/api
+2021-10-14 12:35:49.696 | INFO     | middleware.logging:_http_request_logging_middleware:13 - HTTP GET for http://localhost:4242/api
+2021-10-14 12:35:49.703 | INFO     | middleware.logging:_http_request_logging_middleware:15 - HTTP 200 for http://localhost:4242/api
+2021-10-14 12:35:50.697 | INFO     | middleware.logging:_http_request_logging_middleware:13 - HTTP GET for http://localhost:4242/api
+2021-10-14 12:35:50.703 | INFO     | middleware.logging:_http_request_logging_middleware:15 - HTTP 200 for http://localhost:4242/api
+2021-10-14 12:35:51.697 | INFO     | middleware.logging:_http_request_logging_middleware:13 - HTTP GET for http://localhost:4242/api
+2021-10-14 12:35:51.701 | INFO     | middleware.logging:_http_request_logging_middleware:15 - HTTP 200 for http://localhost:4242/api
+2021-10-14 12:35:52.701 | INFO     | middleware.logging:_http_request_logging_middleware:13 - HTTP GET for http://localhost:4242/api
+2021-10-14 12:35:52.710 | INFO     | middleware.logging:_http_request_logging_middleware:15 - HTTP 200 for http://localhost:4242/api
+2021-10-14 12:35:53.699 | INFO     | middleware.logging:_http_request_logging_middleware:13 - HTTP GET for http://localhost:4242/api
+2021-10-14 12:35:53.705 | INFO     | middleware.logging:_http_request_logging_middleware:15 - HTTP 200 for http://localhost:4242/api
+2021-10-14 12:35:54.426 | INFO     | uvicorn.server:shutdown:209 - Shutting down
+2021-10-14 12:35:54.530 | INFO     | uvicorn.lifespan.on:shutdown:43 - Waiting for application shutdown.
+2021-10-14 12:35:54.532 | INFO     | uvicorn.lifespan.on:shutdown:46 - Application shutdown complete.
+2021-10-14 12:35:54.535 | INFO     | uvicorn.server:serve:73 - Finished server process [34949]
+2021-10-14 12:43:01.768 | INFO     | uvicorn.server:serve:63 - Started server process [36571]
+2021-10-14 12:43:01.770 | INFO     | uvicorn.lifespan.on:startup:26 - Waiting for application startup.
+2021-10-14 12:43:01.775 | INFO     | uvicorn.lifespan.on:startup:38 - Application startup complete.
+2021-10-14 12:43:01.786 | INFO     | uvicorn.server:startup:166 - Uvicorn running on http://0.0.0.0:4242 (Press CTRL+C to quit)
+2021-10-14 12:43:04.874 | INFO     | middleware.logging:_http_request_logging_middleware:13 - HTTP GET for http://localhost:4242/api
+2021-10-14 12:43:04.884 | INFO     | middleware.logging:_http_request_logging_middleware:15 - HTTP 200 for http://localhost:4242/api
+2021-10-14 12:43:05.077 | INFO     | middleware.logging:_http_request_logging_middleware:13 - HTTP GET for http://localhost:4242/
+2021-10-14 12:43:05.087 | INFO     | middleware.logging:_http_request_logging_middleware:15 - HTTP 200 for http://localhost:4242/
+2021-10-14 12:43:05.340 | INFO     | middleware.logging:_http_request_logging_middleware:13 - HTTP GET for http://localhost:4242/api
+2021-10-14 12:43:05.348 | INFO     | middleware.logging:_http_request_logging_middleware:15 - HTTP 200 for http://localhost:4242/api
+2021-10-14 12:43:06.588 | INFO     | middleware.logging:_http_request_logging_middleware:13 - HTTP GET for http://localhost:4242/api
+2021-10-14 12:43:06.591 | INFO     | middleware.logging:_http_request_logging_middleware:15 - HTTP 200 for http://localhost:4242/api
+2021-10-14 12:43:07.122 | INFO     | middleware.logging:_http_request_logging_middleware:13 - HTTP GET for http://localhost:4242/docs
+2021-10-14 12:43:07.125 | INFO     | middleware.logging:_http_request_logging_middleware:15 - HTTP 200 for http://localhost:4242/docs
+2021-10-14 12:43:07.317 | INFO     | middleware.logging:_http_request_logging_middleware:13 - HTTP GET for http://localhost:4242/api
+2021-10-14 12:43:07.320 | INFO     | middleware.logging:_http_request_logging_middleware:15 - HTTP 200 for http://localhost:4242/api
+2021-10-14 12:43:07.516 | INFO     | middleware.logging:_http_request_logging_middleware:13 - HTTP GET for http://localhost:4242/openapi.json
+2021-10-14 12:43:07.532 | INFO     | middleware.logging:_http_request_logging_middleware:15 - HTTP 200 for http://localhost:4242/openapi.json
+2021-10-14 12:43:08.442 | INFO     | middleware.logging:_http_request_logging_middleware:13 - HTTP GET for http://localhost:4242/api
+2021-10-14 12:43:08.449 | INFO     | middleware.logging:_http_request_logging_middleware:15 - HTTP 200 for http://localhost:4242/api
+2021-10-14 12:43:09.671 | INFO     | middleware.logging:_http_request_logging_middleware:13 - HTTP GET for http://localhost:4242/api
+2021-10-14 12:43:09.676 | INFO     | middleware.logging:_http_request_logging_middleware:15 - HTTP 200 for http://localhost:4242/api
+2021-10-14 12:43:11.706 | INFO     | middleware.logging:_http_request_logging_middleware:13 - HTTP GET for http://localhost:4242/api
+2021-10-14 12:43:11.711 | INFO     | middleware.logging:_http_request_logging_middleware:15 - HTTP 200 for http://localhost:4242/api
+2021-10-14 12:43:19.174 | INFO     | middleware.logging:_http_request_logging_middleware:13 - HTTP POST for http://localhost:4242/api/train
+2021-10-14 12:43:19.176 | ERROR    | uvicorn.protocols.http.httptools_impl:run_asgi:399 - Exception in ASGI application
+Traceback (most recent call last):
+
+  File "api.py", line 73, in <module>
+    uvicorn.run(
+    │       └ <function run at 0x7fe3d98229d0>
+    └ <module 'uvicorn' from '/usr/local/lib/python3.8/site-packages/uvicorn/__init__.py'>
+
+  File "/usr/local/lib/python3.8/site-packages/uvicorn/main.py", line 386, in run
+    server.run()
+    │      └ <function Server.run at 0x7fe3da4a5dc0>
+    └ <uvicorn.server.Server object at 0x7fe3cc6068b0>
+  File "/usr/local/lib/python3.8/site-packages/uvicorn/server.py", line 48, in run
+    loop.run_until_complete(self.serve(sockets=sockets))
+    │    │                  │    │             └ None
+    │    │                  │    └ <function Server.serve at 0x7fe3da4a5e50>
+    │    │                  └ <uvicorn.server.Server object at 0x7fe3cc6068b0>
+    │    └ <method 'run_until_complete' of 'uvloop.loop.Loop' objects>
+    └ <uvloop.Loop running=True closed=False debug=False>
+> File "/usr/local/lib/python3.8/site-packages/uvicorn/protocols/http/httptools_impl.py", line 396, in run_asgi
+    result = await app(self.scope, self.receive, self.send)
+                   │   │    │      │    │        │    └ <function RequestResponseCycle.send at 0x7fe3cbfbcb80>
+                   │   │    │      │    │        └ <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x7fe3cbd5be80>
+                   │   │    │      │    └ <function RequestResponseCycle.receive at 0x7fe3cbfbcc10>
+                   │   │    │      └ <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x7fe3cbd5be80>
+                   │   │    └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.1'}, 'http_version': '1.1', 'server': ('127.0.0.1', 4242), 'cl...
+                   │   └ <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x7fe3cbd5be80>
+                   └ <uvicorn.middleware.proxy_headers.ProxyHeadersMiddleware object at 0x7fe3cc2202b0>
+  File "/usr/local/lib/python3.8/site-packages/uvicorn/middleware/proxy_headers.py", line 45, in __call__
+    return await self.app(scope, receive, send)
+                 │    │   │      │        └ <bound method RequestResponseCycle.send of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x7fe3cbd5be...
+                 │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x7fe3cbd...
+                 │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.1'}, 'http_version': '1.1', 'server': ('127.0.0.1', 4242), 'cl...
+                 │    └ <fastapi.applications.FastAPI object at 0x7fe3cc244af0>
+                 └ <uvicorn.middleware.proxy_headers.ProxyHeadersMiddleware object at 0x7fe3cc2202b0>
+  File "/usr/local/lib/python3.8/site-packages/fastapi/applications.py", line 199, in __call__
+    await super().__call__(scope, receive, send)
+                           │      │        └ <bound method RequestResponseCycle.send of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x7fe3cbd5be...
+                           │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x7fe3cbd...
+                           └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.1'}, 'http_version': '1.1', 'server': ('127.0.0.1', 4242), 'cl...
+  File "/usr/local/lib/python3.8/site-packages/starlette/applications.py", line 111, in __call__
+    await self.middleware_stack(scope, receive, send)
+          │    │                │      │        └ <bound method RequestResponseCycle.send of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x7fe3cbd5be...
+          │    │                │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x7fe3cbd...
+          │    │                └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.1'}, 'http_version': '1.1', 'server': ('127.0.0.1', 4242), 'cl...
+          │    └ <starlette.middleware.errors.ServerErrorMiddleware object at 0x7fe3cbd32ac0>
+          └ <fastapi.applications.FastAPI object at 0x7fe3cc244af0>
+  File "/usr/local/lib/python3.8/site-packages/starlette/middleware/errors.py", line 181, in __call__
+    raise exc from None
+  File "/usr/local/lib/python3.8/site-packages/starlette/middleware/errors.py", line 159, in __call__
+    await self.app(scope, receive, _send)
+          │    │   │      │        └ <function ServerErrorMiddleware.__call__.<locals>._send at 0x7fe3cbd3e3a0>
+          │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x7fe3cbd...
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.1'}, 'http_version': '1.1', 'server': ('127.0.0.1', 4242), 'cl...
+          │    └ <starlette.middleware.cors.CORSMiddleware object at 0x7fe3cbd32a90>
+          └ <starlette.middleware.errors.ServerErrorMiddleware object at 0x7fe3cbd32ac0>
+  File "/usr/local/lib/python3.8/site-packages/starlette/middleware/cors.py", line 86, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+          │    │               │      │        │                     └ Headers({'host': 'localhost:4242', 'connection': 'keep-alive', 'content-length': '0', 'sec-ch-ua': '"Chromium";v="94", "Googl...
+          │    │               │      │        └ <function ServerErrorMiddleware.__call__.<locals>._send at 0x7fe3cbd3e3a0>
+          │    │               │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x7fe3cbd...
+          │    │               └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.1'}, 'http_version': '1.1', 'server': ('127.0.0.1', 4242), 'cl...
+          │    └ <function CORSMiddleware.simple_response at 0x7fe3cc64e700>
+          └ <starlette.middleware.cors.CORSMiddleware object at 0x7fe3cbd32a90>
+  File "/usr/local/lib/python3.8/site-packages/starlette/middleware/cors.py", line 142, in simple_response
+    await self.app(scope, receive, send)
+          │    │   │      │        └ functools.partial(<bound method CORSMiddleware.send of <starlette.middleware.cors.CORSMiddleware object at 0x7fe3cbd32a90>>, ...
+          │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x7fe3cbd...
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.1'}, 'http_version': '1.1', 'server': ('127.0.0.1', 4242), 'cl...
+          │    └ <starlette.middleware.base.BaseHTTPMiddleware object at 0x7fe3cbd32640>
+          └ <starlette.middleware.cors.CORSMiddleware object at 0x7fe3cbd32a90>
+  File "/usr/local/lib/python3.8/site-packages/starlette/middleware/base.py", line 25, in __call__
+    response = await self.dispatch_func(request, self.call_next)
+                     │    │             │        │    └ <function BaseHTTPMiddleware.call_next at 0x7fe3d8c634c0>
+                     │    │             │        └ <starlette.middleware.base.BaseHTTPMiddleware object at 0x7fe3cbd32640>
+                     │    │             └ <starlette.requests.Request object at 0x7fe3cbd5b160>
+                     │    └ <function _http_request_logging_middleware at 0x7fe3cc648310>
+                     └ <starlette.middleware.base.BaseHTTPMiddleware object at 0x7fe3cbd32640>
+
+  File "/workspace/middleware/logging.py", line 14, in _http_request_logging_middleware
+    response: Response = await call_next(request)
+                               │         └ <starlette.requests.Request object at 0x7fe3cbd5b160>
+                               └ <bound method BaseHTTPMiddleware.call_next of <starlette.middleware.base.BaseHTTPMiddleware object at 0x7fe3cbd32640>>
+
+  File "/usr/local/lib/python3.8/site-packages/starlette/middleware/base.py", line 45, in call_next
+    task.result()
+    │    └ <method 'result' of '_asyncio.Task' objects>
+    └ <Task finished name='Task-44' coro=<BaseHTTPMiddleware.call_next.<locals>.coro() done, defined at /usr/local/lib/python3.8/si...
+  File "/usr/local/lib/python3.8/site-packages/starlette/middleware/base.py", line 38, in coro
+    await self.app(scope, receive, send)
+          │    │   │      │        └ <bound method Queue.put of <Queue at 0x7fe3cbd5bb50 maxsize=0 tasks=1>>
+          │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x7fe3cbd...
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.1'}, 'http_version': '1.1', 'server': ('127.0.0.1', 4242), 'cl...
+          │    └ <starlette.exceptions.ExceptionMiddleware object at 0x7fe3cbd324f0>
+          └ <starlette.middleware.base.BaseHTTPMiddleware object at 0x7fe3cbd32640>
+  File "/usr/local/lib/python3.8/site-packages/starlette/exceptions.py", line 82, in __call__
+    raise exc from None
+  File "/usr/local/lib/python3.8/site-packages/starlette/exceptions.py", line 71, in __call__
+    await self.app(scope, receive, sender)
+          │    │   │      │        └ <function ExceptionMiddleware.__call__.<locals>.sender at 0x7fe3cbd55550>
+          │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x7fe3cbd...
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.1'}, 'http_version': '1.1', 'server': ('127.0.0.1', 4242), 'cl...
+          │    └ <fastapi.routing.APIRouter object at 0x7fe3cbd32460>
+          └ <starlette.exceptions.ExceptionMiddleware object at 0x7fe3cbd324f0>
+  File "/usr/local/lib/python3.8/site-packages/starlette/routing.py", line 566, in __call__
+    await route.handle(scope, receive, send)
+          │     │      │      │        └ <function ExceptionMiddleware.__call__.<locals>.sender at 0x7fe3cbd55550>
+          │     │      │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x7fe3cbd...
+          │     │      └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.1'}, 'http_version': '1.1', 'server': ('127.0.0.1', 4242), 'cl...
+          │     └ <function Route.handle at 0x7fe3d8d40ee0>
+          └ <fastapi.routing.APIRoute object at 0x7fe3cbd37550>
+  File "/usr/local/lib/python3.8/site-packages/starlette/routing.py", line 227, in handle
+    await self.app(scope, receive, send)
+          │    │   │      │        └ <function ExceptionMiddleware.__call__.<locals>.sender at 0x7fe3cbd55550>
+          │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x7fe3cbd...
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.1'}, 'http_version': '1.1', 'server': ('127.0.0.1', 4242), 'cl...
+          │    └ <function request_response.<locals>.app at 0x7fe3cbfb0dc0>
+          └ <fastapi.routing.APIRoute object at 0x7fe3cbd37550>
+  File "/usr/local/lib/python3.8/site-packages/starlette/routing.py", line 41, in app
+    response = await func(request)
+                     │    └ <starlette.requests.Request object at 0x7fe3cbd5b370>
+                     └ <function get_request_handler.<locals>.app at 0x7fe3cbfab940>
+  File "/usr/local/lib/python3.8/site-packages/fastapi/routing.py", line 201, in app
+    raw_response = await run_endpoint_function(
+                         └ <function run_endpoint_function at 0x7fe3d8d40040>
+  File "/usr/local/lib/python3.8/site-packages/fastapi/routing.py", line 148, in run_endpoint_function
+    return await dependant.call(**values)
+                 │         │      └ {}
+                 │         └ <function train at 0x7fe3cbfb0d30>
+                 └ <fastapi.dependencies.models.Dependant object at 0x7fe3cbd32430>
+
+  File "/workspace/api.py", line 47, in train
+    response = emily.train()
+               │     └ <function Emily.train at 0x7fe3cc648280>
+               └ <ml.emily.Emily object at 0x7fe3cbd32880>
+
+  File "/workspace/ml/emily.py", line 30, in train
+    self.model = self.trainer.train(self.model)
+    │    │       │    │       │     │    └ <ml.model.Model object at 0x7fe3cbd328e0>
+    │    │       │    │       │     └ <ml.emily.Emily object at 0x7fe3cbd32880>
+    │    │       │    │       └ <function Trainer.train at 0x7fe3cc648160>
+    │    │       │    └ <ml.trainer.Trainer object at 0x7fe3cbd32910>
+    │    │       └ <ml.emily.Emily object at 0x7fe3cbd32880>
+    │    └ <ml.model.Model object at 0x7fe3cbd328e0>
+    └ <ml.emily.Emily object at 0x7fe3cbd32880>
+
+TypeError: train() missing 1 required positional argument: 'dataset_path'
+
+2021-10-14 12:44:02.420 | INFO     | uvicorn.server:shutdown:209 - Shutting down
+2021-10-14 12:44:02.526 | INFO     | uvicorn.lifespan.on:shutdown:43 - Waiting for application shutdown.
+2021-10-14 12:44:02.529 | INFO     | uvicorn.lifespan.on:shutdown:46 - Application shutdown complete.
+2021-10-14 12:44:02.536 | INFO     | uvicorn.server:serve:73 - Finished server process [36571]
+2021-10-14 12:44:03.560 | INFO     | uvicorn.server:serve:63 - Started server process [36874]
+2021-10-14 12:44:03.562 | INFO     | uvicorn.lifespan.on:startup:26 - Waiting for application startup.
+2021-10-14 12:44:03.564 | INFO     | uvicorn.lifespan.on:startup:38 - Application startup complete.
+2021-10-14 12:44:03.575 | INFO     | uvicorn.server:startup:166 - Uvicorn running on http://0.0.0.0:4242 (Press CTRL+C to quit)
+2021-10-14 12:44:08.849 | INFO     | middleware.logging:_http_request_logging_middleware:13 - HTTP POST for http://localhost:4242/api/train
+2021-10-14 12:44:08.852 | INFO     | ml.trainer:train:11 - Training model using dataset at ./data...
+2021-10-14 12:44:08.857 | INFO     | ml.model:save:33 - Saving model to wheres-waldo.model.pickle
+2021-10-14 12:44:08.872 | INFO     | middleware.logging:_http_request_logging_middleware:15 - HTTP 200 for http://localhost:4242/api/train
+2021-10-14 12:44:31.417 | INFO     | middleware.logging:_http_request_logging_middleware:13 - HTTP POST for http://localhost:4242/api/train
+2021-10-14 12:44:31.420 | INFO     | ml.trainer:train:11 - Training model using dataset at ./data...
+2021-10-14 12:44:31.427 | INFO     | ml.model:save:33 - Saving model to wheres-waldo.model.pickle
+2021-10-14 12:44:31.442 | INFO     | middleware.logging:_http_request_logging_middleware:15 - HTTP 200 for http://localhost:4242/api/train
+2021-10-14 12:49:11.623 | INFO     | uvicorn.server:shutdown:209 - Shutting down
+2021-10-14 12:49:11.728 | INFO     | uvicorn.lifespan.on:shutdown:43 - Waiting for application shutdown.
+2021-10-14 12:49:11.731 | INFO     | uvicorn.lifespan.on:shutdown:46 - Application shutdown complete.
+2021-10-14 12:49:11.737 | INFO     | uvicorn.server:serve:73 - Finished server process [36874]
+2021-10-14 12:49:13.207 | INFO     | ml.model:load:27 - Loading model from wheres-waldo.model.pickle
+2021-10-14 12:49:13.228 | INFO     | uvicorn.server:serve:63 - Started server process [37951]
+2021-10-14 12:49:13.233 | INFO     | uvicorn.lifespan.on:startup:26 - Waiting for application startup.
+2021-10-14 12:49:13.238 | INFO     | uvicorn.lifespan.on:startup:38 - Application startup complete.
+2021-10-14 12:49:13.250 | INFO     | uvicorn.server:startup:166 - Uvicorn running on http://0.0.0.0:4242 (Press CTRL+C to quit)
+2021-10-14 12:49:31.282 | INFO     | uvicorn.server:shutdown:209 - Shutting down
+2021-10-14 12:49:31.388 | INFO     | uvicorn.lifespan.on:shutdown:43 - Waiting for application shutdown.
+2021-10-14 12:49:31.394 | INFO     | uvicorn.lifespan.on:shutdown:46 - Application shutdown complete.
+2021-10-14 12:49:31.402 | INFO     | uvicorn.server:serve:73 - Finished server process [37951]
+2021-10-14 12:49:32.209 | INFO     | ml.model:load:27 - Loading model from wheres-waldo.model.pickle
+2021-10-14 12:49:32.224 | INFO     | uvicorn.server:serve:63 - Started server process [38052]
+2021-10-14 12:49:32.229 | INFO     | uvicorn.lifespan.on:startup:26 - Waiting for application startup.
+2021-10-14 12:49:32.235 | INFO     | uvicorn.lifespan.on:startup:38 - Application startup complete.
+2021-10-14 12:49:32.247 | INFO     | uvicorn.server:startup:166 - Uvicorn running on http://0.0.0.0:4242 (Press CTRL+C to quit)
+2021-10-14 12:49:58.856 | INFO     | uvicorn.server:shutdown:209 - Shutting down
+2021-10-14 12:49:58.960 | INFO     | uvicorn.lifespan.on:shutdown:43 - Waiting for application shutdown.
+2021-10-14 12:49:58.964 | INFO     | uvicorn.lifespan.on:shutdown:46 - Application shutdown complete.
+2021-10-14 12:49:58.968 | INFO     | uvicorn.server:serve:73 - Finished server process [38052]
+2021-10-14 12:53:14.700 | INFO     | ml.model:load:27 - Loading model from wheres-waldo.model.pickle
+2021-10-14 12:53:14.725 | INFO     | uvicorn.server:serve:63 - Started server process [38799]
+2021-10-14 12:53:14.732 | INFO     | uvicorn.lifespan.on:startup:26 - Waiting for application startup.
+2021-10-14 12:53:14.735 | INFO     | uvicorn.lifespan.on:startup:38 - Application startup complete.
+2021-10-14 12:53:14.746 | INFO     | uvicorn.server:startup:166 - Uvicorn running on http://0.0.0.0:4242 (Press CTRL+C to quit)
+2021-10-14 12:53:37.831 | INFO     | middleware.logging:_http_request_logging_middleware:13 - HTTP POST for http://localhost:4242/api/predict
+2021-10-14 12:53:37.970 | ERROR    | uvicorn.protocols.http.httptools_impl:run_asgi:399 - Exception in ASGI application
+Traceback (most recent call last):
+
+  File "api.py", line 75, in <module>
+    uvicorn.run(
+    │       └ <function run at 0x7fa65306b9d0>
+    └ <module 'uvicorn' from '/usr/local/lib/python3.8/site-packages/uvicorn/__init__.py'>
+
+  File "/usr/local/lib/python3.8/site-packages/uvicorn/main.py", line 386, in run
+    server.run()
+    │      └ <function Server.run at 0x7fa653cefdc0>
+    └ <uvicorn.server.Server object at 0x7fa645e51430>
+  File "/usr/local/lib/python3.8/site-packages/uvicorn/server.py", line 48, in run
+    loop.run_until_complete(self.serve(sockets=sockets))
+    │    │                  │    │             └ None
+    │    │                  │    └ <function Server.serve at 0x7fa653cefe50>
+    │    │                  └ <uvicorn.server.Server object at 0x7fa645e51430>
+    │    └ <method 'run_until_complete' of 'uvloop.loop.Loop' objects>
+    └ <uvloop.Loop running=True closed=False debug=False>
+> File "/usr/local/lib/python3.8/site-packages/uvicorn/protocols/http/httptools_impl.py", line 396, in run_asgi
+    result = await app(self.scope, self.receive, self.send)
+                   │   │    │      │    │        │    └ <function RequestResponseCycle.send at 0x7fa645818b80>
+                   │   │    │      │    │        └ <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x7fa6455938e0>
+                   │   │    │      │    └ <function RequestResponseCycle.receive at 0x7fa645818c10>
+                   │   │    │      └ <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x7fa6455938e0>
+                   │   │    └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.1'}, 'http_version': '1.1', 'server': ('127.0.0.1', 4242), 'cl...
+                   │   └ <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x7fa6455938e0>
+                   └ <uvicorn.middleware.proxy_headers.ProxyHeadersMiddleware object at 0x7fa6458145e0>
+  File "/usr/local/lib/python3.8/site-packages/uvicorn/middleware/proxy_headers.py", line 45, in __call__
+    return await self.app(scope, receive, send)
+                 │    │   │      │        └ <bound method RequestResponseCycle.send of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x7fa6455938...
+                 │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x7fa6455...
+                 │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.1'}, 'http_version': '1.1', 'server': ('127.0.0.1', 4242), 'cl...
+                 │    └ <fastapi.applications.FastAPI object at 0x7fa645a61eb0>
+                 └ <uvicorn.middleware.proxy_headers.ProxyHeadersMiddleware object at 0x7fa6458145e0>
+  File "/usr/local/lib/python3.8/site-packages/fastapi/applications.py", line 199, in __call__
+    await super().__call__(scope, receive, send)
+                           │      │        └ <bound method RequestResponseCycle.send of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x7fa6455938...
+                           │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x7fa6455...
+                           └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.1'}, 'http_version': '1.1', 'server': ('127.0.0.1', 4242), 'cl...
+  File "/usr/local/lib/python3.8/site-packages/starlette/applications.py", line 111, in __call__
+    await self.middleware_stack(scope, receive, send)
+          │    │                │      │        └ <bound method RequestResponseCycle.send of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x7fa6455938...
+          │    │                │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x7fa6455...
+          │    │                └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.1'}, 'http_version': '1.1', 'server': ('127.0.0.1', 4242), 'cl...
+          │    └ <starlette.middleware.errors.ServerErrorMiddleware object at 0x7fa6457f84f0>
+          └ <fastapi.applications.FastAPI object at 0x7fa645a61eb0>
+  File "/usr/local/lib/python3.8/site-packages/starlette/middleware/errors.py", line 181, in __call__
+    raise exc from None
+  File "/usr/local/lib/python3.8/site-packages/starlette/middleware/errors.py", line 159, in __call__
+    await self.app(scope, receive, _send)
+          │    │   │      │        └ <function ServerErrorMiddleware.__call__.<locals>._send at 0x7fa6455833a0>
+          │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x7fa6455...
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.1'}, 'http_version': '1.1', 'server': ('127.0.0.1', 4242), 'cl...
+          │    └ <starlette.middleware.cors.CORSMiddleware object at 0x7fa6457f8430>
+          └ <starlette.middleware.errors.ServerErrorMiddleware object at 0x7fa6457f84f0>
+  File "/usr/local/lib/python3.8/site-packages/starlette/middleware/cors.py", line 86, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+          │    │               │      │        │                     └ Headers({'host': 'localhost:4242', 'connection': 'keep-alive', 'content-length': '2339549', 'sec-ch-ua': '"Chromium";v="94", ...
+          │    │               │      │        └ <function ServerErrorMiddleware.__call__.<locals>._send at 0x7fa6455833a0>
+          │    │               │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x7fa6455...
+          │    │               └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.1'}, 'http_version': '1.1', 'server': ('127.0.0.1', 4242), 'cl...
+          │    └ <function CORSMiddleware.simple_response at 0x7fa6524b8790>
+          └ <starlette.middleware.cors.CORSMiddleware object at 0x7fa6457f8430>
+  File "/usr/local/lib/python3.8/site-packages/starlette/middleware/cors.py", line 142, in simple_response
+    await self.app(scope, receive, send)
+          │    │   │      │        └ functools.partial(<bound method CORSMiddleware.send of <starlette.middleware.cors.CORSMiddleware object at 0x7fa6457f8430>>, ...
+          │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x7fa6455...
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.1'}, 'http_version': '1.1', 'server': ('127.0.0.1', 4242), 'cl...
+          │    └ <starlette.middleware.base.BaseHTTPMiddleware object at 0x7fa6457f8070>
+          └ <starlette.middleware.cors.CORSMiddleware object at 0x7fa6457f8430>
+  File "/usr/local/lib/python3.8/site-packages/starlette/middleware/base.py", line 25, in __call__
+    response = await self.dispatch_func(request, self.call_next)
+                     │    │             │        │    └ <function BaseHTTPMiddleware.call_next at 0x7fa6524ad4c0>
+                     │    │             │        └ <starlette.middleware.base.BaseHTTPMiddleware object at 0x7fa6457f8070>
+                     │    │             └ <starlette.requests.Request object at 0x7fa645593a60>
+                     │    └ <function _http_request_logging_middleware at 0x7fa6524b81f0>
+                     └ <starlette.middleware.base.BaseHTTPMiddleware object at 0x7fa6457f8070>
+
+  File "/workspace/middleware/logging.py", line 14, in _http_request_logging_middleware
+    response: Response = await call_next(request)
+                               │         └ <starlette.requests.Request object at 0x7fa645593a60>
+                               └ <bound method BaseHTTPMiddleware.call_next of <starlette.middleware.base.BaseHTTPMiddleware object at 0x7fa6457f8070>>
+
+  File "/usr/local/lib/python3.8/site-packages/starlette/middleware/base.py", line 45, in call_next
+    task.result()
+    │    └ <method 'result' of '_asyncio.Task' objects>
+    └ <Task finished name='Task-4' coro=<BaseHTTPMiddleware.call_next.<locals>.coro() done, defined at /usr/local/lib/python3.8/sit...
+  File "/usr/local/lib/python3.8/site-packages/starlette/middleware/base.py", line 38, in coro
+    await self.app(scope, receive, send)
+          │    │   │      │        └ <bound method Queue.put of <Queue at 0x7fa645593c10 maxsize=0 tasks=1>>
+          │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x7fa6455...
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.1'}, 'http_version': '1.1', 'server': ('127.0.0.1', 4242), 'cl...
+          │    └ <starlette.exceptions.ExceptionMiddleware object at 0x7fa6457f8130>
+          └ <starlette.middleware.base.BaseHTTPMiddleware object at 0x7fa6457f8070>
+  File "/usr/local/lib/python3.8/site-packages/starlette/exceptions.py", line 82, in __call__
+    raise exc from None
+  File "/usr/local/lib/python3.8/site-packages/starlette/exceptions.py", line 71, in __call__
+    await self.app(scope, receive, sender)
+          │    │   │      │        └ <function ExceptionMiddleware.__call__.<locals>.sender at 0x7fa645598550>
+          │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x7fa6455...
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.1'}, 'http_version': '1.1', 'server': ('127.0.0.1', 4242), 'cl...
+          │    └ <fastapi.routing.APIRouter object at 0x7fa6457eedc0>
+          └ <starlette.exceptions.ExceptionMiddleware object at 0x7fa6457f8130>
+  File "/usr/local/lib/python3.8/site-packages/starlette/routing.py", line 566, in __call__
+    await route.handle(scope, receive, send)
+          │     │      │      │        └ <function ExceptionMiddleware.__call__.<locals>.sender at 0x7fa645598550>
+          │     │      │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x7fa6455...
+          │     │      └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.1'}, 'http_version': '1.1', 'server': ('127.0.0.1', 4242), 'cl...
+          │     └ <function Route.handle at 0x7fa65258aee0>
+          └ <fastapi.routing.APIRoute object at 0x7fa6457f87f0>
+  File "/usr/local/lib/python3.8/site-packages/starlette/routing.py", line 227, in handle
+    await self.app(scope, receive, send)
+          │    │   │      │        └ <function ExceptionMiddleware.__call__.<locals>.sender at 0x7fa645598550>
+          │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.httptools_impl.RequestResponseCycle object at 0x7fa6455...
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.1'}, 'http_version': '1.1', 'server': ('127.0.0.1', 4242), 'cl...
+          │    └ <function request_response.<locals>.app at 0x7fa6457f2c10>
+          └ <fastapi.routing.APIRoute object at 0x7fa6457f87f0>
+  File "/usr/local/lib/python3.8/site-packages/starlette/routing.py", line 41, in app
+    response = await func(request)
+                     │    └ <starlette.requests.Request object at 0x7fa645593d90>
+                     └ <function get_request_handler.<locals>.app at 0x7fa6457f2ca0>
+  File "/usr/local/lib/python3.8/site-packages/fastapi/routing.py", line 201, in app
+    raw_response = await run_endpoint_function(
+                         └ <function run_endpoint_function at 0x7fa65258a040>
+  File "/usr/local/lib/python3.8/site-packages/fastapi/routing.py", line 150, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+                 │                 │         │       └ {'request': <starlette.datastructures.UploadFile object at 0x7fa64559f040>}
+                 │                 │         └ <function predict at 0x7fa6457f2b80>
+                 │                 └ <fastapi.dependencies.models.Dependant object at 0x7fa6457f8820>
+                 └ <function run_in_threadpool at 0x7fa652774ca0>
+  File "/usr/local/lib/python3.8/site-packages/starlette/concurrency.py", line 34, in run_in_threadpool
+    return await loop.run_in_executor(None, func, *args)
+                 │    │                     │      └ (functools.partial(<function predict at 0x7fa6457f2b80>, request=<starlette.datastructures.UploadFile object at 0x7fa64559f04...
+                 │    │                     └ <built-in method run of Context object at 0x7fa6455a0d00>
+                 │    └ <method 'run_in_executor' of 'uvloop.loop.Loop' objects>
+                 └ <uvloop.Loop running=True closed=False debug=False>
+  File "/usr/local/lib/python3.8/concurrent/futures/thread.py", line 57, in run
+    result = self.fn(*self.args, **self.kwargs)
+             │        │            └ None
+             │        └ None
+             └ None
+
+  File "/workspace/api.py", line 43, in predict
+    response = emily.predict(request)
+               │     │       └ <starlette.datastructures.UploadFile object at 0x7fa64559f040>
+               │     └ <function Emily.predict at 0x7fa645ed2040>
+               └ <ml.emily.Emily object at 0x7fa6457f82e0>
+
+  File "/workspace/ml/emily.py", line 27, in predict
+    return self.predictor(request, model=self.model)
+           │    │         │              │    └ <ml.model.Model object at 0x7fa6457f8340>
+           │    │         │              └ <ml.emily.Emily object at 0x7fa6457f82e0>
+           │    │         └ <starlette.datastructures.UploadFile object at 0x7fa64559f040>
+           │    └ <ml.predictor.Predictor object at 0x7fa6457f83a0>
+           └ <ml.emily.Emily object at 0x7fa6457f82e0>
+
+TypeError: 'Predictor' object is not callable
+
+2021-10-14 12:54:36.412 | INFO     | uvicorn.server:shutdown:209 - Shutting down
+2021-10-14 12:54:36.517 | INFO     | uvicorn.lifespan.on:shutdown:43 - Waiting for application shutdown.
+2021-10-14 12:54:36.521 | INFO     | uvicorn.lifespan.on:shutdown:46 - Application shutdown complete.
+2021-10-14 12:54:36.529 | INFO     | uvicorn.server:serve:73 - Finished server process [38799]
+2021-10-14 12:54:37.511 | INFO     | ml.model:load:27 - Loading model from wheres-waldo.model.pickle
+2021-10-14 12:54:37.527 | INFO     | uvicorn.server:serve:63 - Started server process [39142]
+2021-10-14 12:54:37.529 | INFO     | uvicorn.lifespan.on:startup:26 - Waiting for application startup.
+2021-10-14 12:54:37.534 | INFO     | uvicorn.lifespan.on:startup:38 - Application startup complete.
+2021-10-14 12:54:37.543 | INFO     | uvicorn.server:startup:166 - Uvicorn running on http://0.0.0.0:4242 (Press CTRL+C to quit)
+2021-10-14 12:54:40.401 | INFO     | middleware.logging:_http_request_logging_middleware:13 - HTTP POST for http://localhost:4242/api/predict
+2021-10-14 12:54:40.658 | INFO     | middleware.logging:_http_request_logging_middleware:15 - HTTP 200 for http://localhost:4242/api/predict
+2021-10-14 12:56:23.589 | INFO     | uvicorn.server:shutdown:209 - Shutting down
+2021-10-14 12:56:23.695 | INFO     | uvicorn.lifespan.on:shutdown:43 - Waiting for application shutdown.
+2021-10-14 12:56:23.699 | INFO     | uvicorn.lifespan.on:shutdown:46 - Application shutdown complete.
+2021-10-14 12:56:23.703 | INFO     | uvicorn.server:serve:73 - Finished server process [39142]
+2021-10-14 12:58:46.103 | INFO     | ml.model:load:27 - Loading model from wheres-waldo.model.pickle
+2021-10-14 12:58:46.124 | INFO     | uvicorn.server:serve:63 - Started server process [40000]
+2021-10-14 12:58:46.126 | INFO     | uvicorn.lifespan.on:startup:26 - Waiting for application startup.
+2021-10-14 12:58:46.129 | INFO     | uvicorn.lifespan.on:startup:38 - Application startup complete.
+2021-10-14 12:58:46.150 | INFO     | uvicorn.server:startup:166 - Uvicorn running on http://0.0.0.0:4242 (Press CTRL+C to quit)
+2021-10-14 12:58:50.786 | INFO     | middleware.logging:_http_request_logging_middleware:13 - HTTP POST for http://localhost:4242/api/predict
+2021-10-14 12:58:51.039 | INFO     | middleware.logging:_http_request_logging_middleware:15 - HTTP 200 for http://localhost:4242/api/predict
+2021-10-14 12:59:08.481 | INFO     | uvicorn.server:shutdown:209 - Shutting down
+2021-10-14 12:59:08.586 | INFO     | uvicorn.lifespan.on:shutdown:43 - Waiting for application shutdown.
+2021-10-14 12:59:08.592 | INFO     | uvicorn.lifespan.on:shutdown:46 - Application shutdown complete.
+2021-10-14 12:59:08.595 | INFO     | uvicorn.server:serve:73 - Finished server process [40000]

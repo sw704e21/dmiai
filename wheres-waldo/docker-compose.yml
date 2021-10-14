@@ -1,0 +1,9 @@
+
+version: "3"
+services:
+  emily-wheres-waldo-c2mvvc:
+
+    # Add your custom configuration here!
+
+    networks:
+      - emily-wheres-waldo-c2mvvc-network

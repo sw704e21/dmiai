@@ -1,0 +1,8 @@
+{
+    "id": "C2MVVC",
+    "name": "wheres-waldo",
+    "containerName": "emily-wheres-waldo-c2mvvc",
+    "image": "torch-slim",
+    "imageVersion": "1.0.0",
+    "mountTargets": []
+}

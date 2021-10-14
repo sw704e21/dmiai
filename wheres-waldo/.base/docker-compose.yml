@@ -1,0 +1,19 @@
+
+version: "3"
+services:
+  emily-wheres-waldo-c2mvvc:
+    image: emily-wheres-waldo-c2mvvc
+    container_name: emily-wheres-waldo-c2mvvc
+    build:
+      context: ../
+
+    volumes:
+      - ../:/workspace:cached
+
+    networks:
+      - emily-wheres-waldo-c2mvvc-network
+
+networks:
+  emily-wheres-waldo-c2mvvc-network:
+    name: emily-wheres-waldo-c2mvvc-network
+    driver: bridge
