@@ -5,11 +5,11 @@ from starlette.responses import HTMLResponse
 
 import middleware.cors
 import middleware.logging
-
+import io
+from PIL.Image import Image
 from dtos.requests import PredictRequest
-from dtos.responses import PredictResponse, TrainResponse
+from dtos.responses import PredictResponse
 
-from ml.emily import Emily
 from settings import Settings, load_env
 from static.render import render
 from utilities.utilities import get_uptime
@@ -27,11 +27,6 @@ load_env()
 
 app = FastAPI()
 settings = Settings()
-emily = Emily(
-    model_path='wheres-waldo.model.pickle',
-    dataset_path='./images'
-)
-
 
 middleware.logging.setup(app)
 middleware.cors.setup(app)
@@ -39,21 +34,23 @@ middleware.cors.setup(app)
 
 @app.post('/api/predict', response_model=PredictResponse)
 def predict(request: PredictRequest = File(...)) -> PredictResponse:
-    response = emily.predict(request)
-    return PredictResponse(**response)
 
+    # This is the Where's Waldo image as an RGB matrix
+    image = Image.open(io.BytesIO(request.file.read())).convert("RGB")
 
-@app.post('/api/train', response_model=TrainResponse)
-def train() -> TrainResponse:
-    response = emily.train()
-    return TrainResponse(**response)
+    # This is a dummy prediction - compute a real one
+    prediction = {
+        'x': 130,
+        'y': 850
+    }
+
+    return PredictResponse(**prediction)
 
 
 @app.get('/api')
 def hello():
     return {
         "uptime": get_uptime(),
-        "usecase": "wheres-waldo",
         "service": settings.COMPOSE_PROJECT_NAME,
     }
 

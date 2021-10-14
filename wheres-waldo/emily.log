@@ -470,3 +470,21 @@ TypeError: 'Predictor' object is not callable
 2021-10-14 12:59:08.586 | INFO     | uvicorn.lifespan.on:shutdown:43 - Waiting for application shutdown.
 2021-10-14 12:59:08.592 | INFO     | uvicorn.lifespan.on:shutdown:46 - Application shutdown complete.
 2021-10-14 12:59:08.595 | INFO     | uvicorn.server:serve:73 - Finished server process [40000]
+2021-10-14 14:25:50.607 | INFO     | uvicorn.server:serve:63 - Started server process [55565]
+2021-10-14 14:25:50.611 | INFO     | uvicorn.lifespan.on:startup:26 - Waiting for application startup.
+2021-10-14 14:25:50.613 | INFO     | uvicorn.lifespan.on:startup:38 - Application startup complete.
+2021-10-14 14:25:50.624 | INFO     | uvicorn.server:startup:166 - Uvicorn running on http://0.0.0.0:4242 (Press CTRL+C to quit)
+2021-10-14 14:25:53.403 | INFO     | middleware.logging:_http_request_logging_middleware:13 - HTTP GET for http://localhost:4242/
+2021-10-14 14:25:53.408 | INFO     | middleware.logging:_http_request_logging_middleware:15 - HTTP 200 for http://localhost:4242/
+2021-10-14 14:25:55.967 | INFO     | middleware.logging:_http_request_logging_middleware:13 - HTTP GET for http://localhost:4242/api
+2021-10-14 14:25:55.975 | INFO     | middleware.logging:_http_request_logging_middleware:15 - HTTP 200 for http://localhost:4242/api
+2021-10-14 14:25:57.005 | INFO     | middleware.logging:_http_request_logging_middleware:13 - HTTP GET for http://localhost:4242/api
+2021-10-14 14:25:57.010 | INFO     | middleware.logging:_http_request_logging_middleware:15 - HTTP 200 for http://localhost:4242/api
+2021-10-14 14:25:58.000 | INFO     | middleware.logging:_http_request_logging_middleware:13 - HTTP GET for http://localhost:4242/api
+2021-10-14 14:25:58.008 | INFO     | middleware.logging:_http_request_logging_middleware:15 - HTTP 200 for http://localhost:4242/api
+2021-10-14 14:25:59.003 | INFO     | middleware.logging:_http_request_logging_middleware:13 - HTTP GET for http://localhost:4242/api
+2021-10-14 14:25:59.007 | INFO     | middleware.logging:_http_request_logging_middleware:15 - HTTP 200 for http://localhost:4242/api
+2021-10-14 14:35:54.355 | INFO     | uvicorn.server:shutdown:209 - Shutting down
+2021-10-14 14:35:54.477 | INFO     | uvicorn.lifespan.on:shutdown:43 - Waiting for application shutdown.
+2021-10-14 14:35:54.489 | INFO     | uvicorn.lifespan.on:shutdown:46 - Application shutdown complete.
+2021-10-14 14:35:54.497 | INFO     | uvicorn.server:serve:73 - Finished server process [55565]
