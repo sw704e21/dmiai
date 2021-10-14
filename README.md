@@ -28,7 +28,7 @@ Come meet and talk to other competitors of the event on our Slack channel. Discu
 
 
 <h2>Submission</h2>
-When you are ready for submission, head over to the official <a href="https://dmiai.dk/">DM i AI website</a> and submit your model by providing the host address for your API and your UUID obtained during sign up. Make sure that you have tested your connection to the API before you submit!<br>
+When you are ready for submission, <a href="https://dmiai.dk/guide/deploy">click here</a> for instructions on how to deploy. Then, head over to the official <a href="https://dmiai.dk/">DM i AI website</a> and submit your model by providing the host address for your API and your UUID obtained during sign up. Make sure that you have tested your connection to the API before you submit!<br>
 The number of submissions is specific for each use case, and you can find the maximum number of submissions allowed below: <br> <br>
 
 * Case 1 - Where's Waldo: **1 time** <br>
