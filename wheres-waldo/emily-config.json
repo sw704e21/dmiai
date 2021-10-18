@@ -4,5 +4,7 @@
     "containerName": "emily-wheres-waldo-c2mvvc",
     "image": "torch-slim",
     "imageVersion": "1.0.0",
-    "mountTargets": []
+    "mountTargets": [
+        "/workspace/wheres-waldo-images"
+    ]
 }
