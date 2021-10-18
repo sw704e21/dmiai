@@ -1,6 +1,6 @@
 
 import uvicorn
-from fastapi import FastAPI, File
+from fastapi import FastAPI
 from starlette.responses import HTMLResponse
 
 import middleware.cors
