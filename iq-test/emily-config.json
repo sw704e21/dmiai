@@ -1,0 +1,8 @@
+{
+    "id": "D3MAUH",
+    "name": "iq-test",
+    "containerName": "emily-iq-test-d3mauh",
+    "mountTargets": [
+        "/workspace/data"
+    ]
+}
