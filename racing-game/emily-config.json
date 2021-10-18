@@ -2,8 +2,6 @@
     "id": "SBYMVG",
     "name": "racing-game",
     "containerName": "emily-racing-game-sbymvg",
-    "image": "base",
-    "imageVersion": "1.0.0",
     "mountTargets": [
         "/workspace/data"
     ]
