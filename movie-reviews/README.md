@@ -5,11 +5,15 @@ In this use case you will be presented with unique 1000 reviews of various movie
   <img src="../images/example.png" width=550>
 </p>
 
-The stars given are in the interval 0.5, 1, ..., 4.5, 5. Your model needs to round to the nearest half.
+The stars given are in the interval 0, 0.5, 1, ..., 4.5, 5.
 
 
 ## Evaluation
-You will be measured upon how close to the accual rating your predictions are, to be exact, your score would be measured by the distance between your prediction and the actual rating. An average for all the 1000 test reviews are calculated and are used for your score, the lowest score will grant the most points.
+During the week of competition, you will be able to upload your model and have them test it against a testset of reviews. The most recent score your model achieves on the testset will be displayed on the scoreboard.
+
+Before the deadline, you will submit your final model, and we will evaluate your model with a set of reviews which is **_DIFFERENT_ FROM THE TESTSET!** It will not be possible to test your model against this final evaluation dataset during the week.
+
+Your model will be evaluated on how close to the accual ratings your predictions are, to be exact, your score would be measured by the distance between your prediction and the actual rating. An average for all the 1000 test reviews are calculated and are used for your score, the lowest score will grant the most points. i.e. the evaluation metric is mean absolute error.
 
 
 ## Getting started using Emily
