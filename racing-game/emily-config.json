@@ -1,0 +1,8 @@
+{
+    "id": "SBYMVG",
+    "name": "racing-game",
+    "containerName": "emily-racing-game-sbymvg",
+    "mountTargets": [
+        "/workspace/data"
+    ]
+}
