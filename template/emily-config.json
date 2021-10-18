@@ -1,8 +1,0 @@
-{
-    "id": "JC0WK4",
-    "name": "waldo",
-    "containerName": "emily-waldo-jc0wk4",
-    "image": "torch-slim",
-    "imageVersion": "1.0.0",
-    "mountTargets": []
-}
