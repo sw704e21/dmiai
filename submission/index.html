@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<style>
+
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+body {
+  height: 40vh;
+}
+
+* {
+  font-family: monospace !important;
+  color: white;
+}
+
+h1 {
+  font-family: monospace;
+  font-size: 3em;
+  margin-bottom: 1em;
+}
+
+button {
+  transition: all .3s; 
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+.shell {
+  width: min(40em, 80%);
+  border-radius: 7px;
+  background-color: #0b0014;
+  padding: 1em;
+  box-shadow: 0px 5px 30px -1px rgba(0, 0, 0, 0.4);
+  padding-bottom: 20px;
+  transition: .3s all;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: start;
+  text-align: center;
+
+  height: 100%;
+  margin: 10em auto;
+  padding: 5em 5em;
+}
+
+.step-description {
+  font-size: 1em;
+  color: rgb(141, 141, 141);
+  margin: 1em;
+}
+
+.use-case-selector {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.use-case-choice {
+  border: none;
+  border-radius: 15px;
+  color: black;
+}
+
+.green {
+  background-color: #41fb30;
+}
+
+.red {
+  background-color: #FF5F57;
+}
+
+.yellow {
+  background-color: #FFBD2E;
+}
+
+.green-color {
+  color: #41fb30;
+}
+
+.red-color {
+  color: #FF5F57;
+}
+
+.yellow-color {
+  color: #FFBD2E;
+}
+
+.service-url-input-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.http {
+  color: rgb(141, 141, 141);
+}
+
+.colon {
+  color: rgb(141, 141, 141);
+}
+
+input {
+  border: none;
+  border-radius: 15px;
+  text-align: center;
+  color: white;
+  background-color: #292929;
+  margin: 0 .2em;
+}
+
+::placeholder {
+  color:rgb(141, 141, 141);
+}
+
+.service-url-validation-message {
+  margin-top: .5em;
+  color: red;
+}
+
+.health-check-button {
+  border: none;
+  border-radius: 15px;
+  color: black;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+.health-check-container {
+  margin-top: 2em;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.health-check-status {
+  margin-left: 1em;
+}
+
+.hidden {
+  color: transparent
+}
+
+.submission-container {
+  margin-top: 2em;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.submission-button {
+  border: none;
+  border-radius: 15px;
+  color: black;
+}
+
+#group-uuid-input-field {
+  width: 100%;
+}
+
+</style>
+
+<body>
+  <section class="container shell">
+    <h1>Evaluate your service!</h1>
+    <p class="step-description">Select a use-case</p>
+    <div class="use-case-selector">
+      <button id="wheres-waldo" class="use-case-choice">Where's Waldo</button>
+      <button id="racing-game" class="use-case-choice">Racing game</button>
+      <button id="iq-test" class="use-case-choice">IQ test</button>
+      <button id="movie-reviews" class="use-case-choice">Movie reviews</button>
+    </div>
+    <p class="step-description">What is your group UUID?</p>
+    <div class="service-url-input-container">
+      <input type="text" id="group-uuid-input-field" placeholder="edc8bbbd-7bfe-4ce2-9c36-d7e953347cf3">
+    </div>
+
+    <p class="step-description">Where is your microservice located?</p>
+    <div class="service-url-input-container">
+      <span class="http">http://</span>
+      <input type="text" id="host-input-field" placeholder="0.0.0.0">
+      <span class="colon">:</span>
+      <input type="text" id="port-input-field" placeholder="4242">
+      <span class="http">/api</span>
+      <span id="health-check-status" class="health-check-status hidden">HTTP 404</span>
+    </div>
+    <p id="service-url-validation-message" class="service-url-validation-message"></p>
+    <br>
+    <div class="health-check-container">
+      <button id="health-check-button" class="health-check-button" disabled>Health-check</button>
+    </div>
+    <div class="submission-container">
+      <button id="submission-button" class="submission-button" disabled>Submit</button>
+    </div>
+    <div class="submission-container">
+      <p id="submission-status"></p>
+    </div>
+  </section>
+</body>
+
+<script>
+
+// --- Utility --- //
+const colors = ['red', 'yellow', 'green']
+const frontColors = ['red-color', 'yellow-color', 'green-color']
+
+const removeBackgroundColor = (element) => {
+  colors.forEach(c => element.classList.remove(c))
+}
+
+const setBackgroundColor = (element, color) => {
+  removeBackgroundColor(element)
+  element.classList.add(color)
+}
+
+const removeColor = (element) => {
+  frontColors.forEach(c => element.classList.remove(c))
+}
+
+const setColor = (element, color) => {
+  removeColor(element)
+  element.classList.add(color)
+}
+
+const hide = (element) => {
+  element.classList.add('hidden')
+}
+
+const show = (element) => {
+  element.classList.remove('hidden')
+}
+
+// --- State --- //
+const state = {
+  status: 'yellow',
+  selectedUseCaseElement: null,
+  readyForSubmission: false
+}
+
+const setStateStatus = (status) => {
+  state.status = status
+
+  if (state.selectedUseCaseElement) {
+    setBackgroundColor(state.selectedUseCaseElement, status)
+  }
+}
+
+// --- DOM --- //
+const elements = {
+  useCases: [
+    document.getElementById('wheres-waldo'),
+    document.getElementById('racing-game'),
+    document.getElementById('iq-test'),
+    document.getElementById('movie-reviews')
+  ],
+  inputFields: {
+    groupUuid: document.getElementById('group-uuid-input-field'),
+    host: document.getElementById('host-input-field'),
+    port: document.getElementById('port-input-field')
+  },
+  healthCheck: {
+    button: document.getElementById('health-check-button'),
+    status: document.getElementById('health-check-status')
+  },
+  submit: {
+    button: document.getElementById('submission-button'),
+    status: document.getElementById('submission-status')
+  }
+}
+
+// --- Use cases --- //
+const selectUseCaseElement = (element) => {
+
+  elements.useCases.forEach(useCase => removeBackgroundColor(useCase))
+  state.selectedUseCaseElement = element
+  setStateStatus('yellow')
+
+  console.log(`Selected use case ${element.id}`)
+}
+
+elements.useCases.forEach(useCase => useCase.addEventListener('click', () => selectUseCaseElement(useCase)))
+
+// --- Input fields --- //
+const serviceUrlValidationMessage = document.getElementById('service-url-validation-message')
+
+// Credit: https://www.w3resource.com/javascript/form/ip-address-validation.php
+const isValidIp = (ip) => /^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/.test(ip)
+const isValidPort = (port) => {
+  const portNumber = parseInt(port)
+  return !isNaN(portNumber) && portNumber >= 0 && portNumber <= 65535
+}
+const isValidUuid = (uuid) => /^[0-9a-f]{8}-[0-9a-f]{4}-[0-5][0-9a-f]{3}-[089ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(uuid)
+
+Object.values(elements.inputFields).forEach(inputField => inputField.addEventListener('input', () => {
+  setStateStatus('yellow')
+}))
+
+const validate = () => {
+
+  const uuid = elements.inputFields.groupUuid.value
+  const host = elements.inputFields.host.value
+  const port = elements.inputFields.port.value
+
+  if (!isValidUuid(uuid)) {
+    serviceUrlValidationMessage.innerHTML = 'Invalid UUID'
+    elements.healthCheck.button.setAttribute('disabled', 'true')
+    return
+  }
+
+  if (!isValidIp(host)) {
+    serviceUrlValidationMessage.innerHTML = 'Invalid IP'
+    elements.healthCheck.button.setAttribute('disabled', 'true')
+    return
+  }
+
+  if (!isValidPort(port)) {
+    serviceUrlValidationMessage.innerHTML = 'Invalid port'
+    elements.healthCheck.button.setAttribute('disabled', 'true')
+    return
+  }
+
+  serviceUrlValidationMessage.innerHTML = ''
+  elements.healthCheck.button.removeAttribute('disabled')
+}
+
+elements.inputFields.host.addEventListener('input', validate)
+elements.inputFields.port.addEventListener('input', validate)
+elements.inputFields.groupUuid.addEventListener('input', validate)
+
+// --- Health check --- //
+const setStateReadyForSubmission = (flag) => {
+  state.readyForSubmission = flag
+  setColor(elements.submit.button, state.status)
+
+  if (flag) {
+    elements.submit.button.removeAttribute('disabled')
+  } else {
+    elements.submit.button.setAttribute('hidden', "true")
+  }
+}
+
+elements.healthCheck.button.addEventListener('click', async () => {
+  const host = elements.inputFields.host.value
+  const port = elements.inputFields.port.value
+
+  hide(elements.healthCheck.status)
+
+  try {
+    const response = await fetch(`http://${host}:${port}/api`)
+
+    elements.healthCheck.status.innerHTML = response.statusText
+    setStateStatus(response.ok ? 'green' : 'red')
+    setColor(elements.healthCheck.status, response.ok ? 'green-color' : 'red-color')
+    show(elements.healthCheck.status)
+
+    if (state.status === 'green') {
+      setStateReadyForSubmission(true)
+    }
+
+  } catch (exception) {
+    console.log(exception)
+    setStateStatus('red')
+    setColor(elements.healthCheck.status, 'red-color')
+    show(elements.healthCheck.status)
+  }
+})
+
+// --- Submit --- //
+elements.submit.button.addEventListener('click', async () => {
+  const uuid = elements.inputFields.groupUuid.value
+  const host = elements.inputFields.host.value
+  const port = elements.inputFields.port.value
+
+  const urlToSubmit = `http://${host}:${port}/api`
+
+  const submissionUrl = `http://20.86.76.212:4242/usecase1`
+
+  elements.submit.status.innerHTML = 'Evaluating...'
+
+  const response = await fetch(submissionUrl, { method: 'POST', body: JSON.stringify({
+    group_id: uuid,
+    host_url: urlToSubmit
+  })})
+
+  const data = await response.json()
+  elements.submit.status.innerHTML = JSON.stringify(data)
+})
+</script>
+</html>
