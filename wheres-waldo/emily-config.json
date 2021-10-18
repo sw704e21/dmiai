@@ -3,6 +3,6 @@
     "name": "wheres-waldo",
     "containerName": "emily-wheres-waldo-c2mvvc",
     "mountTargets": [
-        "/workspace/wheres-waldo-images"
+        "/workspace/data"
     ]
 }
