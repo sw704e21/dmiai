@@ -142,3 +142,9 @@ cython_debug/
 
 *.pickle
 *.log
+
+*/.base
+*/.mounts
+*/.devcontainer
+*/.vscode
+docker-compose.yml
