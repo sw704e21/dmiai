@@ -15,7 +15,6 @@ The API endpoint will be used for submission and are required. Emily can help wi
 Clone this GitHub repository to download Emily templates for all four use cases.
 ```
 git clone https://github.com/amboltio/DM-i-AI.git
-emily open DM-i-AI
 ```
 
 <h2>Emily CLI</h2>
