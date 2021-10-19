@@ -19,22 +19,23 @@ Your model will be evaluated on how close to the accual ratings your predictions
 ## Getting started using Emily
 Once the repository is cloned, navigate to the folder using a terminal and type:
 ```
-emily open .
+emily open movie-reviews.
 ```
-then select an editor of your choice to open the Emily template for use cases. A Docker container with a Python environment will be opened. Some content needs to be downloaded the first time a project is opened, this might take a bit of time. Inside the container, you can find a folder named `cases` wherein you can find the use case folder `movie_reviews`.
+You'll be prompted for selecting application, for this use case it might be beneficial to use a Natural Language Processing image, and you can select your prefered deep learning framework. Afterwards you will be asked to mount a data folder for your project. This folder should include your data, for the first run it can empty and you can add images later. Then select an editor of your choice to open the Emily template for use case. A Docker container with a Python environment will be opened. Some content needs to be downloaded the first time a project is opened, this might take a bit of time.
 
-To take full advantage of Emily and the template, your code for prediction should go in cases/movie_reviews/ml/predictor.py:
+To take full advantage of Emily and the template, your code for prediction should go in api.py:
 ```
-  def predict(self, request):
-      # Unpack request
-      sentence = request.sentence
-      
-      """
-      Insert your prediction code here
-      """
+@app.post('/api/predict', response_model=PredictResponse)
+def predict(request: PredictRequest) -> PredictResponse:
 
-      prediction = 3.5  # Should be replaced with the prediction
-      return prediction
+    # You receive all reviews as plaintext in the request.
+    # Return a list of predicted ratings between 1-5 (inclusive).
+    # You must return the same number of ratings as there are reviews, and each
+    # rating will be associated with the review at the same index in the request list.
+
+    ratings = [random.randint(1, 5) for review in request.reviews]
+
+    return PredictResponse(ratings=ratings)
 ```
 For further details about the recommended structure, see <a href="https://dmiai.dk/guide/">this guide</a>.
 You can add new packages to the Python environment by adding the names of the package to requirements.txt and restarting the project.
