@@ -20,26 +20,29 @@ Upon completion of the contest, the top 5 highest ranking teams will be asked to
 ## Getting started using Emily
 Once the repository is cloned, navigate to the folder using a terminal and type:
 ```
-emily open .
+emily open iq-test
 ```
-then select an editor of your choice to open the Emily template for use cases. A Docker container with a Python environment will be opened. Some content needs to be downloaded the first time a project is opened, this might take a bit of time. Inside the container, you can find a folder named `cases` wherein you can find the use case folder `iq-test`.
+You'll be prompted for selecting application, and you can select your prefered deep learning framework. Afterwards you will be asked to mount a data folder for your project. This folder should include your data, for the first run it can empty and you can add images later.
+Then select an editor of your choice to open the Emily template for use case.  A Docker container with a Python environment will be opened. Some content needs to be downloaded the first time a project is opened, this might take a bit of time.
 
-To take full advantage of Emily and the template, your code for prediction should go in `cases/wheres_waldo/ml/predictor.py`:
+To take full advantage of Emily and the template, your code for prediction should go in `api.py`:
 ```
-def predict(self, request):
-        sample = request.image
+@app.post('/api/predict', response_model=PredictResponse)
+def predict(request: PredictRequest) -> PredictResponse:
 
-        """
-        Insert your prediction code here
-        """
+    # You receive all images in base64 encoding.
+    images = [request.image_1_base64, request.image_2_base64]
+    choices = request.image_3_choices_base64
 
-        x = 176  # Should be replaced with the prediction
-        y = 165  # Should be replaced with the prediction
+    # Process the first two images, and predict the next correct image
+    # from the list of image choices
+    
+    # Dummy prediction - chooses a random image from the list of choices
+    next_image_index = random.choice([index for index in range(len(choices))])
 
-        # Leave this to ensure standardized submission format
-        prediction = {'x': x, 'y': y}
-
-        return prediction
+    return PredictResponse(
+        next_image_index=next_image_index
+    )
 ```
 For further details about the recommended structure, see <a href="https://dmiai.dk/guide/">this guide</a>.
 You can add new packages to the Python environment by adding the names of the package to requirements.txt and restarting the project, or by using pip install on a terminal within the container which will result in the package being installed temporarily i.e. it is not installed if the project is restarted.
