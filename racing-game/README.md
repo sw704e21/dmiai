@@ -1,5 +1,10 @@
 # Racing Track Simulation
-In this use case you should implement a model, that can control a car on a highway to avoid obstracles and drive as far as possible within 5000 time steps. You'll recive sensory information from the car and you should predict the next action to perform.
+In this use case you should implement a model, that can control a car on a highway to avoid obstracles and drive as far as possible within 5000 time steps. You'll recive sensory information from the car and you should predict the next action to perform. An illustration of the game can be seen in the image below:
+
+
+<img src="../images/raw.jpg" width=450> <img src="../images/raw_with_drawings.jpg" width=450>
+
+
 You get the following information in every time step, these are specified in `dtos/requests.py`:
 ```
 game_tick: int
@@ -13,7 +18,7 @@ did_crash: bool
 The car speed describes the speed of the car in either horizontal or vertical direction and the sensor readings states how close other objects are to the car from either right, left or front of the car `did_crash` is a boolean telling if the car crashed or not. Following actions can be performed `ACCELERATE`, `STEER_RIGHT`, `STEER_LEFT` and `BRAKE` as a response to the sensory information.
 
 ## Evaluation
-
+You'll be rewarded based on how far your model drives your car without crashing into obstracles.
 
 ## Getting started using Emily
 
