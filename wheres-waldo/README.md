@@ -25,26 +25,26 @@ Upon completion of the contest, the top 5 highest ranking teams will be asked to
 ## Getting started using Emily
 Once the repository is cloned, navigate to the folder using a terminal and type:
 ```
-emily open .
+emily open wheres-waldo
 ```
-then select an editor of your choice to open the Emily template for use cases. A Docker container with a Python environment will be opened. Some content needs to be downloaded the first time a project is opened, this might take a bit of time. Inside the container, you can find a folder named `cases` wherein you can find the use case folder `wheres_waldo`.
+You'll be prompted for selecting application, for this use case it might be beneficial to use a Computer Vision image, and you can select your prefered deep learning framework. Afterwards you will be asked to mount a data folder for your project. This folder should include your data, for the first run it can empty and you can add images later.
+Then select an editor of your choice to open the Emily template for use case.  A Docker container with a Python environment will be opened. Some content needs to be downloaded the first time a project is opened, this might take a bit of time.
 
-To take full advantage of Emily and the template, your code for prediction should go in `cases/wheres_waldo/ml/predictor.py`:
+To take full advantage of Emily and the template, your code for prediction should go in `api.py`:
 ```
-def predict(self, request):
-        sample = request.image
+@app.post('/api/predict', response_model=PredictResponse)
+def predict(request: PredictRequest = File(...)) -> PredictResponse:
 
-        """
-        Insert your prediction code here
-        """
+    # This is the Where's Waldo image as an RGB matrix
+    image = Image.open(io.BytesIO(request.file.read())).convert("RGB")
 
-        x = 176  # Should be replaced with the prediction
-        y = 165  # Should be replaced with the prediction
+    # This is a dummy prediction - compute a real one
+    prediction = {
+        'x': 130,
+        'y': 850
+    }
 
-        # Leave this to ensure standardized submission format
-        prediction = {'x': x, 'y': y}
-
-        return prediction
+    return PredictResponse(**prediction)
 ```
 For further details about the recommended structure, see <a href="https://dmiai.dk/guide/">this guide</a>.
 You can add new packages to the Python environment by adding the names of the package to requirements.txt and restarting the project.
