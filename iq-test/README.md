@@ -1,6 +1,6 @@
 # IQ test
 <p align="center">
-  <img src="../images/test18.png" height=200> <br>
+  <img src="../images/test18.png" height=200>
   <img src="../images/choices18.png" height=200>
 </p>
 
