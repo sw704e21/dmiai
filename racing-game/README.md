@@ -21,7 +21,14 @@ The car speed describes the speed of the car in either horizontal or vertical di
 You'll be rewarded based on how far your model drives your car without crashing into obstacles. We will run the game for a fixed amount of game ticks and based on how far and how long your car survive, you will be granted points.
 
 ## Getting started using Emily
+Once the repository is cloned, navigate to the folder using a terminal and type:
+```
+emily open racing-game
+```
+You'll be prompted for selecting application, and you can select your prefered deep learning framework. Afterwards you will be asked to mount a data folder for your project. This folder should include your data, for the first run it can empty and you can add images later.
+Then select an editor of your choice to open the Emily template for use case.  A Docker container with a Python environment will be opened. Some content needs to be downloaded the first time a project is opened, this might take a bit of time.
 
+To take full advantage of Emily and the template, your code for prediction should go in `api.py`:
 
 ```
 @app.post('/api/predict', response_model=PredictResponse)
