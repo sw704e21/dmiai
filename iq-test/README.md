@@ -1,10 +1,10 @@
 # IQ test
 <p align="center">
-  <img src="../images/test18.png" height=200> <br>
+  <img src="../images/test18.png" height=200>
   <img src="../images/choices18.png" height=200>
 </p>
 
-Make a model that can get a good score on an IQ test. The test set consists of 36 sets of images each containing a logic puzzle that might involve shape, color, rotation or similar rules. Two png images are provided during evaluation: one image establishing the logic rule, and another with possible answers. The AI must be able to infer completely new rules based on 3 examples and provide an (x,y) point that points to the correct answer. All methods are allowed.  No training data is provided.
+Make a model that can get a good score on an IQ test. The test set consists of 36 sets of images each containing a logic puzzle that might involve shape, color, rotation or similar rules. Two png images are provided during evaluation: one image establishing the logic rule (see example image above to the left), and another with possible answers (above, right). The AI must be able to infer completely new rules based on 3 examples and provide an (x,y) point that points to the correct answer. All methods are allowed.  No training data is provided.
 
 
 ## Evaluation
