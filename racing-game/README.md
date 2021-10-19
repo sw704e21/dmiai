@@ -42,5 +42,8 @@ def predict(request: PredictRequest) -> PredictResponse:
 
 
 ## Testing the connection to the API
+See <a href="https://dmiai.dk/guide/">this guide</a> for details on how to test your setup before final submission.
 
 ## Submission
+When you are ready for submission, <a href="https://dmiai.dk/guide/deploy">click here</a> for instructions on how to deploy. Then, head over to the official <a href="https://dmiai.dk/">DM i AI website</a> and submit your model by providing the host address for your API and your UUID obtained during sign up. Make sure that you have tested your connection to the API before you submit!
+
