@@ -10,7 +10,7 @@ left_sensor_reading: float
 right_sensor_reading: float
 did_crash: bool
 ```
-The car speed describes the speed of the car in either horizontal or vertical direction and the sensor readings states how close other objects are to the car from either right, left or front of the car.
+The car speed describes the speed of the car in either horizontal or vertical direction and the sensor readings states how close other objects are to the car from either right, left or front of the car `did_crash` is a boolean telling if the car crashed or not. Following actions can be performed `ACCELERATE`, `STEER_RIGHT`, `STEER_LEFT` and `BRAKE` as a response to the sensory information.
 
 ## Evaluation
 
