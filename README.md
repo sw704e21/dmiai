@@ -9,7 +9,7 @@ Within each use case, you find a description together with a template that can b
 The API endpoint will be used for submission and are required. Emily can help with setting up the API, but you should feel free to set them up on your own. The API endpoint requirement are specified in the respective use case. <br> <br>
 <a href="https://github.com/amboltio/DM-i-AI/tree/main/wheres-waldo">Case 1: Where's Waldo</a> <br>
 <a href="https://github.com/amboltio/DM-i-AI/tree/main/movie-reviews">Case 2: Movie Rating Prediction</a> <br>
-<a href="https://github.com/amboltio/DM-i-AI/tree/main/race-game">Case 3: Racing Track Simulation</a> <br>
+<a href="https://github.com/amboltio/DM-i-AI/tree/main/racing-game">Case 3: Racing Track Simulation</a> <br>
 <a href="https://github.com/amboltio/DM-i-AI/tree/main/iq-test">Case 4: IQ Test Solver</a> <br>
 
 Clone this GitHub repository to download Emily templates for all four use cases.
