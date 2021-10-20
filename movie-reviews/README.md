@@ -13,7 +13,7 @@ During the week of competition, you will be able to upload your model and test i
 
 Before the deadline, you will submit your final model, and we will evaluate your model with a set of reviews which is **_DIFFERENT_ FROM THE TESTSET!** It will not be possible to test your model against this final evaluation dataset during the week.
 
-Your model will be evaluated on how close to the accual ratings your predictions are. To be exact, your score is measured as the distance between your prediction and the actual rating. An average for all the 1000 test reviews are calculated and is used as your score, the lowest score will grant the most points. i.e. the evaluation metric is mean absolute error.
+Your model will be evaluated on how close to the accual ratings your predictions are. To be exact, your score is measured as the distance between your prediction and the actual rating. An average for all the 1000 test reviews is calculated and used as your score, the lowest score will grant the most points. i.e. the evaluation metric is mean absolute error.
 
 
 ## Getting started using Emily
