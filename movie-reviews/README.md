@@ -1,5 +1,5 @@
 # Movie Review Prediction
-In this use case you will be presented with 1000 unique reviews of various movies found on <a href="https://www.rottentomatoes.com/">Rotten Tomatoes</a>. Your task is to predict the amount of stars this review ended up given the respective movie. See image below for illustration of the concept.
+In this use case you will be presented with 1000 unique reviews of various movies found on <a href="https://www.rottentomatoes.com/">Rotten Tomatoes</a>. Your task is to predict the amount of stars for the review given the respective movie. See image below for illustration of the concept.
 
 <p align="center">
   <img src="../images/example.png" width=550>
