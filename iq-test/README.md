@@ -45,8 +45,7 @@ For further details about the recommended structure, see <a href="https://dmiai.
 You can add new packages to the Python environment by adding the names of the packages to requirements.txt and restarting the project, or by using pip install on a terminal within the container which will result in the package being installed temporarily i.e. it is not installed if the project is restarted.
 
 ## Getting started without using Emily
-To submit results you need to set up your own API. Somehow idk.
-Your API should be set up to return the coordinates with format like:
+To submit results you need to set up your own API. Your API should be set up to return the coordinates with format like:
 ```
 {'x': x, 'y': y}
 ```
