@@ -9,7 +9,7 @@ The stars given are in the interval 0, 0.5, 1, ..., 4.5, 5.
 
 
 ## Evaluation
-During the week of competition, you will be able to upload your model and have them test it against a testset of reviews. The most recent score your model achieves on the testset will be displayed on the scoreboard.
+During the week of competition, you will be able to upload your model and test it against a testset of reviews. The most recent score your model achieves on the testset will be displayed on the scoreboard.
 
 Before the deadline, you will submit your final model, and we will evaluate your model with a set of reviews which is **_DIFFERENT_ FROM THE TESTSET!** It will not be possible to test your model against this final evaluation dataset during the week.
 
