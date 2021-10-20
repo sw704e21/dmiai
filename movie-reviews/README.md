@@ -19,7 +19,7 @@ Your model will be evaluated on how close to the accual ratings your predictions
 ## Getting started using Emily
 Once the repository is cloned, navigate to the folder using a terminal and type:
 ```
-emily open movie-reviews.
+emily open movie-reviews
 ```
 You'll be prompted for selecting application, for this use case it might be beneficial to use a Natural Language Processing image, and you can select your prefered deep learning framework. Afterwards you will be asked to mount a data folder for your project. This folder should include your data, for the first run it can empty and you can add images later. Then select an editor of your choice to open the Emily template for use case. A Docker container with a Python environment will be opened. Some content needs to be downloaded the first time a project is opened, this might take a bit of time.
 
