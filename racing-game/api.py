@@ -11,6 +11,7 @@ from dtos.responses import PredictResponse, ActionType
 from settings import Settings, load_env
 from static.render import render
 from utilities.utilities import get_uptime
+import random
 
 load_env()
 
@@ -33,18 +34,18 @@ middleware.cors.setup(app)
 @app.post('/api/predict', response_model=PredictResponse)
 def predict(request: PredictRequest) -> PredictResponse:
 
-    action = None
-
     # You receive the entire game state in the request object.
     # Read the game state and decide what to do in the next game tick.
 
-    if request.car_speed_horizontal > 9000:
-        action = ActionType.BRAKE
-    else:
-        action = ActionType.ACCELERATE
+    if request.did_crash:
+        print('Oops...')
+
+    actions = [ActionType.ACCELERATE, ActionType.DECELERATE,
+               ActionType.STEER_LEFT, ActionType.STEER_RIGHT,
+               ActionType.NOTHING]
 
     return PredictResponse(
-        action=action
+        action=random.choice(actions)
     )
 
 
