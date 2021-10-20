@@ -1,4 +1,5 @@
 
+from loguru import logger
 import uvicorn
 from fastapi import FastAPI
 from starlette.responses import HTMLResponse
@@ -27,7 +28,7 @@ load_env()
 app = FastAPI()
 settings = Settings()
 
-middleware.logging.setup(app)
+middleware.logging.setup(app, exclude_paths=['/api/predict'])
 middleware.cors.setup(app)
 
 
@@ -38,7 +39,7 @@ def predict(request: PredictRequest) -> PredictResponse:
     # Read the game state and decide what to do in the next game tick.
 
     if request.did_crash:
-        print('Oops...')
+        logger.info(f'Crashed after {request.elapsed_time_ms} ms')
 
     actions = [ActionType.ACCELERATE, ActionType.DECELERATE,
                ActionType.STEER_LEFT, ActionType.STEER_RIGHT,
