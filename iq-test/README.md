@@ -14,8 +14,7 @@ Notice that you can only submit once for this use case! We encourage you to test
 The documentation is by default found at `0.0.0.0:4242/docs`, and then find your endpoint for the use case. <br>
 
 After evaluation, your final score will be provided. This score can be seen on the [leaderboard for this task] within 5 minutes.
-
-Upon completion of the contest, the top 5 highest ranking teams will be asked to submit their training code and the trained models for validation. The final ranking is announced on 30/11. <br> <br>
+<br> <br>
 
 ## Getting started using Emily
 Once the repository is cloned, navigate to the folder using a terminal and type:
