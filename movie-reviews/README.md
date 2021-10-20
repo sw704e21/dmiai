@@ -1,39 +1,44 @@
 # Movie Review Prediction
-In this use case you will be presented with unique 1000 reviews of various movies found on <a href="https://www.rottentomatoes.com/">Rotten Tomatoes</a>. Your task is to predict the amount of stars this review ended up given the respective movie. See image below for illustration of the concept.
+In this use case you will be presented with 1000 unique reviews of various movies found on <a href="https://www.rottentomatoes.com/">Rotten Tomatoes</a>. Your task is to predict the amount of stars for the given review. See image below for illustration of the concept.
 
 <p align="center">
   <img src="../images/example.png" width=550>
 </p>
 
-The stars given are in the interval 0.5, 1, ..., 4.5, 5. Your model needs to round to the nearest half.
+The stars given are in the interval 0, 0.5, 1, ..., 4.5, 5.
 
 
 ## Evaluation
-You will be measured upon how close to the accual rating your predictions are, to be exact, your score would be measured by the distance between your prediction and the actual rating. An average for all the 1000 test reviews are calculated and are used for your score, the lowest score will grant the most points.
+During the week of competition, you will be able to upload your model and test it against a testset of reviews. The most recent score your model achieves on the testset will be displayed on the scoreboard.
+
+Before the deadline, you will submit your final model, and we will evaluate your model with a set of reviews which is **_DIFFERENT_ FROM THE TESTSET!** It will not be possible to test your model against this final evaluation dataset during the week.
+
+Your model will be evaluated on how close to the accual ratings your predictions are. To be exact, your score is measured as the distance between your prediction and the actual rating. An average for all the 1000 test reviews is calculated and used as your score, the lowest score will grant the most points. i.e. the evaluation metric is mean absolute error.
 
 
 ## Getting started using Emily
 Once the repository is cloned, navigate to the folder using a terminal and type:
 ```
-emily open .
+emily open movie-reviews
 ```
-then select an editor of your choice to open the Emily template for use cases. A Docker container with a Python environment will be opened. Some content needs to be downloaded the first time a project is opened, this might take a bit of time. Inside the container, you can find a folder named `cases` wherein you can find the use case folder `movie_reviews`.
+You will be prompted for selecting application. For this use case it might be beneficial to use a Natural Language Processing image, where you can select your prefered deep learning framework. Afterwards you will be asked to mount a data folder for your project. This folder should include your data, for the first run it can empty and you can add data later. Then select an editor of your choice to open the Emily template for the use case. A Docker container with a Python environment will be opened. Some content needs to be downloaded the first time a project is opened, this might take a bit of time.
 
-To take full advantage of Emily and the template, your code for prediction should go in cases/movie_reviews/ml/predictor.py:
+To take full advantage of Emily and the template, your code for prediction should go in api.py:
 ```
-  def predict(self, request):
-      # Unpack request
-      sentence = request.sentence
-      
-      """
-      Insert your prediction code here
-      """
+@app.post('/api/predict', response_model=PredictResponse)
+def predict(request: PredictRequest) -> PredictResponse:
 
-      prediction = 3.5  # Should be replaced with the prediction
-      return prediction
+    # You receive all reviews as plaintext in the request.
+    # Return a list of predicted ratings between 1-5 (inclusive).
+    # You must return the same number of ratings as there are reviews, and each
+    # rating will be associated with the review at the same index in the request list.
+
+    ratings = [random.randint(1, 5) for review in request.reviews]
+
+    return PredictResponse(ratings=ratings)
 ```
 For further details about the recommended structure, see <a href="https://dmiai.dk/guide/">this guide</a>.
-You can add new packages to the Python environment by adding the names of the package to requirements.txt and restarting the project.
+You can add new packages to the Python environment by adding the names of the packages to requirements.txt and restarting the project.
 
 
 ## Getting started without using Emily
@@ -43,4 +48,4 @@ TBD
 See <a href="https://dmiai.dk/guide/">this guide</a> for details on how to test your setup before final submission.
 
 ## Submission
-When you are ready for submission, head over to the official <a href="https://dmiai.dk/">DM i AI website</a> and submit your model by providing the host address for your API and your UUID obtained during sign up. Make sure that you have tested your connection to the API before you submit!
+When you are ready for submission, <a href="https://dmiai.dk/guide/deploy">click here</a> for instructions on how to deploy. Then, head over to the official <a href="https://dmiai.dk/">DM i AI website</a> and submit your model by providing the host address for your API and your UUID obtained during sign up. Make sure that you have tested your connection to the API before you submit!
