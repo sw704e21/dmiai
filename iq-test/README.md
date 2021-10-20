@@ -4,11 +4,11 @@
   <img src="../images/choices18.png" height=200>
 </p>
 
-Make a model that can get a good score in an IQ test. The test set consists of 36 sets of images each containing a logic puzzle that might involve shape, color, rotation or similar rules. Two png images are provided during evaluation: one image establishing the logic rule (see example image above to the left), and another with possible answers (above, right). The AI must be able to infer completely new rules based on 3 examples and provide an (x,y) point that points to the correct answer. All methods are allowed.  No training data is provided.
+Make a model that can get a good score in an IQ test. The test set consists of 36 sets of images each containing a logic puzzle that might involve shape, color, rotation or similar rules. Two png images are provided during evaluation: one image establishing the logic rule (see example image above to the left), and another with possible answers (above, right). The AI must be able to infer completely new rules based on 3 examples and provide an (x,y) point that points to the correct answer within 10 seconds. All methods are allowed.  No training data is provided.
 
 
 ## Evaluation
-You will be granted points based on how many correct answers you get, with 1 point available for a correct answer on each test/image. Your model must give an (x,y) point that is within a bounding box containing the correct answer.
+You will be granted points based on how many correct answers you get, with 1 point available for a correct answer on each test/image. Your model must give an (x,y) point that is within a bounding box containing the correct answer. It has 10 seconds to return the answer.
 
 Notice that you can only submit once for this use case! We encourage you to test your code and API before you submit your final model. You can find the documentation of your API where you can _try out_ images and verify the prediction. <br>
 The documentation is by default found at `0.0.0.0:4242/docs`, and then find your endpoint for the use case. <br>
