@@ -20,7 +20,7 @@ Upon completion of the contest, the top 5 highest ranking teams will be asked to
 ## Getting started using Emily
 Once the repository is cloned, navigate to the folder using a terminal and type:
 ```
-emily open .
+emily open iq-test
 ```
 then select an editor of your choice to open the Emily template for use cases. A Docker container with a Python environment will be opened. Some content needs to be downloaded the first time a project is opened, this might take a bit of time. Inside the container, you can find a folder named `cases` wherein you can find the use case folder `iq-test`.
 
