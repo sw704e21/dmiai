@@ -38,7 +38,7 @@ def predict(request: PredictRequest) -> PredictResponse:
     return PredictResponse(ratings=ratings)
 ```
 For further details about the recommended structure, see <a href="https://dmiai.dk/guide/">this guide</a>.
-You can add new packages to the Python environment by adding the names of the package to requirements.txt and restarting the project.
+You can add new packages to the Python environment by adding the names of the packages to requirements.txt and restarting the project.
 
 
 ## Getting started without using Emily
