@@ -35,3 +35,5 @@ The number of submissions is specific for each use case, and you can find the ma
 * Case 2 - Movie Rating Prediction: **3 times** <br>
 * Case 3 - Racing Track Simulation: **Unlimited** <br>
 * Case 4 - IQ Test Solver: **1 time** <br>
+
+Upon completion of the contest, the top 5 highest ranking teams will be asked to submit their training code and the trained models for validation. The final ranking is announced on 30/11. 
