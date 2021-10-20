@@ -1,7 +1,25 @@
 # Racing Track Simulation
 In this use case, you should implement a model, that can control a car on a highway to avoid obstacles and drive as far as possible within 5000 time steps. You'll receive sensory information from the car and you should predict the next action to perform. An illustration of the game can be seen in the image below:
 
+## Quick start
 
+1. Clone the repository and open with Emily
+    ```
+    git clone https://github.com/amboltio/DM-i-AI.git
+    emily open ./racing-game --editor vscode
+    ```
+2. Once VS Code has opened, open a new terminal and run
+    ```
+    python api.py
+    ```
+3. Visit https://api.dmiai.dk/racing-game
+4. Register your microservice @ `http://localhost:4242/api/predict`
+5. Press the `HEALTH CHECK` button
+6. Press the `START` button
+
+Your microservice is now taking requests from the game engine.
+
+# Documentation
 <img src="../images/raw.jpg" width=450> <img src="../images/raw_with_drawings.jpg" width=450>
 
 
