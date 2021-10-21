@@ -6,7 +6,7 @@ from starlette.responses import HTMLResponse
 import middleware.cors
 import middleware.logging
 import io
-from PIL.Image import Image
+from PIL import Image
 from dtos.requests import PredictRequest
 from dtos.responses import PredictResponse
 
