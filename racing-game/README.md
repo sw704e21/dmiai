@@ -24,12 +24,18 @@ Your microservice is now taking requests from the game engine.
 # Documentation
 You get the following information in every time step, these are specified in `dtos/requests.py`:
 ```
-game_tick: int
-car_speed_horizontal: float
-car_speed_vertical: float
-front_sensor_reading: float
-left_sensor_reading: float
-right_sensor_reading: float
+elapsed_time_ms: int
+distance: int
+sensors.left_side: int
+sensors.left_front: int
+sensors.front: int
+sensors.right_front: int
+sensors.right_side: int
+sensors.right_back: int
+sensors.back: int
+sensors.left_back: int
+velocity.x: int
+velocity.y: int
 did_crash: bool
 ```
 The car speed describes the speed of the car in either horizontal or vertical direction and the sensor readings state how close other objects are to the car from either right, left or front of the car `did_crash` is a boolean telling if the car crashed or not. Following actions can be performed `ACCELERATE`, `STEER_RIGHT`, `STEER_LEFT`, `DECELERATE` or `NOTHING` as a response to the sensory information.
