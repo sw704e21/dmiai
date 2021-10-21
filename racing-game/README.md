@@ -1,6 +1,8 @@
 # Racing Track Simulation
 In this use case, you should implement a model, that can control a car on a highway to avoid obstacles and drive as far as possible within 5000 time steps. You'll receive sensory information from the car and you should predict the next action to perform. An illustration of the game can be seen in the image below:
 
+<img src="../images/racing-game.png" width=450> <img src="../images/racing-game-sensor.png" width=450>
+
 ## Quick start
 
 1. Clone the repository and open with Emily
@@ -20,9 +22,6 @@ In this use case, you should implement a model, that can control a car on a high
 Your microservice is now taking requests from the game engine.
 
 # Documentation
-<img src="../images/raw.jpg" width=450> <img src="../images/raw_with_drawings.jpg" width=450>
-
-
 You get the following information in every time step, these are specified in `dtos/requests.py`:
 ```
 game_tick: int
