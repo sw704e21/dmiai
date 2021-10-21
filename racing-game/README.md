@@ -48,7 +48,7 @@ Once the repository is cloned, navigate to the folder using a terminal and type:
 ```
 emily open racing-game
 ```
-You'll be prompted for selecting application, and you can select your prefered deep learning framework. Afterwards you will be asked to mount a data folder for your project. This folder should include your data, for the first run it can be empty and you can add data later.
+You'll be prompted for selecting application, and you can select your preferred deep learning framework. Afterwards you will be asked to mount a data folder for your project. This folder should include your data, for the first run it can be empty and you can add data later.
 Then select an editor of your choice to open the Emily template for the use case.  A Docker container with a Python environment will be opened. Some content needs to be downloaded the first time a project is opened, this might take a bit of time.
 
 To take full advantage of Emily and the template, your code for prediction should go in `api.py`:
