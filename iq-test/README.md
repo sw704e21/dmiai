@@ -1,4 +1,4 @@
-# IQ test
+# IQ Test Solver
 <p align="center">
   <img src="../images/test18.png" height=200>
   <img src="../images/choices18.png" height=200>
