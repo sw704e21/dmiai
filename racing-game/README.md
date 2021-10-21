@@ -72,10 +72,6 @@ def predict(request: PredictRequest) -> PredictResponse:
     )
 ```
 
-## Getting started without using Emily
-
-
-
 ## Testing the connection to the API
 See <a href="https://dmiai.dk/guide/">this guide</a> for details on how to test your setup before final submission.
 
