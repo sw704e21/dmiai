@@ -38,7 +38,7 @@ velocity.x: int
 velocity.y: int
 did_crash: bool
 ```
-The car speed describes the speed of the car in either horizontal or vertical direction and the sensor readings state how close other objects are to the car from either right, left or front of the car `did_crash` is a boolean telling if the car crashed or not. Following actions can be performed `ACCELERATE`, `STEER_RIGHT`, `STEER_LEFT`, `DECELERATE` or `NOTHING` as a response to the sensory information.
+The car velocity describes the speed of the car in either horizontal or vertical direction and the sensor readings state how close other obstacles are to the car from either right, left or front of the car `did_crash` is a boolean telling if the car crashed or not. Following actions can be performed `ACCELERATE`, `STEER_RIGHT`, `STEER_LEFT`, `DECELERATE` or `NOTHING` as a response to the sensory information.
 
 ## Evaluation
 You'll be rewarded based on how far your model drives your car without crashing into obstacles. We will run the game for a fixed amount of game ticks and based on how far and how long your car survive, you will be granted points.
@@ -57,18 +57,18 @@ To take full advantage of Emily and the template, your code for prediction shoul
 @app.post('/api/predict', response_model=PredictResponse)
 def predict(request: PredictRequest) -> PredictResponse:
 
-    action = None
-
     # You receive the entire game state in the request object.
     # Read the game state and decide what to do in the next game tick.
 
-    if request.car_speed_horizontal > 9000:
-        action = ActionType.BRAKE
-    else:
-        action = ActionType.ACCELERATE
+    if request.did_crash:
+        logger.info(f'Crashed after {request.elapsed_time_ms} ms')
+
+    actions = [ActionType.ACCELERATE, ActionType.DECELERATE,
+               ActionType.STEER_LEFT, ActionType.STEER_RIGHT,
+               ActionType.NOTHING]
 
     return PredictResponse(
-        action=action
+        action=random.choice(actions)
     )
 ```
 
