@@ -1,4 +1,5 @@
 
+from loguru import logger
 import uvicorn
 from fastapi import FastAPI
 from starlette.responses import HTMLResponse
@@ -11,6 +12,7 @@ from dtos.responses import PredictResponse, ActionType
 from settings import Settings, load_env
 from static.render import render
 from utilities.utilities import get_uptime
+import random
 
 load_env()
 
@@ -26,25 +28,25 @@ load_env()
 app = FastAPI()
 settings = Settings()
 
-middleware.logging.setup(app)
+middleware.logging.setup(app, exclude_paths=['/api/predict'])
 middleware.cors.setup(app)
 
 
 @app.post('/api/predict', response_model=PredictResponse)
 def predict(request: PredictRequest) -> PredictResponse:
 
-    action = None
-
     # You receive the entire game state in the request object.
     # Read the game state and decide what to do in the next game tick.
 
-    if request.car_speed_horizontal > 9000:
-        action = ActionType.BRAKE
-    else:
-        action = ActionType.ACCELERATE
+    if request.did_crash:
+        logger.info(f'Crashed after {request.elapsed_time_ms} ms')
+
+    actions = [ActionType.ACCELERATE, ActionType.DECELERATE,
+               ActionType.STEER_LEFT, ActionType.STEER_RIGHT,
+               ActionType.NOTHING]
 
     return PredictResponse(
-        action=action
+        action=random.choice(actions)
     )
 
 
