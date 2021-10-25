@@ -34,9 +34,9 @@ middleware.cors.setup(app)
 @app.post('/api/predict', response_model=PredictResponse)
 def predict(request: PredictRequest) -> PredictResponse:
 
-    # You receive all images in base64 encoding.
-    images = [request.image_1_base64, request.image_2_base64]
-    choices = request.image_3_choices_base64
+    # You receive image in base64 encoding.
+    image = request.image_base64
+    choices = request.image_choices_base64
 
     # Process the first two images, and predict the next correct image
     # from the list of image choices
