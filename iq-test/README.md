@@ -45,7 +45,7 @@ In case you need additional debian packages inside your container, for instance,
 
 
 ## Testing the connection to the API
-See <a href="https://dmiai.dk/guide/">this guide</a> for details on how to test your setup before final submission.
+See <a href="https://amboltio.github.io/emily-intro/deploy/">this guide</a> for details on how to test your setup before final submission.
 
 ## Submission
 When you are ready for submission, <a href="https://dmiai.dk/guide/deploy">click here</a> for instructions on how to deploy. Then, head over to the <a href="https://amboltio.github.io/DM-i-AI-client/">Submission Form</a> and submit your model by providing the host address for your API and your UUID obtained during sign up. Make sure that you have tested your connection to the API before you submit!<br>
