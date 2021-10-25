@@ -10,7 +10,7 @@ In this use case, you should implement a model, that can control a car on a high
     git clone https://github.com/amboltio/DM-i-AI.git
     emily open racing-game
     ```
-2. Once VS Code has opened, open a new terminal and run
+2. Once your editor has opened, open a new terminal and run
     ```
     python api.py
     ```
