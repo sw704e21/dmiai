@@ -20,7 +20,7 @@ Inside the DM-i-AI folder, you will find the four different use cases. To open a
 
 <h2>Emily CLI</h2>
 The <a href="https://ambolt.io/emily-ai/">Emily CLI</a> is built and maintained by <a href="https://ambolt.io/">Ambolt</a> to help developers and teams implement and run production ready machine learning powered micro services fast and easy. <br>
-<a href="https://github.com/amboltio/emily-cli/wiki">Click here</a> for getting started with Emily. Emily can assist you with developing the required API endpoints for the use cases. Together with every use case a predefined and documented template is provided to ensure correct API endpoints for the specific use case.
+<a href="https://github.com/amboltio/emily-cli/wiki">Click here</a> for getting started with Emily. Emily can assist you with developing the required API endpoints for the use cases. Together with every use case a predefined and documented template is provided to ensure correct API endpoints for the specific use case. You can find the documentation of the entire framework <a href="https://amboltio.github.io/emily-cli-documentation-client/">here!</a>. <br>
 The use cases have been build on top of the <a href="https://fastapi.tiangolo.com/">FastAPI</a> framework, and should be used to specify endpoints in every use case.
 
 <h2>Discord Channel</h2>
@@ -28,7 +28,7 @@ Come meet and talk to other competitors of the event on our Discord channel. Dis
 
 
 <h2>Submission</h2>
-When you are ready for submission, <a href="https://dmiai.dk/guide/deploy">click here</a> for instructions on how to deploy. Then, head over to the official <a href="https://dmiai.dk/">DM i AI website</a> and submit your model by providing the host address for your API and your UUID obtained during sign up. Make sure that you have tested your connection to the API before you submit!<br>
+When you are ready for submission, <a href="https://dmiai.dk/guide/deploy">click here</a> for instructions on how to deploy. Then, head over to the <a href="https://amboltio.github.io/DM-i-AI-client/">Submission Form</a> and submit your model by providing the host address for your API and your UUID obtained during sign up. Make sure that you have tested your connection to the API before you submit!<br>
 The number of submissions is specific for each use case, and you can find the maximum number of allowed submissions below: <br> <br>
 
 * Case 1 - Where's Waldo: **1 time** <br>
