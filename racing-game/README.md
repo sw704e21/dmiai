@@ -1,11 +1,11 @@
 # Racing Track Simulation
-In this use case, you should implement a model, that can control a car on a highway to avoid obstacles and drive as far as possible within 5000 time steps. You'll receive sensory information from the car and you should predict the next action to perform. An illustration of the game can be seen in the image below:
+In this use case, you should implement a model, that can control a car on a highway to avoid obstacles and drive as far as possible within 5000-time steps. You'll receive sensory information from the car and you should predict the next action to perform. An illustration of the game can be seen in the image below:
 
 <img src="../images/racing-game.png" width=450> <img src="../images/racing-game-sensor.png" width=450>
 
-## Quick start
+## Quickstart
 
-1. Clone the repository and open with Emily
+1. Clone the repository and open it with Emily
     ```
     git clone https://github.com/amboltio/DM-i-AI.git
     emily open ./racing-game --editor vscode
@@ -48,7 +48,7 @@ Once the repository is cloned, navigate to the folder using a terminal and type:
 ```
 emily open racing-game
 ```
-You'll be prompted for selecting application, and you can select your preferred deep learning framework. Afterwards you will be asked to mount a data folder for your project. This folder should include your data, for the first run it can be empty and you can add data later.
+You'll be prompted for selecting an application, and you can select your preferred deep learning framework. Afterwards, you will be asked to mount a data folder for your project. This folder should include your data, for the first run it can be empty and you can add data later.
 Then select an editor of your choice to open the Emily template for the use case.  A Docker container with a Python environment will be opened. Some content needs to be downloaded the first time a project is opened, this might take a bit of time.
 
 To take full advantage of Emily and the template, your code for prediction should go in `api.py`:
