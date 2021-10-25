@@ -23,8 +23,8 @@ The <a href="https://ambolt.io/emily-ai/">Emily CLI</a> is built and maintained 
 <a href="https://github.com/amboltio/DM-i-AI/tree/main">Click here</a> for getting started with Emily. Emily can assist you with developing the required API endpoints for the use cases. Together with every use case a predefined and documented template is provided to ensure correct API endpoints for the specific use case.
 The use cases have been build on top of the <a href="https://fastapi.tiangolo.com/">FastAPI</a> framework, and should be used to specify endpoints in every use case.
 
-<h2>Slack Channel</h2>
-Come meet and talk to other competitors of the event on our Slack channel. Discuss the use cases with eachother or get in touch with any of the Ambolt staff, to solve eventual issues or questions that may arise during the competition. <a href="https://join.slack.com/t/ambolt-workspace/shared_invite/zt-x3v58h8z-3R2NX62fjoxRyXAabx1wIQ">Join here!</a> <br>
+<h2>Discord Channel</h2>
+Come meet and talk to other competitors of the event on our Discord channel. Discuss the use cases with eachother or get in touch with any of the Ambolt staff, to solve eventual issues or questions that may arise during the competition. <a href="https://discord.gg/EPMjWgpJ">Join here!</a> <br>
 
 
 <h2>Submission</h2>
