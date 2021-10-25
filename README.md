@@ -20,7 +20,7 @@ Inside the DM-i-AI folder, you will find the four different use cases. To open a
 
 <h2>Emily CLI</h2>
 The <a href="https://ambolt.io/emily-ai/">Emily CLI</a> is built and maintained by <a href="https://ambolt.io/">Ambolt</a> to help developers and teams implement and run production ready machine learning powered micro services fast and easy. <br>
-<a href="https://github.com/amboltio/emily-cli/wiki">Click here</a> for getting started with Emily. Emily can assist you with developing the required API endpoints for the use cases. Together with every use case a predefined and documented template is provided to ensure correct API endpoints for the specific use case. You can find the documentation of the entire framework <a href="https://amboltio.github.io/emily-cli-documentation-client/">here!</a>. <br>
+<a href="https://github.com/amboltio/emily-cli/wiki">Click here</a> for getting started with Emily. Emily can assist you with developing the required API endpoints for the use cases. Together with every use case a predefined and documented template is provided to ensure correct API endpoints for the specific use case. You can find the documentation of the entire framework <a href="https://amboltio.github.io/emily-cli-documentation-client/">here</a>. <br>
 The use cases have been built on top of the <a href="https://fastapi.tiangolo.com/">FastAPI</a> framework, and should be used to specify endpoints in every use case.
 
 <h2>Discord Channel</h2>
