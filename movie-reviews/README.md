@@ -37,7 +37,8 @@ def predict(request: PredictRequest) -> PredictResponse:
     return PredictResponse(ratings=ratings)
 ```
 For further details about the recommended structure, see <a href="https://dmiai.dk/guide/">this guide</a>.
-You can add new packages to the Python environment by adding the names of the packages to requirements.txt and restarting the project.
+You can add new packages to the Python environment by adding the names of the packages to requirements.txt and restarting the project, or by using pip install on a terminal within the container which will result in the package being installed temporarily i.e. it is not installed if the project is restarted. <br>
+In case you need additional debian packages inside your container, for instance, Git, CMAKE, gcc or similar, check <a href="https://github.com/amboltio/emily-cli/wiki/How-to-add-Debian-packages-to-your-project">this guide</a> for installing extra packages.
 
 ## Testing the connection to the API
 See <a href="https://dmiai.dk/guide/">this guide</a> for details on how to test your setup before final submission.
