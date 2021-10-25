@@ -46,7 +46,7 @@ def predict(request: PredictRequest = File(...)) -> PredictResponse:
 
     return PredictResponse(**prediction)
 ```
-For further details about the recommended structure, see <a href="https://dmiai.dk/guide/">this guide</a>.
+For further details about the recommended structure, see <a href="https://amboltio.github.io/emily-intro/emily-intro/">this guide</a>.
 You can add new packages to the Python environment by adding the names of the packages to requirements.txt and restarting the project, or by using pip install on a terminal within the container which will result in the package being installed temporarily i.e. it is not installed if the project is restarted. <br>
 In case you need additional debian packages inside your container, for instance, Git, CMAKE, gcc or similar, check <a href="https://github.com/amboltio/emily-cli/wiki/How-to-add-Debian-packages-to-your-project">this guide</a> for installing extra packages.
 
