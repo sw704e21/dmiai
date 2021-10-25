@@ -10,13 +10,13 @@ The API endpoint will be used for submission and is required. <a href="https://g
 <a href="https://github.com/amboltio/DM-i-AI/tree/main/wheres-waldo">Case 1: Where's Waldo</a> <br>
 <a href="https://github.com/amboltio/DM-i-AI/tree/main/movie-reviews">Case 2: Movie Rating Prediction</a> <br>
 <a href="https://github.com/amboltio/DM-i-AI/tree/main/racing-game">Case 3: Racing Track Simulation</a> <br>
-<a href="https://github.com/amboltio/DM-i-AI/tree/main/iq-test">Case 4: IQ Test Solver</a> <br>
+<a href="https://github.com/amboltio/DM-i-AI/tree/main/iq-test">Case 4: IQ Test Solver</a> <br> <br>
 
 Clone this GitHub repository to download Emily templates for all four use cases.
 ```
 git clone https://github.com/amboltio/DM-i-AI.git
 ```
-Inside the DM-i-AI folder, you will find the four different use cases. To open a use case type `emily open <use-case>` e.g. `emily open wheres-waldo` to open the first use case.
+Inside the DM-i-AI folder, you will find the four different use cases. To open a use case with Emily type `emily open <use-case>` e.g. `emily open wheres-waldo` to open the first use case.
 
 <h2>Emily CLI</h2>
 The <a href="https://ambolt.io/emily-ai/">Emily CLI</a> is built and maintained by <a href="https://ambolt.io/">Ambolt</a> to help developers and teams implement and run production ready machine learning powered micro services fast and easy. <br>
