@@ -4,7 +4,7 @@
   <img src="../images/choices18.png" height=200>
 </p>
 
-Make a model that can get a good score in an IQ test. The test set consists of 36 sets of images each containing a logic puzzle that might involve shape, color, rotation or similar rules. Ten images are provided during evaluation: one image establishing the logic rule (see example image above to the left), and a list of 9 images with possible answers (above, right). The "test" image has dimensions 550x440px, created by combining tiles of size 110x110px. The images with possible answers are all 110x110px. The AI must be able to infer completely new logic rules based on the 3 examples in the test image and provide the index of the correct answer from the list of choices within 10 seconds. All methods are allowed.  No training data is provided.
+Make a model that can get a good score on an IQ test. The test set consists of 36 sets of images each containing a logic puzzle that might involve shape, color, rotation or similar rules. Ten images are provided during evaluation: one image establishing the logic rule (see example image above to the left), and a list of 9 images with possible answers (above, right). The "test" image has dimensions 550x440px, created by combining tiles of size 110x110px. The images with possible answers are all 110x110px. The AI must be able to infer completely new logic rules based on the 3 examples in the test image and provide the index of the correct answer from the list of choices within 10 seconds. All methods are allowed.  No training data is provided.
 
 
 ## Evaluation
@@ -21,7 +21,7 @@ Once the repository is cloned, navigate to the folder using a terminal and type:
 ```
 emily open iq-test
 ```
-You'll be prompted for selecting application, and you can select your preferred deep learning framework. Afterwards you will be asked to mount a data folder for your project. This folder should include your data, for the first run it can be empty and you can add images later.
+You'll be prompted for selecting an application, and you can select your preferred deep learning framework. Afterwards, you will be asked to mount a data folder for your project. This folder should include your data, for the first run it can be empty and you can add images later.
 Then select an editor of your choice to open the Emily template for the use case. A Docker container with a Python environment will be opened. Some content needs to be downloaded the first time a project is opened, this might take a bit of time.
 
 To take full advantage of Emily and the template, your code for prediction should go in `api.py`:
@@ -32,9 +32,6 @@ def predict(request: PredictRequest) -> PredictResponse:
     # You receive image in base64 encoding.
     image = request.image_base64
     choices = request.image_choices_base64
-
-    # Process the first two images, and predict the next correct image
-    # from the list of image choices
     
     # Dummy prediction - chooses a random image from the list of choices
     next_image_index = random.choice([index for index in range(len(choices))])
