@@ -39,8 +39,7 @@ def predict(request: PredictRequest) -> PredictResponse:
     # You must return the same number of ratings as there are reviews, and each
     # rating will be associated with the review at the same index in the request list.
 
-    ratings = [random.randint(1, 5) for review in request.reviews]
-
+    ratings = [random.uniform(0.5, 5.0) for review in request.reviews]
     return PredictResponse(ratings=ratings)
 
 
