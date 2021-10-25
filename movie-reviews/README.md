@@ -5,16 +5,15 @@ In this use case you will be presented with 1000 unique reviews of various movie
   <img src="../images/example.png" width=550>
 </p>
 
-The stars given are in the interval 0, 0.5, 1, ..., 4.5, 5.
+The stars given are in the interval 0.5, 1, ..., 4.5, 5. You'll recive a list of 1000 strings, containing a review each. You should return the ratings as a list of floats corresponding to a rating for each review.
 
 
 ## Evaluation
-During the week of competition, you will be able to upload your model and test it against a testset of reviews. The most recent score your model achieves on the testset will be displayed on the scoreboard.
+During the week of competition, you will be able to test your model and test it against a testset of reviews. The most recent score your model achieves on the testset will be displayed on the scoreboard.
 
 Before the deadline, you will submit your final model, and we will evaluate your model with a set of reviews which is **_DIFFERENT_ FROM THE TESTSET!** It will not be possible to test your model against this final evaluation dataset during the week.
 
-Your model will be evaluated on how close to the accual ratings your predictions are. To be exact, your score is measured as the distance between your prediction and the actual rating. An average for all the 1000 test reviews is calculated and used as your score, the lowest score will grant the most points. i.e. the evaluation metric is mean absolute error.
-
+Your model will be evaluated on how close to the actual ratings your predictions are. To be exact, your score is measured as the distance between your prediction and the actual rating. An average for all the 1000 test reviews is calculated and used as your score, the lowest score will grant the most points. i.e. the evaluation metric is mean absolute error. The mean absolute error will be scaled such that an MAE score of 4.5 leads to 0 points, and MAE of 0 gives 100 points.
 
 ## Getting started using Emily
 Once the repository is cloned, navigate to the folder using a terminal and type:
@@ -29,7 +28,7 @@ To take full advantage of Emily and the template, your code for prediction shoul
 def predict(request: PredictRequest) -> PredictResponse:
 
     # You receive all reviews as plaintext in the request.
-    # Return a list of predicted ratings between 1-5 (inclusive).
+    # Return a list of predicted ratings between 0.5-5 (inclusive).
     # You must return the same number of ratings as there are reviews, and each
     # rating will be associated with the review at the same index in the request list.
 
