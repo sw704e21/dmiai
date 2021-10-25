@@ -1,5 +1,5 @@
 # DM i AI
-Welcome to the event <a href="https://dmiai.dk/">DM i AI</a> hosted by <a href="https://ambolt.io/">Ambolt</a> ApS.
+Welcome to the event <a href="https://dmiai.dk/">DM i AI</a> hosted by <a href="https://ambolt.io/">Ambolt ApS</a>.
 In this GitHub repository, you will find all the necessary information needed for the event. Please read the entire information before proceeding to the use case, and please make sure to read the full description of all the use cases. You will be granted points for each use case based on how well you score in the respective use case.
 
 
