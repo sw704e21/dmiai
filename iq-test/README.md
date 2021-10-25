@@ -12,7 +12,7 @@ You will be granted points based on how many correct answers you get, with 1 poi
 
 Notice that you can only submit once for this use case! We encourage you to test your code and API before you submit your final model. You can find the documentation of your API where you can _try out_ images and verify the prediction. <br>
 The documentation is by default found at `0.0.0.0:4242/docs`, and then find your endpoint for the use case. <br>
-After evaluation, your final score will be provided. This score can be seen on the <a href="https://amboltio.github.io/DM-i-AI-client/#/leaderboard">leaderboard</a> within 5 minutes.
+After evaluation, your final score will be provided. This score can be seen on the <a href="https://amboltio.github.io/DM-i-AI-client/#/leaderboard">leaderboard</a> within a few minutes.
 <br> <br>
 
 ## Getting started using Emily
