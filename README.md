@@ -32,7 +32,7 @@ When you are ready for submission, <a href="https://dmiai.dk/guide/deploy">click
 The number of submissions is specific for each use case, and you can find the maximum number of allowed submissions below: <br> <br>
 
 * Case 1 - Where's Waldo: **1 time** <br>
-* Case 2 - Movie Rating Prediction: **3 times** <br>
+* Case 2 - Movie Rating Prediction: **Unlimited** <br>
 * Case 3 - Racing Track Simulation: **Unlimited** <br>
 * Case 4 - IQ Test Solver: **1 time** <br>
 
