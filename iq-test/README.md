@@ -4,7 +4,7 @@
   <img src="../images/choices18.png" height=200>
 </p>
 
-Make a model that can get a good score in an IQ test. The test set consists of 36 sets of images each containing a logic puzzle that might involve shape, color, rotation or similar rules. 10 png images are provided during evaluation: one image establishing the logic rule (see example image above to the left), and a list of 9 images with possible answers (above, right). The "test" image has dimensions 550x440px, created by combining tiles of size 110x110px. The images with possible answers are all 110x110px. The AI must be able to infer completely new logic rules based on the 3 examples in the test image and provide the index of the correct answer from the list of choices within 10 seconds. All methods are allowed.  No training data is provided.
+Make a model that can get a good score in an IQ test. The test set consists of 36 sets of images each containing a logic puzzle that might involve shape, color, rotation or similar rules. Ten images are provided during evaluation: one image establishing the logic rule (see example image above to the left), and a list of 9 images with possible answers (above, right). The "test" image has dimensions 550x440px, created by combining tiles of size 110x110px. The images with possible answers are all 110x110px. The AI must be able to infer completely new logic rules based on the 3 examples in the test image and provide the index of the correct answer from the list of choices within 10 seconds. All methods are allowed.  No training data is provided.
 
 
 ## Evaluation
@@ -22,17 +22,16 @@ Once the repository is cloned, navigate to the folder using a terminal and type:
 emily open iq-test
 ```
 You'll be prompted for selecting application, and you can select your preferred deep learning framework. Afterwards you will be asked to mount a data folder for your project. This folder should include your data, for the first run it can be empty and you can add images later.
-Then select an editor of your choice to open the Emily template for the use case.  A Docker container with a Python environment will be opened. Some content needs to be downloaded the first time a project is opened, this might take a bit of time.
-
+Then select an editor of your choice to open the Emily template for the use case. A Docker container with a Python environment will be opened. Some content needs to be downloaded the first time a project is opened, this might take a bit of time.
 
 To take full advantage of Emily and the template, your code for prediction should go in `api.py`:
 ```
 @app.post('/api/predict', response_model=PredictResponse)
 def predict(request: PredictRequest) -> PredictResponse:
 
-    # You receive all images in base64 encoding.
-    images = [request.image_1_base64, request.image_2_base64]
-    choices = request.image_3_choices_base64
+    # You receive image in base64 encoding.
+    image = request.image_base64
+    choices = request.image_choices_base64
 
     # Process the first two images, and predict the next correct image
     # from the list of image choices
@@ -45,13 +44,9 @@ def predict(request: PredictRequest) -> PredictResponse:
     )
 ```
 For further details about the recommended structure, see <a href="https://dmiai.dk/guide/">this guide</a>.
-You can add new packages to the Python environment by adding the names of the packages to requirements.txt and restarting the project, or by using pip install on a terminal within the container which will result in the package being installed temporarily i.e. it is not installed if the project is restarted.
+You can add new packages to the Python environment by adding the names of the packages to requirements.txt and restarting the project, or by using pip install on a terminal within the container which will result in the package being installed temporarily i.e. it is not installed if the project is restarted. <br>
+In case you need additional debian packages inside your container, for instance, Git, CMAKE, gcc or similar, check <a href="https://github.com/amboltio/emily-cli/wiki/How-to-add-Debian-packages-to-your-project">this guide</a> for installing extra packages.
 
-## Getting started without using Emily
-To submit results you need to set up your own API. Your API should be set up to return the coordinates with format like:
-```
-{'x': x, 'y': y}
-```
 
 ## Testing the connection to the API
 See <a href="https://dmiai.dk/guide/">this guide</a> for details on how to test your setup before final submission.
