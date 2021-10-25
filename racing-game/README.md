@@ -8,7 +8,7 @@ In this use case, you should implement a model, that can control a car on a high
 1. Clone the repository and open it with Emily
     ```
     git clone https://github.com/amboltio/DM-i-AI.git
-    emily open ./racing-game --editor vscode
+    emily open racing-game
     ```
 2. Once VS Code has opened, open a new terminal and run
     ```
