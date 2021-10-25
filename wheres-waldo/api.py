@@ -1,12 +1,10 @@
 
 import uvicorn
-from fastapi import FastAPI, File
+from fastapi import FastAPI
 from starlette.responses import HTMLResponse
 
 import middleware.cors
 import middleware.logging
-import io
-from PIL import Image
 from dtos.requests import PredictRequest
 from dtos.responses import PredictResponse
 
