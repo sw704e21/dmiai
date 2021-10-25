@@ -15,6 +15,8 @@ Before the deadline, you will submit your final model, and we will evaluate your
 
 Your model will be evaluated on how close to the actual ratings your predictions are. To be exact, your score is measured as the distance between your prediction and the actual rating. An average for all the 1000 test reviews is calculated and used as your score, the lowest score will grant the most points. i.e. the evaluation metric is mean absolute error. The mean absolute error will be scaled such that an MAE score of 4.5 leads to 0 points, and an MAE of 0 gives 100 points.
 
+After evaluation, your final score will be provided. This score can be seen on the <a href="https://amboltio.github.io/DM-i-AI-client/#/leaderboard">leaderboard</a> within 5 minutes.
+
 ## Getting started using Emily
 Once the repository is cloned, navigate to the folder using a terminal and type:
 ```
