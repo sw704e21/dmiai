@@ -12,6 +12,10 @@ from settings import Settings, load_env
 from static.render import render
 from utilities.utilities import get_uptime
 
+from PIL import Image
+import io
+from fastapi.params import File
+
 load_env()
 
 # --- Welcome to your Emily API! --- #
