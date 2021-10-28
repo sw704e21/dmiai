@@ -1,6 +1,6 @@
 
 import uvicorn
-from fastapi import FastAPI
+from fastapi import FastAPI, File
 from starlette.responses import HTMLResponse
 
 import middleware.cors
@@ -14,7 +14,6 @@ from utilities.utilities import get_uptime
 
 from PIL import Image
 import io
-from fastapi.params import File
 
 load_env()
 
