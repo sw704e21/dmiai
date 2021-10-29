@@ -5,16 +5,15 @@ In this use case, you will be presented with 1000 unique reviews of various movi
   <img src="../images/example.png" width=550>
 </p>
 
-The stars given are in the interval 0.5, 1, ..., 4.5, 5. You'll receive a list of 1000 strings, containing a review each. You should return the ratings as a list of floats corresponding to a rating for each review.
+The stars given are in the interval 0.5, 1, ..., 4.5, 5. You'll receive a list of reveiws, containing a review each. You should return the ratings as a list of floats corresponding to a rating for each review.
 
 
 ## Evaluation
-Your model will be evaluated on how close to the actual ratings your predictions are. To be exact, your score is measured as the distance between your prediction and the actual rating. An average for all the 1000 test reviews is calculated and used as your score, the lowest score will grant the most points. i.e. the evaluation metric is mean absolute error. The mean absolute error will be scaled such that an MAE score of 4.5 leads to 0 points, and an MAE of 0 gives 100 points.
+During the week of the competition, you will be able to test your model and test it against a test set of reviews. The most recent score your model achieves on the test set will be displayed on the scoreboard.
 
-Notice that you can only submit once! We encourage you to test your code and API before you submit your final model. You can find the documentation of your API where you can try out your model and verify the prediction. <br>
-The documentation is by default found at `0.0.0.0:4242/docs`, and then find the prediction endpoint for the use case. 
+Your model will be evaluated on how close to the actual ratings your predictions are. To be exact, your score is measured as the distance between your prediction and the actual rating. An average for all test reviews is calculated and used as your score. i.e. the evaluation metric is mean absolute error. Therefore the lowest score will grant the most points. 
 
-After evaluation, your final score will be provided. This score can be seen on the <a href="https://amboltio.github.io/DM-i-AI-client/#/leaderboard">leaderboard</a> within a few minutes.
+After evaluation, your final score will be provided. This score can be seen on the <a href="https://amboltio.github.io/DM-i-AI-client/#/leaderboard">leaderboard</a> after a few minutes.
 
 ## Getting started using Emily
 Once the repository is cloned, navigate to the folder using a terminal and type:
