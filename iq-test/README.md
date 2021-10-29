@@ -11,6 +11,8 @@ Make a model that can get a good score on an IQ test. The test set consists of 3
 
 
 ## Evaluation
+During the week of the competition, you will be able to test your model and test it against a test set of iq tests. The most recent score your model achieves on the test set will be displayed on the scoreboard.
+
 You will be granted points based on how many correct answers you get, with 1 point available for a correct answer on each test/image. Your model must give the index containing the correct answer in the list of choices. It has 10 seconds to return the answer.
 
 Notice that you can only submit once! We encourage you to test your code and API before you submit your final model. You can find the documentation of your API where you can try out your model and verify the prediction. <br>
