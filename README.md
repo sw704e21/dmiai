@@ -46,7 +46,7 @@ The following contain the necessary links for creating a virtual machine: <br> <
 
 * <a href="https://docs.microsoft.com/en-us/azure/virtual-machines/linux/quick-create-portal">Creating a linux virtual machine</a> <br>
 * <a href="https://docs.microsoft.com/en-us/azure/virtual-machines/linux/use-remote-desktop">Install and configure xrdp to use Remote Desktop</a> <br>
-* <a href="https://docs.microsoft.com/en-us/azure/virtual-machines/windows/nsg-quickstart-portal#create-an-inbound-security-rule">Create an inbound security Rule</a>. This ensures, that the API endpoints can be accessed when submitting.<br>
+* <a href="https://docs.microsoft.com/en-us/azure/virtual-machines/windows/nsg-quickstart-portal#create-an-inbound-security-rule">Create an inbound security Rule</a> (This ensures, that the API endpoints can be accessed when submitting)<br>
 
 
 <h3>What if I have already used my Azure student credits?</h3>
