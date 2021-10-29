@@ -13,7 +13,7 @@ No training data will be supplied for this use case.
 
 
 ## Evaluation
-During the week of the competition, you will be able to test your model and test it against a test set of waldo images. The most recent score your model achieves on the test set will be displayed on the scoreboard.
+During the week of the competition, you will be able to test your model against a test set of waldo images. The best score your model achieves on the test set will be displayed on the scoreboard.
 
 You will be granted points based on how many images you correctly detect Waldo within the bounding box. The scores are binary meaning that 1 point is given if the prediction is correct and 0 if not. No measure of the exactness of the prediction is used during evaluation. To verify if the prediction is correct, the point should be inside the bounding box, which encloses Waldo.
 
