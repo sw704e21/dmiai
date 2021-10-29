@@ -4,13 +4,13 @@ In this GitHub repository, you will find all the necessary information needed fo
 
 
 <h2>Use cases</h2>
-Below you can find the four different use cases for the  DM i AI event, the cases are listed by their difficulity. <br>
+Below you can find the four different use cases for the  DM i AI event. <br>
 Within each use case, you find a description together with a template that can be used to setup an API endpoint. <br> 
 The API endpoint will be used for submission and is required. <a href="https://github.com/amboltio/emily-cli">Emily</a> can help with setting up the API, but you should feel free to set them up on your own. The requirements for the API endpoints are specified in the respective use cases. <br> <br>
-<a href="https://github.com/amboltio/DM-i-AI/tree/main/wheres-waldo">Case 1: Where's Waldo</a> <br>
-<a href="https://github.com/amboltio/DM-i-AI/tree/main/movie-reviews">Case 2: Movie Rating Prediction</a> <br>
-<a href="https://github.com/amboltio/DM-i-AI/tree/main/racing-game">Case 3: Racing Track Simulation</a> <br>
-<a href="https://github.com/amboltio/DM-i-AI/tree/main/iq-test">Case 4: IQ Test Solver</a> <br> <br>
+<a href="https://github.com/amboltio/DM-i-AI/tree/main/wheres-waldo">Where's Waldo</a> <br>
+<a href="https://github.com/amboltio/DM-i-AI/tree/main/movie-reviews">Movie Rating Prediction</a> <br>
+<a href="https://github.com/amboltio/DM-i-AI/tree/main/racing-game">Racing Track Simulation</a> <br>
+<a href="https://github.com/amboltio/DM-i-AI/tree/main/iq-test">IQ Test Solver</a> <br> <br>
 
 Clone this GitHub repository to download Emily templates for all four use cases.
 ```
@@ -33,9 +33,9 @@ You are not required to use Emily for competing in this event, however, we stron
 When you are ready for submission, <a href="https://amboltio.github.io/emily-intro/deploy/">click here</a> for instructions on how to deploy. Then, head over to the <a href="https://amboltio.github.io/DM-i-AI-client/#/submit">Submission Form</a> and submit your model by providing the host address for your API and your UUID obtained during sign up. Make sure that you have tested your connection to the API before you submit!<br>
 The number of submissions is specific for each use case, and you can find the maximum number of allowed submissions below: <br> <br>
 
-* Case 1 - Where's Waldo: **1 time** <br>
-* Case 2 - Movie Rating Prediction: **Unlimited** <br>
-* Case 3 - Racing Track Simulation: **Unlimited** <br>
-* Case 4 - IQ Test Solver: **1 time** <br>
+* Where's Waldo: **1 time** <br>
+* Movie Rating Prediction: **Unlimited** <br>
+* Racing Track Simulation: **Unlimited** <br>
+* IQ Test Solver: **1 time** <br>
 
 Upon completion of the contest, the top 5 highest-ranking teams will be asked to submit their training code and the trained models for validation. The final ranking is announced on 30/11. 
