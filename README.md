@@ -44,7 +44,7 @@ The total score is simply a summation of your ranked scores.<br>
 
 This format also means that you can loose points / be overtaken by other teams during the week if they submit a model that is better than yours. 
 
-<h3>Final evaluation</h3>
+<h3>Deadline for submission</h3>
 The deadline for submission is DATE TO BE INSTERTED
 
 <h3>Final evaluation</h3>
