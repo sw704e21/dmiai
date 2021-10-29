@@ -7,13 +7,13 @@
   <img src="../images/choices18-3.jpeg" height=110>
 </p>
 
-Make a model that can get a good score on an IQ test. The test set consists of 36 sets of images each containing a logic puzzle that might involve shape, color, rotation or similar rules. Ten images are provided during evaluation: one image establishing the logic rule (see example image above to the left), and a list of 9 images with possible answers (above, right). The "test" image has dimensions 550x440px, created by combining tiles of size 110x110px. The images with possible answers are all 110x110px. The AI must be able to infer completely new logic rules based on the 3 examples in the test image and provide the index of the correct answer from the list of choices within 10 seconds. All methods are allowed.  No training data is provided.
+Make a model that can get a good score on an IQ test. The test set consists of 36 sets of images each containing a logic puzzle that might involve shape, color, rotation or similar rules. Ten images are provided during evaluation: one image establishing the logic rule (see example image above to the left), and a list of 4 images with possible answers (above, right). The "test" image has dimensions 550x440px, created by combining tiles of size 110x110px. The images with possible answers are all 110x110px. The AI must be able to infer completely new logic rules based on the 3 examples in the test image and provide the index of the correct answer from the list of choices within 10 seconds. All methods are allowed.  No training data is provided.
 
 
 ## Evaluation
-You will be granted points based on how many correct answers you get, with 1 point available for a correct answer on each test/image. Your model must give an (x,y) point that is within a bounding box containing the correct answer. It has 10 seconds to return the answer.
+You will be granted points based on how many correct answers you get, with 1 point available for a correct answer on each test/image. Your model must give the index containing the correct answer in the list of choices. It has 10 seconds to return the answer.
 
-Notice that you can only submit once for this use case! We encourage you to test your code and API before you submit your final model. You can find the documentation of your API where you can _try out_ images and verify the prediction. <br>
+Notice that you can only submit once! We encourage you to test your code and API before you submit your final model. You can find the documentation of your API where you can _try out_ images and verify the prediction. <br>
 The documentation is by default found at `0.0.0.0:4242/docs`, and then find your endpoint for the use case. <br>
 After evaluation, your final score will be provided. This score can be seen on the <a href="https://amboltio.github.io/DM-i-AI-client/#/leaderboard">leaderboard</a> within a few minutes.
 <br> <br>
