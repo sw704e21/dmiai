@@ -30,18 +30,16 @@ Come hang out and talk to other competitors of the event on our Discord channel.
 You are not required to use Emily for competing in this event, however, we strongly recommend using Emily if you are not an expert in developing APIs and microservices. If you do not choose to use Emily, you should check the individual template and find the requirements for the different API endpoints. These have to be exactly the same for the evaluation service to work. Inside the `dtos` folder you can find information on the request and response models, describing the input and output requirements for your API. 
 
 <h2>Submission</h2>
-When you are ready for submission, <a href="https://amboltio.github.io/emily-intro/deploy/">click here</a> for instructions on how to deploy. Then, head over to the <a href="https://amboltio.github.io/DM-i-AI-client/#/submit">Submission Form</a> and submit your model by providing the host address for your API and your UUID obtained during sign up. Make sure that you have tested your connection to the API before you submit!<br>
-The number of submissions is specific for each use case, and you can find the maximum number of allowed submissions below: <br> <br>
+When you are ready for submission, <a href="https://amboltio.github.io/emily-intro/deploy/">click here</a> for instructions on how to deploy. Then, head over to the <a href="https://amboltio.github.io/DM-i-AI-client/#/submit">Submission Form</a> and submit your model by providing the host address for your API and your UUID obtained during sign up. Make sure that you have tested your connection to the API before you submit!
 
-* Where's Waldo: **1 time** <br>
-* Movie Rating Prediction: **Unlimited** <br>
-* Racing Track Simulation: **Unlimited** <br>
-* IQ Test Solver: **1 time** <br>
+**You can only submit once per use case.** We highly recommend that you test your solution before submitting. You can do this on the submission form by using the `Test submission` button. You can test as many times as you like, but you can only submit once per use case. When you test, your score from the test will show up on the leaderboard, so you can see how you compare to the other teams.
+
+When you test your solution on the submission form, it will be evaluated on a test set. When you submit your solution and get the final score for that use case, your solution will be evaluated on a **validation test set which is different from the test set**. This means that the score you obtained when testing your solution may be different from the score you get when submitting.
 
 Upon completion of the contest, the top 5 highest-ranking teams will be asked to submit their training code and the trained models for validation. The final ranking is announced on 30/11. 
 
 <h2>How to get a server for deployment?</h2>
-When you are doing the submission we are expecting you to host the server to which the REST API can be deployed. You can sign up to <a href="https://azure.microsoft.com/da-dk/free/students/">Azure for Students</a>, where you will get free credits that you can use to create a virtual machine. We expect you all to be able to do this, since the competition is only for students! Alternatively, you can also deploy your submission locally. <br> 
+When you are doing the submission we are expecting you to host the server at which the REST API can be deployed. You can sign up to <a href="https://azure.microsoft.com/da-dk/free/students/">Azure for Students</a>, where you will get free credits that you can use to create a virtual machine. We expect you all to be able to do this, since the competition is only for students. Alternatively, you can also deploy your submission locally. <br> 
 The following contain the necessary links for creating a virtual machine: <br> <br>
 
 * <a href="https://docs.microsoft.com/en-us/azure/virtual-machines/linux/quick-create-portal">Creating a linux virtual machine</a> <br>
