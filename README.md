@@ -34,7 +34,7 @@ When you are ready for submission, <a href="https://amboltio.github.io/emily-int
 
 **You can only submit once per use case.** We highly recommend that you test your solution before submitting. You can do this on the submission form by using the `Test submission` button. You can test as many times as you like, but you can only submit once per use case. When you test, your score from the test will show up on the leaderboard, so you can see how you compare to the other teams.
 
-When you test your solution on the submission form, it will be evaluated on a test set. When you submit your solution and get the final score for that use case, your solution will be evaluated on a **validation test set which is different from the test set**. This means that the score you obtained when testing your solution may be different from the score you get when submitting.
+When you test your solution on the submission form, it will be evaluated on a test set. When you submit your solution and get the final score for that use case, your solution will be evaluated on a **validation test set which is different from the test set**. This means that the score you obtained when testing your solution may be different from the score you get when submitting. Therefore, we encourage you not to overfit to the test set!
 
 Upon completion of the contest, the top 5 highest-ranking teams will be asked to submit their training code and the trained models for validation. The final ranking is announced on 30/11. 
 
