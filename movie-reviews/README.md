@@ -13,6 +13,9 @@ During the week of the competition, you will be able to test your model and test
 
 Your model will be evaluated on how close to the actual ratings your predictions are. To be exact, your score is measured as the distance between your prediction and the actual rating. An average for all test reviews is calculated and used as your score. i.e. the evaluation metric is mean absolute error. Therefore the lowest score will grant the most points. 
 
+Notice that you can only submit once! We encourage you to test your code and API before you submit your final model. You can find the documentation of your API where you can try out your model and verify the prediction. <br>
+The documentation is by default found at `0.0.0.0:4242/docs`, and then find the prediction endpoint for the use case. 
+
 After evaluation, your final score will be provided. This score can be seen on the <a href="https://amboltio.github.io/DM-i-AI-client/#/leaderboard">leaderboard</a> after a few minutes.
 
 ## Getting started using Emily
