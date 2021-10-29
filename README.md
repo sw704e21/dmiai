@@ -38,7 +38,7 @@ When you test your solution on the submission form, it will be evaluated on a te
 
 <h3>Ranked score and total score </h3>
 The scoreboard will display a "ranked score" for each usecase and a "total score".
-The ranked score reflects the placement your best model has achieved relative to the other participants' models. The current best model gets the first place and 100 points. If two models perform equally well, they will share a ranked score.<br>
+The ranked score reflects the placement your best model has achieved relative to the other participants' models. The current best model gets the first place and 100 points. If two models perform equally well, they will share a ranked score.<br><br>
 
 The total score is simply a summation of your ranked scores.<br>
 
