@@ -36,6 +36,16 @@ When you are ready for submission, <a href="https://amboltio.github.io/emily-int
 
 When you test your solution on the submission form, it will be evaluated on a test set. When you submit your solution and get the final score for that use case, your solution will be evaluated on a **validation test set which is different from the test set**. This means that the score you obtained when testing your solution may be different from the score you get when submitting. Therefore, we encourage you not to overfit to the test set!
 
+<h3>ranked score and total score </h3>
+The scoreboard will display a "ranked score" for each usecase and a "total score".
+The ranked score reflects the placement your best model has achieved relative to the other participants' models. The currently best model gets first place and 100 points. If two models perform equally well, they will share a ranked score.
+
+The total score is simply a summation of your ranked scores.
+
+This format also means that you can loose points / be overtaken by other teams during the week if they submit a model that is better than yours. 
+
+<h3>Final evaluation</h3>
+
 Upon completion of the contest, the top 5 highest-ranking teams will be asked to submit their training code and the trained models for validation. The final ranking is announced on 30/11. 
 
 <h2>How to get a server for deployment?</h2>
