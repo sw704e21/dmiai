@@ -15,7 +15,7 @@ No training data will be supplied for this use case.
 ## Evaluation
 You will be granted points based on how many images you correctly detect Waldo within the bounding box. The scores are binary meaning that 1 point is given if the prediction is correct and 0 if not. No measure of the exactness of the prediction is used during evaluation. To verify if the prediction is correct, the point should be inside the bounding box, which encloses Waldo.
 
-Notice that you can only submit once for this use case! We encourage you to test your code and API before you submit your final model. You can find the documentation of your API where you can _try out_ images and verify the prediction. <br>
+Notice that you can only submit once! We encourage you to test your code and API before you submit your final model. You can find the documentation of your API where you can _try out_ images and verify the prediction. <br>
 The documentation is by default found at `0.0.0.0:4242/docs`, and then find the prediction endpoint for the use case. <br>
 
 After evaluation, your final score will be provided. This score can be seen on the <a href="https://amboltio.github.io/DM-i-AI-client/#/leaderboard">leaderboard</a> within a few minutes.
