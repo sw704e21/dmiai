@@ -9,7 +9,7 @@ The stars given are in the interval 0.5, 1, ..., 4.5, 5. You'll receive a list o
 
 
 ## Evaluation
-During the week of the competition, you will be able to test your model and test it against a test set of reviews. The most recent score your model achieves on the test set will be displayed on the scoreboard.
+During the week of the competition, you will be able to test your against a test set of reviews. The best score your model achieves on the test set will be displayed on the scoreboard.
 
 Your model will be evaluated on how close to the actual ratings your predictions are. To be exact, your score is measured as the distance between your prediction and the actual rating. An average for all test reviews is calculated and used as your score. i.e. the evaluation metric is mean absolute error. Therefore the lowest score will grant the most points. 
 
