@@ -45,6 +45,9 @@ The total score is simply a summation of your ranked scores.<br>
 This format also means that you can loose points / be overtaken by other teams during the week if they submit a model that is better than yours. 
 
 <h3>Final evaluation</h3>
+The deadline for submission is DATE TO BE INSTERTED
+
+<h3>Final evaluation</h3>
 
 Upon completion of the contest, the top 5 highest-ranking teams will be asked to submit their training code and the trained models for validation. The final ranking is announced on 30/11. 
 
