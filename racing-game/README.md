@@ -43,6 +43,9 @@ The car velocity describes the speed of the car in either horizontal or vertical
 ## Evaluation
 You'll be rewarded based on how far your model drives your car without crashing into obstacles. We will run the game for a fixed amount of game ticks and based on how far and how long your car survive, you will be granted points.
 
+Notice that you can only submit once! We encourage you to test your code and API before you submit your final model. You can find the documentation of your API where you can try out your model and verify the prediction.
+The documentation is by default found at `0.0.0.0:4242/docs`, and then find the prediction endpoint for the use case. 
+
 After evaluation, your final score will be provided. This score can be seen on the <a href="https://amboltio.github.io/DM-i-AI-client/#/leaderboard">leaderboard</a> within a few minutes.
 
 ## Getting started using Emily
