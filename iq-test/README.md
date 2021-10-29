@@ -1,7 +1,10 @@
 # IQ Test Solver
 <p align="center">
-  <img src="../images/test18.png" height=200>
-  <img src="../images/choices18.png" height=200>
+  <img src="../images/test18.jpeg" height=200>
+  <img src="../images/choices18-0.jpeg" height=110>
+  <img src="../images/choices18-1.jpeg" height=110>
+  <img src="../images/choices18-2.jpeg" height=110>
+  <img src="../images/choices18-3.jpeg" height=110>
 </p>
 
 Make a model that can get a good score on an IQ test. The test set consists of 36 sets of images each containing a logic puzzle that might involve shape, color, rotation or similar rules. Ten images are provided during evaluation: one image establishing the logic rule (see example image above to the left), and a list of 9 images with possible answers (above, right). The "test" image has dimensions 550x440px, created by combining tiles of size 110x110px. The images with possible answers are all 110x110px. The AI must be able to infer completely new logic rules based on the 3 examples in the test image and provide the index of the correct answer from the list of choices within 10 seconds. All methods are allowed.  No training data is provided.
