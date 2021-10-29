@@ -49,5 +49,5 @@ The following contain the necessary links for creating a virtual machine: <br> <
 * <a href="https://docs.microsoft.com/en-us/azure/virtual-machines/windows/nsg-quickstart-portal#create-an-inbound-security-rule">Create an inbound security Rule</a>. This ensures, that the API endpoints can be accessed when submitting.<br>
 
 
-<h3>What if I have already used my Azure Student Credits?</h3>
+<h3>What if I have already used my Azure student credits?</h3>
 If you have already used your credicts, reach out to us on either <a href="https://discord.gg/R9cvaZyzdu">discord ENSURE LINK IS UPDATED</a> or on<a href="provideamailhere@ambolt.io"> and we will help you out.<br>
