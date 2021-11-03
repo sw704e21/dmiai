@@ -21,7 +21,7 @@ class Model(Sequential):
 
 
     def _preprocess_data(self, data):
-        data = self.vectorizer.transform([data])
+        data = self.vectorizer.transform(data)
         return data
 
     def save_model(self, save_path):

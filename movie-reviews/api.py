@@ -45,8 +45,8 @@ def predict(request: PredictRequest) -> PredictResponse:
     # rating will be associated with the review at the same index in the request list.
     m = Model()
     m.load_model('results')
-    ratings = [m.forward(review) for review in request.reviews]
-    return PredictResponse(ratings=ratings)
+    ratings = m.forward(request.reviews)
+    return PredictResponse(ratings=list(ratings))
 
 @app.post('/api/train', response_model=TrainResponse)
 def train(request: TrainRequest) -> TrainResponse:
