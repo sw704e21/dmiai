@@ -14,10 +14,15 @@ class Model(Sequential):
         self.add(layers.Dense(1, activation='relu'))
         self.compile(loss='mean_absolute_error', optimizer='adam', metrics=['accuracy'])
 
+    def _postprocess_data(self, sample):
+        base = 0.5
+        sample = [base * round(float(x) / base) for x in sample]
+        return sample
 
     def forward(self, sample):
         sample = self._preprocess_data(sample)
-        return self.predict(sample)
+        result = self.predict(sample)
+        return self._postprocess_data(result)
 
 
     def _preprocess_data(self, data):
