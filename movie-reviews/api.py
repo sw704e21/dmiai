@@ -77,7 +77,7 @@ def index():
 
 if __name__ == '__main__':
 
-    print('now running')
+    print('Hey hey, got update')
     uvicorn.run(
         'api:app',
         host=settings.HOST_IP,

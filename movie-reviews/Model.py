@@ -9,8 +9,8 @@ class Model(Sequential):
         self.input_dim = input_dim
         self.add(layers.Dense(10, input_dim=input_dim, activation='relu'))
         self.add(layers.Dense(64, activation='relu'))
-        self.add(layers.Dense(128, activation='relu'))
-        self.add(layers.Dense(64, activation='relu'))
+        #self.add(layers.Dense(128, activation='relu'))
+        #self.add(layers.Dense(64, activation='relu'))
         self.add(layers.Dense(1, activation='relu'))
         self.compile(loss='mean_absolute_error', optimizer='adam', metrics=['accuracy'])
 
