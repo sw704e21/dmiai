@@ -39,7 +39,7 @@ def predict(request: PredictRequest) -> PredictResponse:
     image = request.image_base64
     choices = request.image_choices_base64
 
-    with open("data/iq/train.csv", 'a', newline='') as file:
+    with open("data/data/train.csv", 'a', newline='') as file:
         writer = csv.writer(file, delimiter=',')
         row = [image]
         row.extend(choices)
