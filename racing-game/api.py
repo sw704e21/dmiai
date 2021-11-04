@@ -66,8 +66,8 @@ def predict(request: PredictRequest) -> PredictResponse:
 def train(request: PredictRequest):
     nn_param = [128, 128]
     params = {
-        "batchSize": 64,
-        "buffer": 50000,
+        "batchSize": 32,
+        "buffer": 1000,
         "nn": nn_param
     }
     model = Model()
@@ -86,17 +86,12 @@ def train(request: PredictRequest):
     max_car_distance = 0
     car_distance = 0
     t = 0
-    data_collect = []
-    replay = []  # stores tuples of (S, A, R, S').
-
-    loss_log = []
 
     actions = [ActionType.ACCELERATE, ActionType.DECELERATE,
                ActionType.STEER_LEFT, ActionType.STEER_RIGHT,
                ActionType.NOTHING]
     reward, state = update_state_and_reward(request=request, model=model)
 
-    t = request.elapsed_time_ms
     print(model.epsilon)
     # Choose an action.
     if random.random() < model.epsilon:
@@ -116,17 +111,16 @@ def train(request: PredictRequest):
     # Take action, observe new state and get reward.
     reward, new_state = update_state_and_reward(request=request, model=model)
 
-    replay.append((state, action, reward, new_state))
-
+    model.replay.append((state, action, reward, new_state))
+    print(len(model.replay))
     # If we're done observing, start training.
-    if t > observe:
-
+    if request.elapsed_time_ms > observe:
         # if we've stored enough in our buffer, pop the oldest.
-        if len(replay) > buffer:
-            replay.pop(0)
-
+        if len(model.replay) > buffer:
+            model.replay.pop(0)
+            print("Training..")
             # randomly sample our experience replay memory
-            minibatch = random.sample(replay, batchSize)
+            minibatch = random.sample(model.replay, batchSize)
 
             # get training values.
             X_train, y_train = process_minibatch2(minibatch, model)
@@ -135,7 +129,9 @@ def train(request: PredictRequest):
             history = LossHistory()
             model.fit(X_train, y_train, batch_size=batchSize,
                       nb_epoch=1, verbose=0, callbacks=[history])
-            loss_log.append(history.losses)
+            model.loss_log.append(history.losses)
+        else:
+            print("Not training...")
 
     # Update the starting state S'.
     state = new_state
@@ -146,7 +142,7 @@ def train(request: PredictRequest):
 
     # Car crashed
     if(reward == -500):
-        data_collect.append([t, request.distance])
+        model.data_collect.append([request.elapsed_time_ms, request.distance])
 
         if request.distance > max_car_distance:
             max_car_distance = request.distance
@@ -163,10 +159,11 @@ def train(request: PredictRequest):
                        '.h5', overwrite=True)
     with open("results/saved-models/epsilon", 'wb') as fp:
         pickle.dump(model.epsilon, fp)
-    print("saving model %s - %d" % (filename, t))
+    print("saving model %s - %d" % (filename, request.elapsed_time_ms))
 
     # Log results after w're done all frames.
-    log_results(filename, data_collect, loss_log)
+    log_results(filename, model.data_collect, model.loss_log)
+
     return get_predicted_response(action)
 
 

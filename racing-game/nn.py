@@ -21,6 +21,9 @@ class Model(Sequential):
     def __init__(self):
         super().__init__()
         self.epsilon = 1
+        self.data_collect = []
+        self.replay = []  # stores tuples of (S, A, R, S').
+        self.loss_log = []
 
     def neural_net(self, num_sensors, params, load=''):
 
