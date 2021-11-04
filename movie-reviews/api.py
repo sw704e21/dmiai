@@ -7,11 +7,16 @@ import middleware.cors
 import middleware.logging
 from dtos.requests import PredictRequest
 from dtos.responses import PredictResponse
+from dtos.requests import TrainRequest
+from dtos.responses import TrainResponse
+
+from Trainer import Trainer
+from Model import Model
 
 from settings import Settings, load_env
 from static.render import render
 from utilities.utilities import get_uptime
-import random
+
 
 load_env()
 
@@ -38,9 +43,17 @@ def predict(request: PredictRequest) -> PredictResponse:
     # Return a list of predicted ratings between 1-5 (inclusive).
     # You must return the same number of ratings as there are reviews, and each
     # rating will be associated with the review at the same index in the request list.
+    m = Model()
+    m.load_model('results')
+    ratings = m.forward(request.reviews)
+    return PredictResponse(ratings=list(ratings))
 
-    ratings = [random.uniform(0.5, 5.0) for review in request.reviews]
-    return PredictResponse(ratings=ratings)
+@app.post('/api/train', response_model=TrainResponse)
+def train(request: TrainRequest) -> TrainResponse:
+    print(request)
+    t = Trainer()
+    result = t.train(request.data_path, request.save_path)
+    return TrainResponse(train_loss=result['train_loss'], train_accuracy=result['train_accuracy'], test_loss=result['test_loss'], test_accuracy=result['test_accuracy'])
 
 
 @app.get('/api')
@@ -64,6 +77,7 @@ def index():
 
 if __name__ == '__main__':
 
+    print('Hey hey, got update')
     uvicorn.run(
         'api:app',
         host=settings.HOST_IP,
