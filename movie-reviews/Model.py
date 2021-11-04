@@ -8,7 +8,7 @@ class Model(Sequential):
     def new(self, input_dim):
         self.input_dim = input_dim
         self.add(layers.Dense(10, input_dim=input_dim, activation='relu'))
-        self.add(layers.Dense(64, activation='relu'))
+        self.add(layers.Dense(1024, activation='relu'))
         #self.add(layers.Dense(128, activation='relu'))
         #self.add(layers.Dense(64, activation='relu'))
         self.add(layers.Dense(1, activation='relu'))
