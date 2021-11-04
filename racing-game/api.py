@@ -78,7 +78,7 @@ def train(request: PredictRequest):
     model.load_weights("results/saved-models/hej.h5")
     with open("results/saved-models/epsilon", 'rb') as fp:
         model.epsilon = pickle.load(fp)
-    train_frames = 50000
+    train_frames = 2500
     batchSize = params['batchSize']
     buffer = params['buffer']
 
@@ -106,14 +106,17 @@ def train(request: PredictRequest):
         print(action)
     else:
         print("Decision made")
-        print(state)
+        print("state:", state)
         # get Q values of reach action.
-        qval = model.predict(state)
-        print()
+        qval = model.predict(state, batch_size=1)
+        print("qval: ", qval)
         action = actions[np.argmax(qval)]
+        print("action: ", action)
 
     # Take action, observe new state and get reward.
     reward, new_state = update_state_and_reward(request=request, model=model)
+
+    replay.append((state, action, reward, new_state))
 
     # If we're done observing, start training.
     if t > observe:
@@ -143,7 +146,7 @@ def train(request: PredictRequest):
 
     # Car crashed
     if(reward == -500):
-        data_collect.append(t, request.distance)
+        data_collect.append([t, request.distance])
 
         if request.distance > max_car_distance:
             max_car_distance = request.distance
@@ -177,6 +180,8 @@ def update_state_and_reward(request: PredictRequest, model):
     state = np.array([request.sensors.to_list()])
     # Set the reward.
     # Car crashed when any reading == 1
+    if request.distance <= 1:
+        model.epsilon = 1
     if request.did_crash:
         model.epsilon = 1
         reward = -500

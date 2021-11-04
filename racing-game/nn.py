@@ -37,7 +37,7 @@ class Model(Sequential):
         self.add(Dropout(0.2))
 
         # Output layer.
-        self.add(Dense(3, kernel_initializer='lecun_uniform'))
+        self.add(Dense(5, kernel_initializer='lecun_uniform'))
         self.add(Activation('linear'))
 
         rms = RMSprop()
