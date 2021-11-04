@@ -10,7 +10,7 @@ class Model(Sequential):
     def new(self, vocab_size, maxlen):
         self.vocab_size = vocab_size
         self.maxlen = maxlen
-        embedding_dim = 32
+        embedding_dim = 64
         dropout_rate = 0.3
         self.add(layers.Embedding(input_dim=vocab_size, output_dim=embedding_dim, input_length=maxlen))
         self.add(layers.GlobalMaxPool1D())
@@ -27,7 +27,7 @@ class Model(Sequential):
                                            beta_initializer="zeros", gamma_initializer="ones",
                                            moving_mean_initializer="zeros", moving_variance_initializer="ones"))
         self.add(layers.Dense(1, activation='relu'))
-        opt = Adam(learning_rate=0.3)
+        opt = Adam(learning_rate=0.02)
         self.compile(loss='mean_absolute_error', optimizer=opt, metrics=['accuracy'])
 
     def _postprocess_data(self, sample):
