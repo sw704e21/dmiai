@@ -3,10 +3,14 @@ The design of this comes from here:
 http://outlace.com/Reinforcement-Learning-Part-3/
 """
 
+
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, Activation, Dropout
 from tensorflow.keras.optimizers import RMSprop
 from tensorflow.keras.callbacks import Callback
+from dtos.requests import PredictRequest
+from dtos.responses import PredictResponse
+from fastapi import FastAPI
 
 
 class LossHistory(Callback):
@@ -18,12 +22,13 @@ class LossHistory(Callback):
 
 
 class Model(Sequential):
+
+    app = FastAPI()
+
     def __init__(self):
         super().__init__()
         self.epsilon = 1
-        self.data_collect = []
-        self.replay = []  # stores tuples of (S, A, R, S').
-        self.loss_log = []
+        self.startStateCheck = True
 
     def neural_net(self, num_sensors, params, load=''):
 

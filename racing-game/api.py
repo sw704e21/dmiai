@@ -12,8 +12,7 @@ from dtos.responses import PredictResponse, ActionType
 from settings import Settings, load_env
 from static.render import render
 from utilities.utilities import get_uptime
-from nn import Model
-from nn import LossHistory
+import nn
 import learning
 import random
 import numpy as np
@@ -39,6 +38,9 @@ settings = Settings()
 middleware.logging.setup(app, exclude_paths=['/api/predict'])
 middleware.cors.setup(app)
 
+replay = []  # stores tuples of (S, A, R, S').
+data_collect = []
+loss_log = []
 NUM_SENSORS = 8
 GAMMA = 0.9  # Forgetting
 TUNING = False  # If False, just use arbitrary, pre-selected params
@@ -56,10 +58,9 @@ def predict(request: PredictRequest) -> PredictResponse:
     actions = [ActionType.ACCELERATE, ActionType.DECELERATE,
                ActionType.STEER_LEFT, ActionType.STEER_RIGHT,
                ActionType.NOTHING]
+
     return train(request=request)
-    # return PredictResponse(
-    #     action=ActionType.ACCELERATE
-    # )
+    # return PredictResponse(action=ActionType.ACCELERATE)
 
 
 @app.post('/api/train', response_model=PredictResponse)
@@ -67,10 +68,10 @@ def train(request: PredictRequest):
     nn_param = [128, 128]
     params = {
         "batchSize": 32,
-        "buffer": 1000,
+        "buffer": 100,
         "nn": nn_param
     }
-    model = Model()
+    model = nn.Model()
     model.neural_net(NUM_SENSORS, params['nn'])
     # params = get_params()
     filename = learning.params_to_filename(params)
@@ -82,15 +83,16 @@ def train(request: PredictRequest):
     batchSize = params['batchSize']
     buffer = params['buffer']
 
+    if(model.startStateCheck is True):
+        _, state = update_state_and_reward(request=request, model=model)
+        model.startStateCheck = False
+
     # Variables used
     max_car_distance = 0
-    car_distance = 0
-    t = 0
 
     actions = [ActionType.ACCELERATE, ActionType.DECELERATE,
                ActionType.STEER_LEFT, ActionType.STEER_RIGHT,
                ActionType.NOTHING]
-    reward, state = update_state_and_reward(request=request, model=model)
 
     print(model.epsilon)
     # Choose an action.
@@ -101,7 +103,7 @@ def train(request: PredictRequest):
         print(action)
     else:
         print("Decision made")
-        print("state:", state)
+        print("state: ", state)
         # get Q values of reach action.
         qval = model.predict(state, batch_size=1)
         print("qval: ", qval)
@@ -111,25 +113,25 @@ def train(request: PredictRequest):
     # Take action, observe new state and get reward.
     reward, new_state = update_state_and_reward(request=request, model=model)
 
-    model.replay.append((state, action, reward, new_state))
-    print(len(model.replay))
+    replay.append((state, action, reward, new_state))
+    print("Size of replay: ", len(replay))
     # If we're done observing, start training.
     if request.elapsed_time_ms > observe:
         # if we've stored enough in our buffer, pop the oldest.
-        if len(model.replay) > buffer:
-            model.replay.pop(0)
+        if len(replay) > buffer:
+            replay.pop(0)
             print("Training..")
             # randomly sample our experience replay memory
-            minibatch = random.sample(model.replay, batchSize)
+            minibatch = random.sample(replay, batchSize)
 
             # get training values.
             X_train, y_train = process_minibatch2(minibatch, model)
 
             # train the model on this batch
-            history = LossHistory()
+            history = nn.LossHistory()
             model.fit(X_train, y_train, batch_size=batchSize,
                       nb_epoch=1, verbose=0, callbacks=[history])
-            model.loss_log.append(history.losses)
+            loss_log.append(history.losses)
         else:
             print("Not training...")
 
@@ -142,7 +144,7 @@ def train(request: PredictRequest):
 
     # Car crashed
     if(reward == -500):
-        model.data_collect.append([request.elapsed_time_ms, request.distance])
+        data_collect.append([request.elapsed_time_ms, request.distance])
 
         if request.distance > max_car_distance:
             max_car_distance = request.distance
@@ -162,7 +164,7 @@ def train(request: PredictRequest):
     print("saving model %s - %d" % (filename, request.elapsed_time_ms))
 
     # Log results after w're done all frames.
-    log_results(filename, model.data_collect, model.loss_log)
+    log_results(filename, data_collect, loss_log)
 
     return get_predicted_response(action)
 
@@ -218,10 +220,10 @@ def process_minibatch2(minibatch, model):
 
     mb_len = len(minibatch)
 
-    old_states = np.zeros(shape=(mb_len, 3))
+    old_states = np.zeros(shape=(mb_len, 8))
     actions = np.zeros(shape=(mb_len,))
     rewards = np.zeros(shape=(mb_len,))
-    new_states = np.zeros(shape=(mb_len, 3))
+    new_states = np.zeros(shape=(mb_len, 8))
 
     for i, m in enumerate(minibatch):
         old_state_m, action_m, reward_m, new_state_m = m
