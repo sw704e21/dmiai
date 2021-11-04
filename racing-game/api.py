@@ -68,7 +68,7 @@ def train(request: PredictRequest):
     nn_param = [128, 128]
     params = {
         "batchSize": 32,
-        "buffer": 100,
+        "buffer": 1000,
         "nn": nn_param
     }
     model = nn.Model()
@@ -79,7 +79,7 @@ def train(request: PredictRequest):
     model.load_weights("results/saved-models/hej.h5")
     with open("results/saved-models/epsilon", 'rb') as fp:
         model.epsilon = pickle.load(fp)
-    train_frames = 2500
+    train_frames = 800
     batchSize = params['batchSize']
     buffer = params['buffer']
 
@@ -99,7 +99,6 @@ def train(request: PredictRequest):
     if random.random() < model.epsilon:
         print("Random action")
         action = random.choice([random.choice(actions), actions[0]])
-        get_predicted_response(action)
         print(action)
     else:
         print("Decision made")
@@ -113,7 +112,7 @@ def train(request: PredictRequest):
     # Take action, observe new state and get reward.
     reward, new_state = update_state_and_reward(request=request, model=model)
 
-    replay.append((state, action, reward, new_state))
+    replay.append((state, action.to_int(), reward, new_state))
     print("Size of replay: ", len(replay))
     # If we're done observing, start training.
     if request.elapsed_time_ms > observe:
@@ -130,7 +129,7 @@ def train(request: PredictRequest):
             # train the model on this batch
             history = nn.LossHistory()
             model.fit(X_train, y_train, batch_size=batchSize,
-                      nb_epoch=1, verbose=0, callbacks=[history])
+                      epochs=1, verbose=0, callbacks=[history])
             loss_log.append(history.losses)
         else:
             print("Not training...")
