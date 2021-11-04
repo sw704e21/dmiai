@@ -12,6 +12,7 @@ from settings import Settings, load_env
 from static.render import render
 from utilities.utilities import get_uptime
 import random
+import csv
 
 load_env()
 
@@ -38,9 +39,13 @@ def predict(request: PredictRequest) -> PredictResponse:
     image = request.image_base64
     choices = request.image_choices_base64
 
+    with open("data/iq/train.csv", 'a', newline='') as file:
+        writer = csv.writer(file, delimiter=',')
+        row = [image]
+        row.extend(choices)
+        writer.writerow(row)
     # Process the first two images, and predict the next correct image
     # from the list of image choices
-    
     # Dummy prediction - chooses a random image from the list of choices
     next_image_index = random.choice([index for index in range(len(choices))])
 
