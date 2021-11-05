@@ -68,7 +68,7 @@ def train(request: PredictRequest):
     nn_param = [128, 128]
     params = {
         "batchSize": 64,
-        "buffer": 500,
+        "buffer": 5000,
         "nn": nn_param
     }
     model = nn.Model()
@@ -76,10 +76,12 @@ def train(request: PredictRequest):
     # params = get_params()
     filename = learning.params_to_filename(params)
     observe = 75  # Number of rames to observe before training
-    # model.load_weights("results/saved-models/hej.h5")
-    # with open("results/saved-models/epsilon", 'rb') as fp:
-    #    model.epsilon = pickle.load(fp)
-    train_frames = 2000
+    model.load_weights("results/saved-models/hej.h5")
+    with open("results/saved-models/epsilon", 'rb') as fp:
+        model.epsilon = pickle.load(fp)
+    with open("results/saved-models/state", 'rb') as fp:
+        model.state = pickle.load(fp)
+    train_frames = 20000
     batchSize = params['batchSize']
     buffer = params['buffer']
 
@@ -99,7 +101,7 @@ def train(request: PredictRequest):
         print(action)
     else:
         print("Decision made")
-        print("state: ", model.state)
+
         # get Q values of reach action.
         qval = model.predict(model.state, batch_size=1)
         print("qval: ", qval)
@@ -108,9 +110,9 @@ def train(request: PredictRequest):
 
     # Take action, observe new state and get reward.
     reward, new_state = update_state_and_reward(request=request, model=model)
-
+    print("state: ", model.state, "new state: ", new_state)
     replay.append((model.state, action.to_int(), reward, new_state))
-    print("Size of replay: ", len(replay), "Content: ", replay.pop(0))
+    print("Size of replay: ", len(replay))
     # If we're done observing, start training.
     if request.elapsed_time_ms > observe:
         # if we've stored enough in our buffer, pop the oldest.
@@ -158,6 +160,8 @@ def train(request: PredictRequest):
     with open("results/saved-models/epsilon", 'wb') as fp:
         pickle.dump(model.epsilon, fp)
     print("saving model %s - %d" % (filename, request.elapsed_time_ms))
+    with open("results/saved-models/state", 'wb') as fp:
+        pickle.dump(model.state, fp)
 
     # Log results after w're done all frames.
     log_results(filename, data_collect, loss_log)
@@ -172,25 +176,25 @@ def get_predicted_response(state):
 @app.post('/api/reward', response_model=PredictResponse)
 def update_state_and_reward(request: PredictRequest, model):
     # Get the current location and the readings there.
-    if(request.elapsed_time_ms > 20):
-        state = np.array([request.sensors.to_list()])
-        # Set the reward.
-        # Car crashed when any reading == 1
-        if request.did_crash:
-            reward = -500
-            model.startStateCheck = True
-        elif request.velocity.x > 10:
-            reward = 1
-        elif request.velocity.x > 20:
-            reward = 2
-        elif request.velocity.x > 30:
-            reward = 3
-        elif request.velocity.x == 0:
-            reward = -2
-        else:
-            reward = -1
 
-        return reward, state
+    state = np.array([request.sensors.to_list()])
+    # Set the reward.
+    # Car crashed when any reading == 1
+    if request.did_crash:
+        reward = -500
+        model.startStateCheck = True
+    elif request.velocity.x > 10:
+        reward = 1
+    elif request.velocity.x > 20:
+        reward = 2
+    elif request.velocity.x > 30:
+        reward = 3
+    elif request.velocity.x == 0:
+        reward = -2
+    else:
+        reward = -1
+
+    return reward, state
 
 
 @app.post('/api/reward', response_model=PredictResponse)
