@@ -4,6 +4,7 @@ http://outlace.com/Reinforcement-Learning-Part-3/
 """
 
 
+import numpy as np
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, Activation, Dropout
 from tensorflow.keras.optimizers import RMSprop
@@ -29,6 +30,7 @@ class Model(Sequential):
         super().__init__()
         self.epsilon = 1
         self.startStateCheck = True
+        self.state = np.array([[100, 100, 100, 100, 100, 100, 100, 100]])
 
     def neural_net(self, num_sensors, params, load=''):
 
