@@ -41,9 +41,50 @@ middleware.cors.setup(app)
 replay = []  # stores tuples of (S, A, R, S').
 data_collect = []
 loss_log = []
+model = None
 NUM_SENSORS = 8
 GAMMA = 0.9  # Forgetting
 TUNING = False  # If False, just use arbitrary, pre-selected params
+nn_param = [128, 128]
+params = {
+    "batchSize": 64,
+    "buffer": 10000,
+    "nn": nn_param
+}
+
+
+@app.get('/api/save')
+def save():
+    model = settings.MODEL
+    # Save the model every frames.
+    model.save_weights('results/saved-models/' + "hej" +
+                       '.h5', overwrite=True)
+    with open("results/saved-models/epsilon", 'wb') as fp:
+        pickle.dump(model.epsilon, fp)
+    #print("saving model %s - %d" % (filename, request.elapsed_time_ms))
+    with open("results/saved-models/state", 'wb') as fp:
+        pickle.dump(model.state, fp)
+    return Response()
+
+
+@app.get('/api/load')
+def load():
+    model = nn.Model()
+    model.neural_net(NUM_SENSORS, params['nn'])
+    model.load_weights("results/saved-models/hej.h5")
+    with open("results/saved-models/epsilon", 'rb') as fp:
+        model.epsilon = pickle.load(fp)
+    with open("results/saved-models/state", 'rb') as fp:
+        model.state = pickle.load(fp)
+    settings.MODEL = model
+    return Response()
+
+
+@app.get('/api/reset')
+def reset():
+    model = nn.Model()
+    model.neural_net(NUM_SENSORS, params['nn'])
+    settings.MODEL = model
 
 
 @app.post('/api/predict', response_model=PredictResponse)
@@ -56,7 +97,7 @@ def predict(request: PredictRequest) -> PredictResponse:
         logger.info(f'Traveled {request.distance} distance')
 
     actions = [ActionType.ACCELERATE, ActionType.DECELERATE,
-               ActionType.STEER_LEFT, ActionType.STEER_RIGHT,
+               ActionType.STEER_RIGHT, ActionType.STEER_LEFT,
                ActionType.NOTHING]
 
     return train(request=request)
@@ -65,23 +106,12 @@ def predict(request: PredictRequest) -> PredictResponse:
 
 @app.post('/api/train', response_model=PredictResponse)
 def train(request: PredictRequest):
-    nn_param = [128, 128]
-    params = {
-        "batchSize": 64,
-        "buffer": 5000,
-        "nn": nn_param
-    }
-    model = nn.Model()
-    model.neural_net(NUM_SENSORS, params['nn'])
+    model = settings.MODEL
     # params = get_params()
     filename = learning.params_to_filename(params)
     observe = 75  # Number of rames to observe before training
-    model.load_weights("results/saved-models/hej.h5")
-    with open("results/saved-models/epsilon", 'rb') as fp:
-        model.epsilon = pickle.load(fp)
-    with open("results/saved-models/state", 'rb') as fp:
-        model.state = pickle.load(fp)
-    train_frames = 20000
+
+    train_frames = 50000
     batchSize = params['batchSize']
     buffer = params['buffer']
 
@@ -89,7 +119,7 @@ def train(request: PredictRequest):
     max_car_distance = 0
 
     actions = [ActionType.ACCELERATE, ActionType.DECELERATE,
-               ActionType.STEER_LEFT, ActionType.STEER_RIGHT,
+               ActionType.STEER_RIGHT, ActionType.STEER_LEFT,
                ActionType.NOTHING]
 
     print(model.epsilon)
@@ -154,18 +184,9 @@ def train(request: PredictRequest):
             print(
                 f'Max: {max_car_distance} at {tot_time, model.epsilon} and distance: {request.distance}')
 
-    # Save the model every frames.
-    model.save_weights('results/saved-models/' + "hej" +
-                       '.h5', overwrite=True)
-    with open("results/saved-models/epsilon", 'wb') as fp:
-        pickle.dump(model.epsilon, fp)
-    print("saving model %s - %d" % (filename, request.elapsed_time_ms))
-    with open("results/saved-models/state", 'wb') as fp:
-        pickle.dump(model.state, fp)
-
     # Log results after w're done all frames.
     log_results(filename, data_collect, loss_log)
-
+    settings.MODEL = model
     return get_predicted_response(action)
 
 

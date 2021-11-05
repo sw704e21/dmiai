@@ -2,6 +2,7 @@ from typing import Optional
 from pydantic import BaseSettings
 from dotenv import load_dotenv
 from argparse import ArgumentParser
+from nn import Model
 
 
 class Settings(BaseSettings):
@@ -14,6 +15,7 @@ class Settings(BaseSettings):
     COMPOSE_PROJECT_NAME: str
     NVIDIA_VISIBLE_DEVICES: Optional[str]
     NVIDIA_DRIVER_CAPABILITIES: Optional[str]
+    MODEL: Optional[Model]
 
 
 def load_env():
