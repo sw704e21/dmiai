@@ -1,3 +1,6 @@
 
 # ---- Added by the Emily CLI ----
 enum34
+
+# ---- Added by the Emily CLI ----
+tensorflow
