@@ -35,8 +35,7 @@ class SensorReadings(BaseModel):
         self.left_side = 1000 if self.left_side is None else self.left_side
         self.right_side = 1000 if self.right_side is None else self.right_side
 
-        return [self.left_side, self.left_front, self.right_front, self.right_side, self.right_back,
-                self.left_back]
+        return [self.left_side, self.right_side, ]
 
     def to_list_front_and_back(self):
 

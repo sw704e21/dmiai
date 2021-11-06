@@ -214,7 +214,7 @@ def side_sensors_penalty(sensors):
 
         for i in sensors:
             if(i < sensor_reward_negative):
-                print(i)
+                print(i, ": ", ((sensor_reward_negative - i) * p * -1) / 10)
                 return ((150 - i) * p * -1) / 10
 
             else:
@@ -237,7 +237,7 @@ def frontandback_sensors_penalty(sensors):
 
         for i in sensors:
             if(i < sensor_reward_negative):
-                print(i)
+                print(i, ": ", ((sensor_reward_negative - i) * p * -1) / 10)
                 return ((sensor_reward_negative - i) * p * -1) / 10
             else:
                 continue
