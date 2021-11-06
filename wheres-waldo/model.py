@@ -42,7 +42,7 @@ class Model():
 
         p = self.mapping[bstcount]
         print(p)
-        point = p[0] + x_center, p[1] + y_center
+        point = int(p[0] + x_center), int(p[1] + y_center)
         return point
 
     def forward(self, sample):

@@ -43,6 +43,7 @@ def predict(request: PredictRequest = File(...)) -> PredictResponse:
     model.load_model("")
 
     result = model.forward(image)
+    print(result)
 
     return PredictResponse(x=result[0], y=result[1])
 
