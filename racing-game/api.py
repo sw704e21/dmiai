@@ -205,21 +205,20 @@ def speed_reward(velocity):
 
 
 def side_sensors_penalty(sensors):
-    tot = 0
-    sensor = []
     sensor_reward_negative = 150
     sensor_close_towall_check = np.any(sensors < sensor_reward_negative)
+    p = 3
 
     print("Is sensor close to wall?: ", sensor_close_towall_check)
     if(sensor_close_towall_check):
 
         for i in sensors:
-            for j in sensors + 1:
-                if(i < sensor_reward_negative):
-                    print(i - j)
-                    return (i - j) / 10
-                else:
-                    continue
+            if(i < sensor_reward_negative):
+                print(i)
+                return ((150 - i) * p * -1) / 10
+
+            else:
+                continue
 
         return 0
     else:
@@ -231,17 +230,17 @@ def frontandback_sensors_penalty(sensors):
     sensor = []
     sensor_reward_negative = 1000
     sensor_close_towall_check = np.any(sensors < sensor_reward_negative)
+    p = 1
 
     print("Is sensor detecting car in front or back?: ", sensor_close_towall_check)
     if(sensor_close_towall_check):
 
         for i in sensors:
-            for j in sensors + 1:
-                if(i < sensor_reward_negative):
-                    print(i - j)
-                    return (i - j) / 10
-                else:
-                    continue
+            if(i < sensor_reward_negative):
+                print(i)
+                return ((sensor_reward_negative - i) * p * -1) / 10
+            else:
+                continue
 
         return 0
     else:
