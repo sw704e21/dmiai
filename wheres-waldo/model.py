@@ -24,6 +24,7 @@ class Model():
         count = 0
         bstcount = 0
         bestpred = 0
+        boxes = [0, 0, 0, 0]
         for sample in samples[1]:
             if sample[1] > bestpred:
                 boxes = samples[0][count][0]
@@ -31,6 +32,7 @@ class Model():
             count = count + 1
 
         print(boxes)
+        print(bestpred)
 
         x_center = boxes[1] + (boxes[3] - boxes[1]) / 2
         y_center = boxes[0] + (boxes[2] - boxes[0]) / 2
@@ -38,7 +40,7 @@ class Model():
         print(x_center)
         print(y_center)
 
-        p = self.mapping[10]
+        p = self.mapping[bstcount]
         print(p)
         point = p[0] + x_center, p[1] + y_center
         return point
