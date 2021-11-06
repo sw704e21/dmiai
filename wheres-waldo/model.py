@@ -8,6 +8,7 @@ from keras_retinanet import models
 # import miscellaneous modules
 import cv2
 import numpy as np
+import os
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 
 class Model():
