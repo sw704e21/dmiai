@@ -13,7 +13,7 @@ class Model(Sequential):
     def __init__(self):
         super().__init__()
         dropout_rate = 0.1
-        self.add(layers.Conv3D(32, 1, activation='relu', name="input_layer", input_shape=(15, 110, 110, 3)))
+        self.add(layers.Conv3D(32, 1, activation='relu', name="input_layer", input_shape=(12, 110, 110, 3)))
         self.add(layers.MaxPooling3D((1, 16, 16)))
         self.add(layers.Dropout(dropout_rate))
 
@@ -50,15 +50,14 @@ class Model(Sequential):
         self.add(layers.Dense(32, activation="relu", name="hidden_layer5"))
         self.add(layers.Dropout(dropout_rate))
 
-        self.add(layers.Dense(4, activation='sigmoid', name="output_layer"))
-
-        self.compile(loss=tf.keras.losses.CategoricalCrossentropy(from_logits=True), optimizer='adam',
+        self.add(layers.Dense(1, activation='sigmoid', name="output_layer"))
+        self.compile(loss=tf.keras.losses.BinaryCrossentropy(from_logits=True), optimizer='adam',
                      metrics=['accuracy'])
         self.summary()
 
     def forward(self, sample):
         sample = self.pre_process_data(sample)
-        result = self.predict(np.asarray([sample]))
+        result = [self.predict(np.asarray([s])) for s in sample]
         result = self.post_process_data(result)
         return result
 
@@ -68,28 +67,25 @@ class Model(Sequential):
         image = io.BytesIO(image)
         image = Image.open(image)
         image = np.asarray(image)
-        result = np.zeros((15, 110, 110, 3))
-        r = 110
-        for i in range(4):
-            d = image[r * i: r * (i + 1), :, :]
-            k = 0
-            for j in range(5):
-                if j % 2 == 0 and not (j == 4 and i == 3):
-                    result[i * 3 + k] = d[:, r * j: r * (j + 1), :]
-                    k += 1
-        i = 11
-        for image in data[1]:
-            image = base64.b64decode(image)
-            image = io.BytesIO(image)
-            image = Image.open(image)
-            image = np.asarray(image)
-            result[i] = image
-            i += 1
-        i = 0
-        for image in result:
-            img = kerasimage.array_to_img(image)
-            img.save("data/test" + str(i) + ".jpg")
-            i += 1
+        result = np.zeros((4, 12, 110, 110, 3))
+        resi = 0
+        for img in data[1]:
+            res = np.zeros((12, 110, 110, 3))
+            r = 110
+            for i in range(4):
+                d = image[r * i: r * (i + 1), :, :]
+                k = 0
+                for j in range(5):
+                    if j % 2 == 0 and not (j == 4 and i == 3):
+                        res[i * 3 + k] = d[:, r * j: r * (j + 1), :]
+                        k += 1
+            img = base64.b64decode(img)
+            img = io.BytesIO(img)
+            img = Image.open(img)
+            img = np.asarray(img)
+            res[11] = img
+            result[resi] = res
+            resi += 1
         return result
 
     def post_process_data(self, data):
