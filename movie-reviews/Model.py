@@ -4,6 +4,7 @@ from tensorflow.keras.preprocessing.sequence import pad_sequences
 from tensorflow.keras.models import Sequential
 from tensorflow.keras import layers
 from tensorflow.keras.optimizers import Adam
+import numpy as np
 
 class Model(Sequential):
 
@@ -26,14 +27,14 @@ class Model(Sequential):
         self.add(layers.BatchNormalization(axis=-1, momentum=0.99, epsilon=0.001, center=True, scale=True,
                                            beta_initializer="zeros", gamma_initializer="ones",
                                            moving_mean_initializer="zeros", moving_variance_initializer="ones"))
-        self.add(layers.Dense(1, activation='relu'))
+        self.add(layers.Dense(10, activation='relu'))
         opt = Adam(learning_rate=0.02)
-        self.compile(loss='mean_absolute_error', optimizer=opt, metrics=['accuracy'])
+        self.compile(loss=tf.keras.losses.CategoricalCrossentropy(from_logits=True), optimizer=opt, metrics=['accuracy'])
+        self.summary()
 
     def _postprocess_data(self, sample):
-        base = 0.5
-        sample = [base * round(float(x) / base) for x in sample]
-        return sample
+        scores = [0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0]
+        return scores[np.argmax(sample)]
 
     def forward(self, sample):
         sample = self._preprocess_data(sample)
