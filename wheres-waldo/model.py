@@ -8,7 +8,6 @@ from keras_retinanet import models
 # import miscellaneous modules
 import cv2
 import numpy as np
-import image_slicer
 
 class Model():
     def __init__(self):
@@ -50,11 +49,13 @@ class Model():
 
     def _preprocess_data(self, data):
         # Split billeder i 15 billeder
-        tiles = image_slicer.slice(data, 25)
+        data = np.asarray(data)
         images = []
-        for tile in tiles:
-            test = np.array(tile.image)
-            images.append(test)
+        r = 300
+        for i in range(5):
+            row = data[r * i: r * (i + 1), :, :]
+            for j in range(5):
+                images.append(row[:, r * j: r * (j + 1), :])
 
         result = []
         for image in images:
