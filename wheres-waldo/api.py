@@ -1,7 +1,7 @@
 
 import uvicorn
 from fastapi import FastAPI, File
-from starlette.responses import HTMLResponse
+from starlette.responses import HTMLResponse, Response
 
 import middleware.cors
 import middleware.logging
@@ -36,11 +36,9 @@ middleware.cors.setup(app)
 
 @app.post('/api/predict', response_model=PredictResponse)
 def predict(request: PredictRequest = File(...)) -> PredictResponse:
-
+    model = settings.MODEL
     # This is the Where's Waldo image as an RGB matrix
     image = Image.open(io.BytesIO(request.file.read())).convert("RGB")
-    model = Model()
-    model.load_model("")
 
     result = model.forward(image)
     print(result)
@@ -54,6 +52,13 @@ def hello():
         "uptime": get_uptime(),
         "service": settings.COMPOSE_PROJECT_NAME,
     }
+
+@app.get('/api/load')
+def load():
+    model = Model()
+    model.load_model("")
+    settings.MODEL = model
+    return Response
 
 
 @app.get('/')
