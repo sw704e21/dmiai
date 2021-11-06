@@ -27,6 +27,7 @@ class Model():
         boxes = [0, 0, 0, 0]
         for sample in samples[1]:
             if sample[1] > bestpred:
+                bestpred = sample[1]
                 boxes = samples[0][count][0]
                 bstcount = count
             count = count + 1
