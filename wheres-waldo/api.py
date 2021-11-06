@@ -1,8 +1,7 @@
 
 import uvicorn
 from fastapi import FastAPI, File
-from starlette.responses import HTMLResponse, Response
-
+from starlette.responses import HTMLResponse
 import middleware.cors
 import middleware.logging
 from dtos.requests import PredictRequest
@@ -44,7 +43,7 @@ def predict(request: PredictRequest = File(...)) -> PredictResponse:
     result = model.forward(image)
     print(result)
 
-    return PredictResponse(x=result[0], y=result[1])
+    return PredictResponse(x=result[1], y=result[0])
 
 
 @app.get('/api')
