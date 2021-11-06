@@ -14,6 +14,7 @@ from utilities.utilities import get_uptime
 import random
 import csv
 from model import Model
+from trainer import Trainer
 
 load_env()
 
@@ -54,8 +55,14 @@ def predict(request: PredictRequest) -> PredictResponse:
     model = Model()
     res = model.forward((image, choices))
 
-    return Response()
+    return PredictResponse(next_image_index=res)
 
+
+@app.post('/api/train')
+def train():
+    trainer = Trainer()
+    trainer.train("data/iq/train.csv", "results")
+    return Response()
 
 @app.get('/api')
 def hello():
