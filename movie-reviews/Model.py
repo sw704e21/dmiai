@@ -15,15 +15,15 @@ class Model(Sequential):
         dropout_rate = 0.2
         self.add(layers.Embedding(input_dim=vocab_size, output_dim=embedding_dim, input_length=maxlen))
         self.add(layers.GlobalMaxPool1D())
-        self.add(layers.Dense(64, activation='relu'))
-        self.add(layers.BatchNormalization(axis=-1, momentum=0.99, epsilon=0.001, center=True, scale=True,
-                                           beta_initializer="zeros", gamma_initializer="ones",
-                                           moving_mean_initializer="zeros", moving_variance_initializer="ones"))
         self.add(layers.Dense(128, activation='relu'))
         self.add(layers.BatchNormalization(axis=-1, momentum=0.99, epsilon=0.001, center=True, scale=True,
                                            beta_initializer="zeros", gamma_initializer="ones",
                                            moving_mean_initializer="zeros", moving_variance_initializer="ones"))
-        self.add(layers.Dense(64, activation='relu'))
+        self.add(layers.Dense(256, activation='relu'))
+        self.add(layers.BatchNormalization(axis=-1, momentum=0.99, epsilon=0.001, center=True, scale=True,
+                                           beta_initializer="zeros", gamma_initializer="ones",
+                                           moving_mean_initializer="zeros", moving_variance_initializer="ones"))
+        self.add(layers.Dense(128, activation='relu'))
         self.add(layers.BatchNormalization(axis=-1, momentum=0.99, epsilon=0.001, center=True, scale=True,
                                            beta_initializer="zeros", gamma_initializer="ones",
                                            moving_mean_initializer="zeros", moving_variance_initializer="ones"))
