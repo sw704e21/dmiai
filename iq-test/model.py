@@ -12,15 +12,49 @@ class Model(Sequential):
 
     def __init__(self):
         super().__init__()
-        self.add(layers.Conv3D(4, 8, activation='relu',
-                               input_shape=[15, 110, 110, 3], name="input_layer"))
-        self.add(layers.MaxPooling3D())
-        self.add(layers.Dropout(0.2))
+        dropout_rate = 0.1
+        self.add(layers.Conv3D(32, 1, activation='relu', name="input_layer", input_shape=(15, 110, 110, 3)))
+        self.add(layers.MaxPooling3D((1, 16, 16)))
+        self.add(layers.Dropout(dropout_rate))
+
+        #self.add(layers.Conv3D(8, 3, activation='relu', padding='same'))
+        #self.add(layers.MaxPooling3D((1, 2, 2)))
+        #self.add(layers.Dropout(dropout_rate))
+
+        #self.add(layers.Conv3D(16, 3, activation='relu', padding='same'))
+        #self.add(layers.MaxPooling3D((1, 2, 2)))
+        #self.add(layers.Dropout(dropout_rate))
+
+        #self.add(layers.Conv3D(32, 3, activation='relu', padding='same'))
+        #self.add(layers.MaxPooling3D((1, 2, 2)))
+        #self.add(layers.Dropout(dropout_rate))
+
+        #self.add(layers.Conv3D(64, 3, activation='relu', padding='same'))
+        #self.add(layers.MaxPooling3D((1, 2, 2)))
+        #self.add(layers.Dropout(dropout_rate))
+
         self.add(layers.Flatten())
-        self.add(layers.Dense(256, activation="relu", name="hidden_layer1"))
+
+        self.add(layers.Dense(32, activation="relu", name="hidden_layer1"))
+        self.add(layers.Dropout(dropout_rate))
+
+        self.add(layers.Dense(64, activation="relu", name="hidden_layer2"))
+        self.add(layers.Dropout(dropout_rate))
+
+        #self.add(layers.Dense(128, activation="relu", name="hidden_layer3"))
+        #self.add(layers.Dropout(dropout_rate))
+
+        #self.add(layers.Dense(64, activation="relu", name="hidden_layer4"))
+        #self.add(layers.Dropout(dropout_rate))
+
+        self.add(layers.Dense(32, activation="relu", name="hidden_layer5"))
+        self.add(layers.Dropout(dropout_rate))
+
         self.add(layers.Dense(4, activation='sigmoid', name="output_layer"))
+
         self.compile(loss=tf.keras.losses.CategoricalCrossentropy(from_logits=True), optimizer='adam',
                      metrics=['accuracy'])
+        self.summary()
 
     def forward(self, sample):
         sample = self.pre_process_data(sample)
@@ -59,6 +93,7 @@ class Model(Sequential):
         return result
 
     def post_process_data(self, data):
+        print(data)
         return np.argmax(data)
 
     def save_model(self, save_path):
