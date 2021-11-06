@@ -14,6 +14,7 @@ from utilities.utilities import get_uptime
 
 from PIL import Image
 import io
+from model import Model
 
 load_env()
 
@@ -37,15 +38,13 @@ middleware.cors.setup(app)
 def predict(request: PredictRequest = File(...)) -> PredictResponse:
 
     # This is the Where's Waldo image as an RGB matrix
-    image = Image.open(io.BytesIO(request.file.read())).convert("RGB")
+    image = Image.open(io.BytesIO(request.file.read()))
+    model = Model()
+    model.load_model("")
 
-    # This is a dummy prediction - compute a real one
-    prediction = {
-        'x': 130,
-        'y': 850
-    }
+    result = model.forward(image)
 
-    return PredictResponse(**prediction)
+    return PredictResponse(x=result[0], y=result[1])
 
 
 @app.get('/api')
