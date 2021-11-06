@@ -1,12 +1,13 @@
 
 from loguru import logger
+from numpy.lib.function_base import vectorize
 import uvicorn
 from fastapi import FastAPI
 from starlette.responses import HTMLResponse, Response
 
 import middleware.cors
 import middleware.logging
-from dtos.requests import PredictRequest
+from dtos.requests import PredictRequest, Velocity
 from dtos.responses import PredictResponse, ActionType
 
 from settings import Settings, load_env
@@ -42,15 +43,20 @@ replay = []  # stores tuples of (S, A, R, S').
 data_collect = []
 loss_log = []
 model = None
-NUM_SENSORS = 8
+NUM_SENSORS = 11
 GAMMA = 0.9  # Forgetting
 TUNING = False  # If False, just use arbitrary, pre-selected params
 nn_param = [128, 128]
 params = {
     "batchSize": 64,
-    "buffer": 10000,
+    "buffer": 500,
     "nn": nn_param
 }
+observe = 75  # Number of rames to observe before training
+
+train_frames = 5000
+batchSize = params['batchSize']
+buffer = params['buffer']
 
 
 @app.get('/api/save')
@@ -61,7 +67,7 @@ def save():
                        '.h5', overwrite=True)
     with open("results/saved-models/epsilon", 'wb') as fp:
         pickle.dump(model.epsilon, fp)
-    #print("saving model %s - %d" % (filename, request.elapsed_time_ms))
+    # print("saving model %s - %d" % (filename, request.elapsed_time_ms))
     with open("results/saved-models/state", 'wb') as fp:
         pickle.dump(model.state, fp)
     return Response()
@@ -109,25 +115,18 @@ def train(request: PredictRequest):
     model = settings.MODEL
     # params = get_params()
     filename = learning.params_to_filename(params)
-    observe = 75  # Number of rames to observe before training
-
-    train_frames = 50000
-    batchSize = params['batchSize']
-    buffer = params['buffer']
-
-    # Variables used
-    max_car_distance = 0
 
     actions = [ActionType.ACCELERATE, ActionType.DECELERATE,
                ActionType.STEER_RIGHT, ActionType.STEER_LEFT,
                ActionType.NOTHING]
-
+    # Variables used
+    max_car_distance = 0
     print(model.epsilon)
     # Choose an action.
     if random.random() < model.epsilon:
         print("Random action")
         print("startStateCheck: ", model.startStateCheck)
-        action = random.choice([random.choice(actions), actions[0]])
+        action = random.choice(actions)
         print(action)
     else:
         print("Decision made")
@@ -140,28 +139,27 @@ def train(request: PredictRequest):
 
     # Take action, observe new state and get reward.
     reward, new_state = update_state_and_reward(request=request, model=model)
-    print("state: ", model.state, "new state: ", new_state)
+    print("state: ", model.state, "new state: ", new_state, "reward: ", reward)
     replay.append((model.state, action.to_int(), reward, new_state))
     print("Size of replay: ", len(replay))
     # If we're done observing, start training.
-    if request.elapsed_time_ms > observe:
-        # if we've stored enough in our buffer, pop the oldest.
-        if len(replay) > buffer:
-            replay.pop(0)
-            print("Training..")
-            # randomly sample our experience replay memory
-            minibatch = random.sample(replay, batchSize)
+    # if we've stored enough in our buffer, pop the oldest.
+    if len(replay) > buffer - 1:
+        replay.pop(0)
+        print("Training..")
+        # randomly sample our experience replay memory
+        minibatch = random.sample(replay, batchSize)
 
-            # get training values.
-            X_train, y_train = process_minibatch2(minibatch, model)
+        # get training values.
+        X_train, y_train = process_minibatch2(minibatch, model)
 
-            # train the model on this batch
-            history = nn.LossHistory()
-            model.fit(X_train, y_train, batch_size=batchSize,
-                      epochs=1, verbose=0, callbacks=[history])
-            loss_log.append(history.losses)
-        else:
-            print("Not training...")
+        # train the model on this batch
+        history = nn.LossHistory()
+        model.fit(X_train, y_train, batch_size=batchSize,
+                  epochs=1, verbose=0, callbacks=[history])
+        loss_log.append(history.losses)
+    else:
+        print("Not training...")
 
     # Update the starting state S'.
     model.state = new_state
@@ -194,31 +192,109 @@ def get_predicted_response(state):
     return PredictResponse(action=state)
 
 
+def sum_readings(readings):
+    """Sum the number of non-zero readings."""
+    tot = 0
+    for i in readings:
+        tot += i
+    return tot
+
+
+def speed_reward(velocity):
+    return velocity * 1
+
+
+def side_sensors_penalty(sensors):
+    tot = 0
+    sensor = []
+    sensor_reward_negative = 150
+    sensor_close_towall_check = np.any(sensors < sensor_reward_negative)
+
+    print("Is sensor close to wall?: ", sensor_close_towall_check)
+    if(sensor_close_towall_check):
+
+        for i in sensors:
+            for j in sensors + 1:
+                if(i < sensor_reward_negative):
+                    print(i - j)
+                    return (i - j) / 10
+                else:
+                    continue
+
+        return 0
+    else:
+        return 0
+
+
+def frontandback_sensors_penalty(sensors):
+    tot = 0
+    sensor = []
+    sensor_reward_negative = 1000
+    sensor_close_towall_check = np.any(sensors < sensor_reward_negative)
+
+    print("Is sensor detecting car in front or back?: ", sensor_close_towall_check)
+    if(sensor_close_towall_check):
+
+        for i in sensors:
+            for j in sensors + 1:
+                if(i < sensor_reward_negative):
+                    print(i - j)
+                    return (i - j) / 10
+                else:
+                    continue
+
+        return 0
+    else:
+        return 0
+
+
 @app.post('/api/reward', response_model=PredictResponse)
 def update_state_and_reward(request: PredictRequest, model):
     # Get the current location and the readings there.
+    sensorsnew = np.array(request.sensors.to_list())
+    sensors = np.array([request.sensors.to_list()])
+    state = np.array([request.to_list_with_velocity()])
+    sensor_sides = np.array(request.sensors.to_list_side())
+    sensor_front_and_back = np.array(request.sensors.to_list_front_and_back())
+    sensor_left_right_front = np.array(
+        request.sensors.to_list_left_right_front())
+    sensor_left_right_back = np.array(
+        request.sensors.to_list_left_right_back())
 
-    state = np.array([request.sensors.to_list()])
     # Set the reward.
     # Car crashed when any reading == 1
     if request.did_crash:
         reward = -500
         model.startStateCheck = True
-    elif request.velocity.x > 10:
-        reward = 1
-    elif request.velocity.x > 20:
-        reward = 2
-    elif request.velocity.x > 30:
-        reward = 3
-    elif request.velocity.x == 0:
-        reward = -2
     else:
-        reward = -1
-
+        reward = speed_reward(request.velocity.x) + (frontandback_sensors_penalty(sensor_front_and_back) +
+                                                     side_sensors_penalty(sensor_sides) +
+                                                     side_sensors_penalty(sensor_left_right_front) +
+                                                     side_sensors_penalty(sensor_left_right_back))
+    # elif request.velocity.x > 10 and request.velocity.x < 20:
+    #     reward = 1
+    # elif request.velocity.x >= 20 and request.velocity.x < 30:
+    #     reward = 2
+    # elif request.velocity.x >= 30 and request.velocity.x < 40:
+    #     reward = 3
+    # elif request.velocity.x >= 40 and request.velocity.x < 50:
+    #     reward = 4
+    # elif request.velocity.x >= 50 and request.velocity.x < 60:
+    #     reward = 5
+    # elif request.velocity.x >= 60 and request.velocity.x < 70:
+    #     reward = 6
+    # elif request.velocity.x > 70:
+    #     reward = 7
+    # elif request.velocity.x < 10:
+    #     reward = -1
+    # elif request.velocity.x == 0:
+    #     reward = -10
+    # else:
+    #     reward = -20
     return reward, state
 
 
-@app.post('/api/reward', response_model=PredictResponse)
+@ app.post('/api/reward', response_model=PredictResponse)
 def update_start_state(request: PredictRequest):
     if(request.elapsed_time_ms < 100):
         state = np.array([request.sensors.to_list()])
@@ -247,10 +323,10 @@ def process_minibatch2(minibatch, model):
 
     mb_len = len(minibatch)
 
-    old_states = np.zeros(shape=(mb_len, 8))
+    old_states = np.zeros(shape=(mb_len, 11))
     actions = np.zeros(shape=(mb_len,))
     rewards = np.zeros(shape=(mb_len,))
-    new_states = np.zeros(shape=(mb_len, 8))
+    new_states = np.zeros(shape=(mb_len, 11))
 
     for i, m in enumerate(minibatch):
         old_state_m, action_m, reward_m, new_state_m = m
@@ -273,6 +349,39 @@ def process_minibatch2(minibatch, model):
 
     X_train = old_states
     y_train = y
+    return X_train, y_train
+
+
+def process_minibatch(minibatch, model):
+    """This does the heavy lifting, aka, the training. It's super jacked."""
+    X_train = []
+    y_train = []
+    # Loop through our batch and create arrays for X and y
+    # so that we can fit our model at every step.
+    for memory in minibatch:
+        # Get stored values.
+        old_state_m, action_m, reward_m, new_state_m = memory
+        # Get prediction on old state.
+        old_qval = model.predict(old_state_m, batch_size=1)
+        # Get prediction on new state.
+        newQ = model.predict(new_state_m, batch_size=1)
+        # Get our predicted best move.
+        maxQ = np.max(newQ)
+        y = np.zeros((1, 5))
+        y[:] = old_qval[:]
+        # Check for terminal state.
+        if reward_m != -500:  # non-terminal state
+            update = (reward_m + (GAMMA * maxQ))
+        else:  # terminal state
+            update = reward_m
+        # Update the value for the action we took.
+        y[0][action_m] = update
+        X_train.append(old_state_m.reshape(NUM_SENSORS,))
+        y_train.append(y.reshape(5,))
+
+    X_train = np.array(X_train)
+    y_train = np.array(y_train)
+
     return X_train, y_train
 
 
