@@ -15,7 +15,7 @@ class Settings(BaseSettings):
     COMPOSE_PROJECT_NAME: str
     NVIDIA_VISIBLE_DEVICES: Optional[str]
     NVIDIA_DRIVER_CAPABILITIES: Optional[str]
-    MODEL: Model
+    MODEL: Optional[Model]
 
 
 def load_env():
