@@ -36,7 +36,8 @@ middleware.cors.setup(app)
 
 @app.post('/api/predict', response_model=PredictResponse)
 def predict(request: PredictRequest = File(...)) -> PredictResponse:
-    model = settings.MODEL
+    model = Model()
+    model.load_model('')
     # This is the Where's Waldo image as an RGB matrix
     image = Image.open(io.BytesIO(request.file.read())).convert("RGB")
 
@@ -53,12 +54,6 @@ def hello():
         "service": settings.COMPOSE_PROJECT_NAME,
     }
 
-@app.get('/api/load')
-def load():
-    model = Model()
-    model.load_model("")
-    settings.MODEL = model
-    return Response
 
 
 @app.get('/')
