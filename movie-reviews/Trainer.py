@@ -8,10 +8,10 @@ import numpy as np
 class Trainer:
 
     def __init__(self, model_path=None):
+        self.model = Model()
         if model_path is not None:
             self.model.load_model(model_path)
-        else:
-            self.model = Model()
+
 
     def _load_train_data(self, dataset_path):
         train_dataset = pandas.read_csv(dataset_path)
