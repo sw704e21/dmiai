@@ -43,7 +43,7 @@ def predict(request: PredictRequest = File(...)) -> PredictResponse:
     result = model.forward(image)
     print(result)
 
-    return PredictResponse(x=result[1], y=result[0])
+    return PredictResponse(x=result[0], y=result[1])
 
 
 @app.get('/api')
