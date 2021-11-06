@@ -114,3 +114,4 @@ wincertstore==0.2
 wrapt==1.13.3
 zipp==3.6.0
 python-multipart
+ipykernel

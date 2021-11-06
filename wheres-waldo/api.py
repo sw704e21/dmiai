@@ -38,8 +38,9 @@ middleware.cors.setup(app)
 def predict(request: PredictRequest = File(...)) -> PredictResponse:
 
     # This is the Where's Waldo image as an RGB matrix
-    image = Image.open(io.BytesIO(request.file.read()))
+    # image = Image.open(io.BytesIO(request.file.read()))
     model = Model()
+    image = request.file.name
     model.load_model("")
 
     result = model.forward(image)
