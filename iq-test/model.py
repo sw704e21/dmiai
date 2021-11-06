@@ -2,9 +2,7 @@ from tensorflow.keras import Sequential
 from tensorflow.keras import layers
 from tensorflow.keras.preprocessing import image as kerasimage
 import tensorflow as tf
-import pickle
 import base64
-from scipy import misc
 from PIL import Image
 import io
 import numpy as np

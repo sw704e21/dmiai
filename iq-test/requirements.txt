@@ -1,0 +1,4 @@
+pillows
+tensorflow-cpu~=2.4.0
+numpy
+pandas
