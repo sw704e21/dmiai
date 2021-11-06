@@ -11,26 +11,26 @@ class Model(Sequential):
     def new(self, vocab_size, maxlen):
         self.vocab_size = vocab_size
         self.maxlen = maxlen
-        embedding_dim = 64
-        dropout_rate = 0.3
+        embedding_dim = 16
+        dropout_rate = 0.2
         self.add(layers.Embedding(input_dim=vocab_size, output_dim=embedding_dim, input_length=maxlen))
         self.add(layers.GlobalMaxPool1D())
-        self.add(layers.Dense(512, activation='relu'))
+        self.add(layers.Dense(64, activation='relu'))
         self.add(layers.BatchNormalization(axis=-1, momentum=0.99, epsilon=0.001, center=True, scale=True,
                                            beta_initializer="zeros", gamma_initializer="ones",
                                            moving_mean_initializer="zeros", moving_variance_initializer="ones"))
-        self.add(layers.Dense(1024, activation='relu'))
+        self.add(layers.Dense(128, activation='relu'))
         self.add(layers.BatchNormalization(axis=-1, momentum=0.99, epsilon=0.001, center=True, scale=True,
                                            beta_initializer="zeros", gamma_initializer="ones",
                                            moving_mean_initializer="zeros", moving_variance_initializer="ones"))
-        self.add(layers.Dense(512, activation='relu'))
+        self.add(layers.Dense(64, activation='relu'))
         self.add(layers.BatchNormalization(axis=-1, momentum=0.99, epsilon=0.001, center=True, scale=True,
                                            beta_initializer="zeros", gamma_initializer="ones",
                                            moving_mean_initializer="zeros", moving_variance_initializer="ones"))
         self.add(layers.Dense(10, activation='sigmoid'))
         opt = Adam(learning_rate=0.02)
-        # loss=tf.keras.losses.CategoricalCrossentropy(from_logits=True)
-        self.compile(loss="absolute_square_error", optimizer=opt, metrics=['accuracy'])
+        # loss="mean_absolute_error"
+        self.compile(loss=tf.keras.losses.CategoricalCrossentropy(from_logits=True), optimizer=opt, metrics=['accuracy'])
         self.summary()
 
     def _postprocess_data(self, sample):
