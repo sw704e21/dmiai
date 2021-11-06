@@ -11,32 +11,38 @@ class Model(Sequential):
     def new(self, vocab_size, maxlen):
         self.vocab_size = vocab_size
         self.maxlen = maxlen
-        embedding_dim = 32
+        embedding_dim = 64
         dropout_rate = 0.2
-        self.add(layers.Embedding(input_dim=vocab_size, output_dim=embedding_dim, input_length=maxlen))
+        self.add(layers.Embedding(input_dim=vocab_size, output_dim=embedding_dim, input_length=maxlen, trainable=True))
+        #self.add(layers.Conv1D(128, 5, activation='relu'))
         self.add(layers.GlobalMaxPool1D())
         self.add(layers.Dense(256, activation='relu'))
+        self.add(layers.Dropout(dropout_rate))
         #self.add(layers.BatchNormalization(axis=-1, momentum=0.99, epsilon=0.001, center=True, scale=True,
         #                                   beta_initializer="zeros", gamma_initializer="ones",
         #                                   moving_mean_initializer="zeros", moving_variance_initializer="ones"))
         self.add(layers.Dense(512, activation='relu'))
+        self.add(layers.Dropout(dropout_rate))
         #self.add(layers.BatchNormalization(axis=-1, momentum=0.99, epsilon=0.001, center=True, scale=True,
         #                                   beta_initializer="zeros", gamma_initializer="ones",
         #                                   moving_mean_initializer="zeros", moving_variance_initializer="ones"))
         self.add(layers.Dense(1024, activation='relu'))
+        self.add(layers.Dropout(dropout_rate))
         #self.add(layers.BatchNormalization(axis=-1, momentum=0.99, epsilon=0.001, center=True, scale=True,
         #                                   beta_initializer="zeros", gamma_initializer="ones",
         #                                   moving_mean_initializer="zeros", moving_variance_initializer="ones"))
         self.add(layers.Dense(512, activation='relu'))
+        self.add(layers.Dropout(dropout_rate))
         #self.add(layers.BatchNormalization(axis=-1, momentum=0.99, epsilon=0.001, center=True, scale=True,
         #                                   beta_initializer="zeros", gamma_initializer="ones",
         #                                   moving_mean_initializer="zeros", moving_variance_initializer="ones"))
         self.add(layers.Dense(256, activation='relu'))
+        self.add(layers.Dropout(dropout_rate))
         #self.add(layers.BatchNormalization(axis=-1, momentum=0.99, epsilon=0.001, center=True, scale=True,
         #                                   beta_initializer="zeros", gamma_initializer="ones",
         #                                   moving_mean_initializer="zeros", moving_variance_initializer="ones"))
         self.add(layers.Dense(10, activation='sigmoid'))
-        opt = Adam(learning_rate=0.02)
+        opt = Adam(learning_rate=0.003)
         # loss="mean_absolute_error"
         self.compile(loss=tf.keras.losses.CategoricalCrossentropy(from_logits=True), optimizer=opt, metrics=['accuracy'])
         self.summary()
