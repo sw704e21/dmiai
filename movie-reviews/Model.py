@@ -27,14 +27,15 @@ class Model(Sequential):
         self.add(layers.BatchNormalization(axis=-1, momentum=0.99, epsilon=0.001, center=True, scale=True,
                                            beta_initializer="zeros", gamma_initializer="ones",
                                            moving_mean_initializer="zeros", moving_variance_initializer="ones"))
-        self.add(layers.Dense(10, activation='relu'))
+        self.add(layers.Dense(10, activation='sigmoid'))
         opt = Adam(learning_rate=0.02)
-        self.compile(loss=tf.keras.losses.CategoricalCrossentropy(from_logits=True), optimizer=opt, metrics=['accuracy'])
+        # loss=tf.keras.losses.CategoricalCrossentropy(from_logits=True)
+        self.compile(loss="absolute_square_error", optimizer=opt, metrics=['accuracy'])
         self.summary()
 
     def _postprocess_data(self, sample):
         scores = [0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0]
-        return scores[np.argmax(sample)]
+        return [scores[np.argmax(x)] for x in sample]
 
     def forward(self, sample):
         sample = self._preprocess_data(sample)
