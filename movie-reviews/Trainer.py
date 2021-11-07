@@ -23,7 +23,7 @@ class Trainer:
         reviews = train_data['review_content'].values
         scores = train_data['score'].values
         reviews_train, reviews_test, scores_train, scores_test = train_test_split(
-            reviews, scores, test_size=0.1, random_state=1000)
+            reviews, scores, test_size=0.1, random_state=1024)
 
         tokenizer = Tokenizer(num_words=4096)
         tokenizer.fit_on_texts(reviews_train)

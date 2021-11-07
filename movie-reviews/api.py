@@ -16,6 +16,7 @@ from Model import Model
 from settings import Settings, load_env
 from static.render import render
 from utilities.utilities import get_uptime
+import nltk
 
 
 load_env()
@@ -78,6 +79,7 @@ def index():
 if __name__ == '__main__':
 
     print('Hey hey, got update')
+    nltk.download('vader_lexicon')
     uvicorn.run(
         'api:app',
         host=settings.HOST_IP,
