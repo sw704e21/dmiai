@@ -13,15 +13,15 @@ class Model(Sequential):
     def __init__(self):
         super().__init__()
         dropout_rate = 0.1
-        self.add(layers.Conv3D(8, 1, activation='relu', name="input_layer", input_shape=(12, 110, 110, 3)))
-        self.add(layers.MaxPooling3D((1, 2, 2)))
-        self.add(layers.Dropout(dropout_rate))
-
-        self.add(layers.Conv3D(16, 3, activation='relu', padding='same'))
+        self.add(layers.Conv3D(16, 1, activation='relu', name="input_layer", input_shape=(12, 110, 110, 3)))
         self.add(layers.MaxPooling3D((1, 2, 2)))
         self.add(layers.Dropout(dropout_rate))
 
         self.add(layers.Conv3D(32, 3, activation='relu', padding='same'))
+        self.add(layers.MaxPooling3D((1, 2, 2)))
+        self.add(layers.Dropout(dropout_rate))
+
+        self.add(layers.Conv3D(64, 3, activation='relu', padding='same'))
         self.add(layers.MaxPooling3D((1, 2, 2)))
         self.add(layers.Dropout(dropout_rate))
 
@@ -35,19 +35,19 @@ class Model(Sequential):
 
         self.add(layers.Flatten())
 
-        self.add(layers.Dense(32, activation="relu", name="hidden_layer1"))
+        self.add(layers.Dense(128, activation="relu", name="hidden_layer1"))
         self.add(layers.Dropout(dropout_rate))
 
-        self.add(layers.Dense(64, activation="relu", name="hidden_layer2"))
+        self.add(layers.Dense(256, activation="relu", name="hidden_layer2"))
         self.add(layers.Dropout(dropout_rate))
 
-        #self.add(layers.Dense(128, activation="relu", name="hidden_layer3"))
-        #self.add(layers.Dropout(dropout_rate))
+        self.add(layers.Dense(512, activation="relu", name="hidden_layer3"))
+        self.add(layers.Dropout(dropout_rate))
 
-        #self.add(layers.Dense(64, activation="relu", name="hidden_layer4"))
-        #self.add(layers.Dropout(dropout_rate))
+        self.add(layers.Dense(256, activation="relu", name="hidden_layer4"))
+        self.add(layers.Dropout(dropout_rate))
 
-        self.add(layers.Dense(32, activation="relu", name="hidden_layer5"))
+        self.add(layers.Dense(128, activation="relu", name="hidden_layer5"))
         self.add(layers.Dropout(dropout_rate))
 
         self.add(layers.Dense(1, activation='sigmoid', name="output_layer"))
