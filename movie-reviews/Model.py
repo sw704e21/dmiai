@@ -32,6 +32,7 @@ class Model(Sequential):
         # scores = [0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0]
         base = 0.5
         sample = [base * round(float(x) / base) for x in sample]
+        return sample
 
     def forward(self, sample):
         sample = self._preprocess_data(sample)
