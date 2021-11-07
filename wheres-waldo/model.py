@@ -107,8 +107,6 @@ class Model():
         return point
     
     def _preprocess_data(self, data):
-        data = PIL.Image.open(data).convert('RGB')
-        data = np.asarray(data)
         images = []
         r = 300
         #print(data)
