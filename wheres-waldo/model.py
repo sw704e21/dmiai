@@ -78,7 +78,7 @@ class Model():
             self.draw = cv2.cvtColor(self.draw, cv2.COLOR_BGR2RGB)
             image = preprocess_image(image)
             image, scale = resize_image(image)
-            boxes, scores, labels = self.predict_on_batch(np.expand_dims(image, axis=0))
+            boxes, scores, labels = self.model.predict_on_batch(np.expand_dims(image, axis=0))
             #print("processing time: ", time.time() - start)
             # correct for image scale
             boxes /= scale
@@ -129,4 +129,4 @@ class Model():
 
 
     def load_model(self, model_path):
-        pass
+        self.model = load_model('./WaldoModel/themodel.h5', backbone_name='resnet50')
