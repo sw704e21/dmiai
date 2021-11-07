@@ -57,7 +57,7 @@ class Trainer:
     def train(self, data_path, save_path):
         data = self._load_train_data(data_path)
         x, y = self._preprocess_train_data(data)
-        history = self.model.fit(x, y, epochs=32, verbose=True, validation_data=self.test_data, batch_size=1024)
+        history = self.model.fit(x, y, epochs=32, verbose=True, validation_data=self.test_data, batch_size=2048)
         self.model.save_model(save_path)
         train_loss, train_accuracy = self.model.evaluate(x, y, verbose=True)
         test_loss, test_accuracy = self.model.evaluate(self.test_data[0], self.test_data[1], verbose=True)
