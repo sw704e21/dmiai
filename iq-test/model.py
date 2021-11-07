@@ -13,17 +13,17 @@ class Model(Sequential):
     def __init__(self):
         super().__init__()
         dropout_rate = 0.1
-        self.add(layers.Conv3D(32, 1, activation='relu', name="input_layer", input_shape=(12, 110, 110, 3)))
-        self.add(layers.MaxPooling3D((1, 16, 16)))
+        self.add(layers.Conv3D(8, 1, activation='relu', name="input_layer", input_shape=(12, 110, 110, 3)))
+        self.add(layers.MaxPooling3D((1, 2, 2)))
         self.add(layers.Dropout(dropout_rate))
 
-        #self.add(layers.Conv3D(8, 3, activation='relu', padding='same'))
-        #self.add(layers.MaxPooling3D((1, 2, 2)))
-        #self.add(layers.Dropout(dropout_rate))
+        self.add(layers.Conv3D(16, 3, activation='relu', padding='same'))
+        self.add(layers.MaxPooling3D((1, 2, 2)))
+        self.add(layers.Dropout(dropout_rate))
 
-        #self.add(layers.Conv3D(16, 3, activation='relu', padding='same'))
-        #self.add(layers.MaxPooling3D((1, 2, 2)))
-        #self.add(layers.Dropout(dropout_rate))
+        self.add(layers.Conv3D(32, 3, activation='relu', padding='same'))
+        self.add(layers.MaxPooling3D((1, 2, 2)))
+        self.add(layers.Dropout(dropout_rate))
 
         #self.add(layers.Conv3D(32, 3, activation='relu', padding='same'))
         #self.add(layers.MaxPooling3D((1, 2, 2)))

@@ -61,7 +61,7 @@ def predict(request: PredictRequest) -> PredictResponse:
 @app.post('/api/train')
 def train():
     trainer = Trainer()
-    trainer.train("data/iq/train.csv", "results")
+    trainer.train("data/iq/train_old.csv", "results")
     return Response()
 
 @app.get('/api')
