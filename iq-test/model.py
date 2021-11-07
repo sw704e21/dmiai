@@ -63,30 +63,34 @@ class Model(Sequential):
 
     def pre_process_data(self, data):
         image = data[0]
-        image = base64.b64decode(image)
-        image = io.BytesIO(image)
-        image = Image.open(image)
-        image = np.asarray(image)
+        image = self.b64toarray(image)
         result = np.zeros((4, 12, 110, 110, 3))
         resi = 0
         for img in data[1]:
-            res = np.zeros((12, 110, 110, 3))
-            r = 110
-            for i in range(4):
-                d = image[r * i: r * (i + 1), :, :]
-                k = 0
-                for j in range(5):
-                    if j % 2 == 0 and not (j == 4 and i == 3):
-                        res[i * 3 + k] = d[:, r * j: r * (j + 1), :]
-                        k += 1
-            img = base64.b64decode(img)
-            img = io.BytesIO(img)
-            img = Image.open(img)
-            img = np.asarray(img)
-            res[11] = img
+            res = self.split_image(image)
+            res[11] = self.b64toarray(img)
             result[resi] = res
             resi += 1
         return result
+
+    def b64toarray(self, b64str):
+        image = base64.b64decode(b64str)
+        image = io.BytesIO(image)
+        image = Image.open(image)
+        image = np.asarray(image)
+        return image
+
+    def split_image(self, image):
+        res = np.zeros((12, 110, 110, 3))
+        r = 110
+        for i in range(4):
+            d = image[r * i: r * (i + 1), :, :]
+            k = 0
+            for j in range(5):
+                if j % 2 == 0 and not (j == 4 and i == 3):
+                    res[i * 3 + k] = d[:, r * j: r * (j + 1), :]
+                    k += 1
+        return res
 
     def post_process_data(self, data):
         print(data)
