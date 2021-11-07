@@ -49,12 +49,12 @@ TUNING = False  # If False, just use arbitrary, pre-selected params
 nn_param = [128, 128]
 params = {
     "batchSize": 64,
-    "buffer": 500,
+    "buffer": 5000,
     "nn": nn_param
 }
 observe = 75  # Number of rames to observe before training
 
-train_frames = 5000
+train_frames = 10000
 batchSize = params['batchSize']
 buffer = params['buffer']
 
@@ -214,8 +214,8 @@ def side_sensors_penalty(sensors):
 
         for i in sensors:
             if(i < sensor_reward_negative):
-                print(i, ": ", ((sensor_reward_negative - i) * p * -1) / 10)
-                return ((150 - i) * p * -1) / 10
+                print(i, ": ", (sensor_reward_negative - i) * p * -1)
+                return ((150 - i) * p * -1)
 
             else:
                 continue
@@ -237,8 +237,8 @@ def frontandback_sensors_penalty(sensors):
 
         for i in sensors:
             if(i < sensor_reward_negative):
-                print(i, ": ", ((sensor_reward_negative - i) * p * -1) / 10)
-                return ((sensor_reward_negative - i) * p * -1) / 10
+                print(i, ": ", (sensor_reward_negative - i) * p * -1)
+                return ((sensor_reward_negative - i) * p * -1)
             else:
                 continue
 
