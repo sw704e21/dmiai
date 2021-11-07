@@ -101,7 +101,6 @@ class Model():
                 
         y_center = b[1] + (b[3] - b[1]) / 2
         x_center = b[0] + (b[2] - b[0]) / 2
-        print(sc)
         p = self.mapping[10]
         point = p[0] + x_center, p[1] + y_center
         
