@@ -49,12 +49,12 @@ TUNING = False  # If False, just use arbitrary, pre-selected params
 nn_param = [128, 128]
 params = {
     "batchSize": 64,
-    "buffer": 5000,
+    "buffer": 50000,
     "nn": nn_param
 }
-observe = 75  # Number of rames to observe before training
+observe = 100  # Number of rames to observe before training
 
-train_frames = 10000
+train_frames = 150000
 batchSize = params['batchSize']
 buffer = params['buffer']
 
@@ -78,8 +78,12 @@ def load():
     model = nn.Model()
     model.neural_net(NUM_SENSORS, params['nn'])
     model.load_weights("results/saved-models/hej.h5")
-    with open("results/saved-models/epsilon", 'rb') as fp:
-        model.epsilon = pickle.load(fp)
+    try:
+        with open("results/saved-models/epsilon", 'rb') as fp:
+            model.epsilon = pickle.load(fp)
+    except:
+        with open("results/saved-models/epsilon", 'wb') as fp:
+            pickle.dump(model.epsilon, fp)
     with open("results/saved-models/state", 'rb') as fp:
         model.state = pickle.load(fp)
     settings.MODEL = model
@@ -123,19 +127,14 @@ def train(request: PredictRequest):
     max_car_distance = 0
     print(model.epsilon)
     # Choose an action.
-    if random.random() < model.epsilon:
-        print("Random action")
-        print("startStateCheck: ", model.startStateCheck)
-        action = random.choice(actions)
-        print(action)
-    else:
-        print("Decision made")
 
-        # get Q values of reach action.
-        qval = model.predict(model.state, batch_size=1)
-        print("qval: ", qval)
-        action = actions[np.argmax(qval)]
-        print("action: ", action)
+    print("Decision made")
+
+    # get Q values of reach action.
+    qval = model.predict(model.state, batch_size=1)
+    print("qval: ", qval)
+    action = actions[np.argmax(qval)]
+    print("action: ", action)
 
     # Take action, observe new state and get reward.
     reward, new_state = update_state_and_reward(request=request, model=model)
@@ -144,22 +143,23 @@ def train(request: PredictRequest):
     print("Size of replay: ", len(replay))
     # If we're done observing, start training.
     # if we've stored enough in our buffer, pop the oldest.
-    if len(replay) > buffer - 1:
-        replay.pop(0)
-        print("Training..")
-        # randomly sample our experience replay memory
-        minibatch = random.sample(replay, batchSize)
+    if(request.elapsed_time_ms > observe):
+        if len(replay) > buffer - 1:
+            replay.pop(0)
+            print("Training..")
+            # randomly sample our experience replay memory
+            minibatch = random.sample(replay, batchSize)
 
-        # get training values.
-        X_train, y_train = process_minibatch2(minibatch, model)
+            # get training values.
+            X_train, y_train = process_minibatch2(minibatch, model)
 
-        # train the model on this batch
-        history = nn.LossHistory()
-        model.fit(X_train, y_train, batch_size=batchSize,
-                  epochs=1, verbose=0, callbacks=[history])
-        loss_log.append(history.losses)
-    else:
-        print("Not training...")
+            # train the model on this batch
+            history = nn.LossHistory()
+            model.fit(X_train, y_train, batch_size=batchSize,
+                      epochs=1, verbose=0, callbacks=[history])
+            loss_log.append(history.losses)
+        else:
+            print("Not training...")
 
     # Update the starting state S'.
     model.state = new_state
@@ -205,7 +205,7 @@ def speed_reward(velocity):
 
 
 def side_sensors_penalty(sensors):
-    sensor_reward_negative = 150
+    sensor_reward_negative = 180
     sensor_close_towall_check = np.any(sensors < sensor_reward_negative)
     p = 3
 
@@ -215,7 +215,28 @@ def side_sensors_penalty(sensors):
         for i in sensors:
             if(i < sensor_reward_negative):
                 print(i, ": ", (sensor_reward_negative - i) * p * -1)
-                return ((150 - i) * p * -1)
+                return ((180 - i) * p * -1)
+
+            else:
+                continue
+
+        return 0
+    else:
+        return 0
+
+
+def diagonal_side_sensors_penalty(sensors):
+    sensor_reward_negative = 250
+    sensor_close_towall_check = np.any(sensors < sensor_reward_negative)
+    p = 3
+
+    print("Is sensor close to wall?: ", sensor_close_towall_check)
+    if(sensor_close_towall_check):
+
+        for i in sensors:
+            if(i < sensor_reward_negative):
+                print(i, ": ", (sensor_reward_negative - i) * p * -1)
+                return ((250 - i) * p * -1)
 
             else:
                 continue
@@ -247,11 +268,27 @@ def frontandback_sensors_penalty(sensors):
         return 0
 
 
+def steer_from_wall(velocityY, sensors):
+    sensor_reward_negative = 150
+    res = []
+    for i in sensors:
+        res.append(i)
+
+    if(res[0] < sensor_reward_negative and velocityY >= 0):
+        return res[0]
+    elif(res[1] < sensor_reward_negative and velocityY <= 0):
+        return res[1]
+    else:
+        return 0
+
+
 @app.post('/api/reward', response_model=PredictResponse)
 def update_state_and_reward(request: PredictRequest, model):
     # Get the current location and the readings there.
     sensorsnew = np.array(request.sensors.to_list())
     sensors = np.array([request.sensors.to_list()])
+    velocity = np.array([request.velocity.x])
+    velocityY = request.velocity.y
     state = np.array([request.to_list_with_velocity()])
     sensor_sides = np.array(request.sensors.to_list_side())
     sensor_front_and_back = np.array(request.sensors.to_list_front_and_back())
@@ -267,9 +304,9 @@ def update_state_and_reward(request: PredictRequest, model):
         model.startStateCheck = True
     else:
         reward = speed_reward(request.velocity.x) + (frontandback_sensors_penalty(sensor_front_and_back) +
-                                                     side_sensors_penalty(sensor_sides) +
-                                                     side_sensors_penalty(sensor_left_right_front) +
-                                                     side_sensors_penalty(sensor_left_right_back))
+                                                     side_sensors_penalty(sensor_sides) + steer_from_wall(velocityY, sensor_sides) +
+                                                     side_sensors_penalty(sensor_left_right_front) + steer_from_wall(velocityY, sensor_left_right_front) +
+                                                     side_sensors_penalty(sensor_left_right_back) + steer_from_wall(velocityY, sensor_left_right_back))
     # elif request.velocity.x > 10 and request.velocity.x < 20:
     #     reward = 1
     # elif request.velocity.x >= 20 and request.velocity.x < 30:
