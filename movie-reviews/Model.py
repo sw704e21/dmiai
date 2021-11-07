@@ -28,8 +28,7 @@ class Model(Sequential):
         vader = [((s * 5) + 5) / 2 for s in vader]
         sample = self._preprocess_data(sample)
         result = self.predict(sample)
-        result = [(v[0] + v[1]) / 2 for v in zip(vader, result)]
-        result = vader
+        #result = [(v[0] + v[1]) / 2 for v in zip(vader, result)]
         return self._postprocess_data(result)
 
 
