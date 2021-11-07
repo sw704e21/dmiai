@@ -107,6 +107,7 @@ class Model():
         return point
     
     def _preprocess_data(self, data):
+        data = np.asarray(data)
         images = []
         r = 300
         #print(data)
