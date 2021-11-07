@@ -2,13 +2,16 @@ from tensorflow.keras.models import Sequential
 from tensorflow.keras import layers
 import pickle
 from sklearn.feature_extraction.text import CountVectorizer
+from nltk.sentiment.vader import SentimentIntensityAnalyzer
 
 class Model(Sequential):
 
     def new(self, input_dim):
         self.input_dim = input_dim
         self.add(layers.Dense(10, input_dim=input_dim, activation='relu'))
+        self.add(layers.Dropout(0.02))
         self.add(layers.Dense(1024, activation='relu'))
+        self.add(layers.Dropout(0.02))
         #self.add(layers.Dense(128, activation='relu'))
         #self.add(layers.Dense(64, activation='relu'))
         self.add(layers.Dense(1, activation='relu'))
@@ -20,8 +23,12 @@ class Model(Sequential):
         return sample
 
     def forward(self, sample):
+        sid = SentimentIntensityAnalyzer()
+        vader = [sid.polarity_scores(s)['compound'] for s in sample]
+        vader = [((s * 5) + 5) / 2 for s in vader]
         sample = self._preprocess_data(sample)
         result = self.predict(sample)
+        result = [(v[0] + v[1]) / 2 for v in zip(vader, result)]
         return self._postprocess_data(result)
 
 

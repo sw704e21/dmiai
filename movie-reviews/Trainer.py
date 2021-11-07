@@ -35,7 +35,7 @@ class Trainer:
         self.model.new(x.shape[1])
         self.model.vectorizer = self.vectorizer
         print(x.shape[0])
-        history = self.model.fit(x, y, epochs=32, verbose=True, validation_data=self.test_data, batch_size=1000)
+        history = self.model.fit(x, y, epochs=64, verbose=True, validation_data=self.test_data, batch_size=1000)
         self.model.save_model(save_path)
         train_loss, train_accuracy = self.model.evaluate(x, y, verbose=True)
         test_loss, test_accuracy = self.model.evaluate(self.test_data[0], self.test_data[1], verbose=True)
