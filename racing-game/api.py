@@ -143,23 +143,23 @@ def train(request: PredictRequest):
     print("Size of replay: ", len(replay))
     # If we're done observing, start training.
     # if we've stored enough in our buffer, pop the oldest.
-    if(request.elapsed_time_ms > observe):
-        if len(replay) > buffer - 1:
-            replay.pop(0)
-            print("Training..")
-            # randomly sample our experience replay memory
-            minibatch = random.sample(replay, batchSize)
+    # if(request.elapsed_time_ms > observe):
+    #     if len(replay) > buffer - 1:
+    #         replay.pop(0)
+    #         print("Training..")
+    #         # randomly sample our experience replay memory
+    #         minibatch = random.sample(replay, batchSize)
 
-            # get training values.
-            X_train, y_train = process_minibatch2(minibatch, model)
+    #         # get training values.
+    #         X_train, y_train = process_minibatch2(minibatch, model)
 
-            # train the model on this batch
-            history = nn.LossHistory()
-            model.fit(X_train, y_train, batch_size=batchSize,
-                      epochs=1, verbose=0, callbacks=[history])
-            loss_log.append(history.losses)
-        else:
-            print("Not training...")
+    #         # train the model on this batch
+    #         history = nn.LossHistory()
+    #         model.fit(X_train, y_train, batch_size=batchSize,
+    #                   epochs=1, verbose=0, callbacks=[history])
+    #         loss_log.append(history.losses)
+    #     else:
+    #         print("Not training...")
 
     # Update the starting state S'.
     model.state = new_state
