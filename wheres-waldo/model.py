@@ -129,4 +129,4 @@ class Model():
 
 
     def load_model(self, model_path):
-        self.model = load_model('./WaldoModel/themodel.h5', backbone_name='resnet50')
+        self.model = load_model('./WaldoModel/my_model.h5', backbone_name='resnet50')
