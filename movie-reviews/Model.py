@@ -14,12 +14,12 @@ class Model(Sequential):
         embedding_dim = 128
         dropout_rate = 0.2
         self.add(layers.Embedding(input_dim=vocab_size, output_dim=embedding_dim, input_length=maxlen, trainable=True))
-        #self.add(layers.Conv1D(128, 5, activation='relu'))
+        #self.add(layers.Conv1D(64, 3, activation='relu'))
         self.add(layers.GlobalMaxPool1D())
         self.add(layers.Dense(512, activation='relu'))
         self.add(layers.Dropout(dropout_rate))
         self.add(layers.Dense(10, activation='sigmoid'))
-        opt = Adam(learning_rate=0.003)
+        opt = Adam(learning_rate=0.001)
         # loss="mean_absolute_error"
         self.compile(loss=tf.keras.losses.CategoricalCrossentropy(from_logits=True), optimizer=opt, metrics=['accuracy'])
         self.summary()
