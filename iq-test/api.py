@@ -1,7 +1,7 @@
 
 import uvicorn
 from fastapi import FastAPI
-from starlette.responses import HTMLResponse
+from starlette.responses import HTMLResponse, Response
 
 import middleware.cors
 import middleware.logging
@@ -12,6 +12,9 @@ from settings import Settings, load_env
 from static.render import render
 from utilities.utilities import get_uptime
 import random
+import csv
+from model import Model
+from trainer import Trainer
 
 load_env()
 
@@ -38,16 +41,28 @@ def predict(request: PredictRequest) -> PredictResponse:
     image = request.image_base64
     choices = request.image_choices_base64
 
+    # with open("data/data/train.csv", 'a', newline='') as file:
+    #     writer = csv.writer(file, delimiter=',')
+    #     row = [image]
+    #     row.extend(choices)
+    #     writer.writerow(row)
+
     # Process the first two images, and predict the next correct image
     # from the list of image choices
-    
     # Dummy prediction - chooses a random image from the list of choices
-    next_image_index = random.choice([index for index in range(len(choices))])
+    #next_image_index = random.choice([index for index in range(len(choices))])
 
-    return PredictResponse(
-        next_image_index=next_image_index
-    )
+    model = Model()
+    res = model.forward((image, choices))
 
+    return PredictResponse(next_image_index=res)
+
+
+@app.post('/api/train')
+def train():
+    trainer = Trainer()
+    trainer.train("data/iq/train_old.csv", "results")
+    return Response()
 
 @app.get('/api')
 def hello():
